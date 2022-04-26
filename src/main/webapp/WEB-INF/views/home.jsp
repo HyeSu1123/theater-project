@@ -7,10 +7,10 @@
 	<title>Home</title>
 </head>
 <body>
-<h1>
-	Hello world!  
-</h1>
-
-<P>  The time on the server is ${serverTime}. </P>
+<nav>
+<a href="#">공연 일정</a>
+<a href="#">게시판</a>
+<a href="#">고객 문의</a>
+</nav>
 </body>
 </html>
