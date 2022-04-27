@@ -5,59 +5,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Join</title>
+	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common.css">
+
 </head>
 <body>
 	<!-- wrap시작 -->
 	<div id="wrap">
-		<!-- 헤더 시작 -->
-		<header>
-			<div class="header_area box_inner clear">
-				<h1><a href="home.jsp">Freddo</a></h1>
-				<p class="opengnb">
-					<a href="#">
-					<b class="hdd">메뉴</b>
-					<span></span><span></span>
-					</a>
-				</p>
-				<div class="header_cont">
-					<ul class="util clear">
-						<li><a href="#">로그인</a></li>
-						<li><a href="#">회원가입</a></li>
-					</ul>
-					<nav>
-						<ul class="gnb clear">
-							<li>
-								<a href="" class="openAll1">공연 전시</a>
-								<div class="gnb_depth">
-									<ul class="submenu_list">
-										<li><a href="">공연 전시</a></li>
-									</ul>
-								</div>
-							</li>
-							<li>
-								<a href="" class="openAll2">커뮤니티</a>
-								<div class="gnb_depth">
-									<ul class="submenu_list">
-										<li><a href="">공지사항</a></li>
-										<li><a href="">관람 후기</a></li>
-									</ul>
-								</div>
-							</li>
-							<li>
-								<a href="" class="openAll3">고객센터</a>
-								<div class="gnb_depth">
-									<ul class="submenu_list">
-										<li><a href="">1:1문의하기</a></li>
-									</ul>
-								</div>
-							</li>
-						</ul>
-					</nav>
-					<p class="closePop"><a href="">닫기</a></p>
-				</div>
-			</div>
-		</header>
-		<!-- 헤더 끝 -->
+<%@ include file="../includes/top.jsp" %>
+
 		<!-- 컨테이너시작 -->
 		<div id="container">
 			<div class="location_area member">
@@ -92,7 +47,7 @@
 				<tr class="app_list">
 					<td class="clear">
 					<label for="password2" class="tit_lbl pilsoo_item">PassWord 확인</label></td>
-					<td><input type="password" id="password2" placeholder="password를 다시 입력해주세요"></td>
+					<td><input type="password" id="password2" placeholder="password를 확인해주세요"></td>
 				</tr>
 				<!-- 이름 -->
 				<tr class="app_list">
@@ -110,9 +65,9 @@
 				<tr class="app_list">
 					<td class="tit_lbl"> 성별</td>
 					<td class="app_content radio_atea">
-					<input type="radio" name="gender" id="male" value="남">
+					<input type="radio" name="gender" id="male" class="radio" value="남">
 					<label for="male">남자</label>
-					<input type="radio" name="gender" id="female" value="남">
+					<input type="radio" name="gender" id="female" class="radio" value="여">
 					<label for="female">여자</label>
 					</td>
 				</tr>
@@ -120,7 +75,7 @@
 				<tr class="app_list">
 				<td class="clear">
 					<label for="email" class="tit_lbl pilsoo_item">이메일</label></td>
-					<td><input type="text" id="email" placeholder="이메일을 입력해주세요"></td>
+					<td><input type="email" id="email" placeholder="이메일을 입력해주세요"></td>
 				</tr>
 					
 				<!-- 전화번호 -->

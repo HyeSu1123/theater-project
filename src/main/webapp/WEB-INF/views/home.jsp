@@ -5,13 +5,10 @@
 <html>
 <head>
 	<title>Home</title>
+	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common.css">
 </head>
 <body>
-<h1>
-	Hello world!  
-</h1>
-
-<P>  The time on the server is ${serverTime}. </P>
+<%@ include file="./includes/top.jsp" %>
 <a href="memberJoin">ㅇㅇ</a>
 </body>
 </html>
