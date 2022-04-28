@@ -5,6 +5,7 @@
 
 <configuration>
 	<typeAliases>
+		<typeAlias type="com.company.idev.dto.Member" alias="Member"/>
 
 	</typeAliases>
 

@@ -35,9 +35,5 @@ public class HomeController {
 		
 		return "home";
 	}
-	@RequestMapping(value="memberJoin")
-	public String restForm() {
-		return "member/MemberJoin";
-	}
-	
+
 }

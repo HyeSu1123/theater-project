@@ -20,7 +20,7 @@
 				<div class="header_cont">
 					<ul class="util clear">
 						<li><a href="#">로그인</a></li>
-						<li><a href="memberJoin">회원가입</a></li>
+						<li><a href="member/join.do">회원가입</a></li>
 					</ul>
 					<nav>
 						<ul class="gnb clear">

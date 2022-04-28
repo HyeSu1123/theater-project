@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Join</title>
-	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common.css">
-
+<%-- 	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common.css">
+ --%>
 </head>
 <body>
 	<!-- wrap시작 -->
@@ -27,7 +27,7 @@
 			<!-- 본문 -->
 			<div class="bodytext_area box_inner">
 			<!-- 회원가입 -->
-			<form class="appForm" method="post" action="./join.do">
+			<form name="appForm" method="post" action="./join.do">
 			<table>
 				<legend>회원가입 입력 양식</legend>
 				<p class="info_pilsoo pilsoo_item">필수입력</p>
@@ -58,8 +58,8 @@
 				<!-- 생일 -->
 				<tr class="app_list">
 					<td class="clear">
-					<label for="birth" class="tit_lbl pilsoo_item">생일</label></td>
-					<td><input type="text" id="birth" placeholder="생일을 입력해주세요"></td>
+					<label for="birth_date" class="tit_lbl pilsoo_item">생일</label></td>
+					<td><input type="text" id="birth_date" placeholder="생일을 입력해주세요"></td>
 				</tr>
 				<!-- 성별 -->
 				<tr class="app_list">
