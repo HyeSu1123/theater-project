@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
- * Handles requests for the application home page.
+ * C:\dev\teamPl\theater-project 여기에 .gitignore 넣어놓고 해봐요 
+ * 
  */
 @Controller
 public class HomeController {
@@ -35,6 +36,16 @@ public class HomeController {
 		
 		return "home";
 	}
-
+	@RequestMapping(value="memberJoin")
+	public String restForm() {
+		return "member/MemberJoin";
+	} //지금은 push 는 하면 안되요. master 
 	
+	
+	public static void test() {
+		//테스트용 메소드 - git  
+		//master는 병합할때만 스위치로 바꾸고 항상 Dasan 브랜치에서  
+		//다산씨는 ㅇ이상태로 맡은 기능을 구현하면 되요. master하고 병합하는것은 다된다음
+	
+	}
 }
