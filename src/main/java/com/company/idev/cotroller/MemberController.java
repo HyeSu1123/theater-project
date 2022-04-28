@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,10 +26,25 @@ public class MemberController {
 		return "member/MemberJoin";
 	}
 	
-	//íšŒì›ê°€ì…
+	//È¸¿ø°¡ÀÔ
 	@PostMapping("/join.do")
 	public String appForm(Member member) {
 		mapper.insert(member);
 		return "redirect:../";
 	}
+
+	//¾ÆÀÌµğ Áßº¹ Ã¼Å©
+	@GetMapping("/idCheck.do")
+	public String idCheck(String id,Model model) {
+		String msg;
+		if(mapper.checkid(id) == 0)
+			msg="»ç¿ëÇÒ ¼ö ÀÖ´Â ¾ÆÀÌµğ ÀÔ´Ï´Ù.";
+		else msg="»ç¿ëÇÒ ¼ö ¾ø´Â ÀÌ¸ŞÀÏ ÀÔ´Ï´Ù.";
+		model.addAttribute("id", id);
+		model.addAttribute("msg", msg);
+		return "member/idCheck";
+	}
+
+	
+	
 }
