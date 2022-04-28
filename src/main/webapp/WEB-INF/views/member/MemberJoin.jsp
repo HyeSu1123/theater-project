@@ -35,13 +35,13 @@
 				<tr class="app_list">
 					<td class="clear">
 					<label for="id" class="tit_lbl pilsoo_item">ID</label></td>
-					<td><input type="text" id="id" placeholder="ID를 입력해주세요"></td>
+					<td><input type="text" id="id" name="id" placeholder="ID를 입력해주세요"></td>
 				</tr>
 				<!-- 비밀번호 -->
 				<tr class="app_list">
 					<td class="clear">
 					<label for="password" class="tit_lbl pilsoo_item">PassWord</label></td>
-					<td><input type="password" id="password" placeholder="password를 입력해주세요"></td>
+					<td><input type="password" id="password" name="password" placeholder="password를 입력해주세요"></td>
 				</tr>
 				<!-- 비밀번호 확인 -->
 				<tr class="app_list">
@@ -53,13 +53,13 @@
 				<tr class="app_list">
 					<td class="clear">
 					<label for="name" class="tit_lbl pilsoo_item">이름</label></td>
-					<td><input type="text" id="name" placeholder="이름을 입력해주세요"></td>
+					<td><input type="text" id="name" name="name" placeholder="이름을 입력해주세요"></td>
 				</tr>
 				<!-- 생일 -->
 				<tr class="app_list">
 					<td class="clear">
 					<label for="birth_date" class="tit_lbl pilsoo_item">생일</label></td>
-					<td><input type="text" id="birth_date" placeholder="생일을 입력해주세요"></td>
+					<td><input type="text" id="birth_date" name="birth_date" placeholder="생일을 입력해주세요"></td>
 				</tr>
 				<!-- 성별 -->
 				<tr class="app_list">
@@ -75,14 +75,14 @@
 				<tr class="app_list">
 				<td class="clear">
 					<label for="email" class="tit_lbl pilsoo_item">이메일</label></td>
-					<td><input type="email" id="email" placeholder="이메일을 입력해주세요"></td>
+					<td><input type="email" id="email" name="email" placeholder="이메일을 입력해주세요"></td>
 				</tr>
 					
 				<!-- 전화번호 -->
 				<tr class="app_list">
 					<td class="clear">
 					<label for="phon" class="tit_lbl pilsoo_item">번호</label></td>
-					<td><input type="tel" id="phone" placeholder="번호를 입력해주세요"></td>
+					<td><input type="tel" id="phone" name="phone" placeholder="번호를 입력해주세요"></td>
 				</tr>
 				<!-- 개인정보동의 -->
 				<tr>

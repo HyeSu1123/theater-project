@@ -9,6 +9,5 @@
 </head>
 <body>
 <%@ include file="./includes/top.jsp" %>
-<a href="memberJoin">ㅇㅇ</a>
 </body>
 </html>
