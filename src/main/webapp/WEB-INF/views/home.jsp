@@ -9,6 +9,18 @@
 </head>
 <body>
 <%@ include file="./includes/top.jsp" %>
-
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<a href="admin/main.do">관리자 페이지</a>
 </body>
 </html>

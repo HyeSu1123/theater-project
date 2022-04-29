@@ -46,4 +46,46 @@
 	 delete from members where id=#{id}
 	</delete>
 	
+	<!-- 전체 회원 페이징 -->
+	<select id="getPageList" parameterType="Map" resultType="Member">
+		SELECT * FROM (
+			SELECT rownum AS R, T.* FROM 
+				(SELECT * FROM members ORDER BY reg_date DESC) T )
+		WHERE R BETWEEN #{startNo} AND #{endNo}
+	</select>
+	<!-- 전체 회원 수 -->
+	<select id="getCount" resultType="int">
+		SELECT count(*) FROM members
+	</select>
+	
+	<!-- 검색 회원 페이징 -->
+	<select id="searchPageList" parameterType="Map" resultType="Member">
+		SELECT * FROM (
+			SELECT rownum AS R, T.* FROM 
+				(select * from members
+		<if test="columns=='id'">
+ where id like '%'||#{find}||'%'
+		</if>
+		<if test="columns=='name'">
+ where name like '%'||#{find}||'%'
+		</if>
+		<if test="columns=='authority'">
+ where authority=#{find}
+		</if>
+		ORDER BY reg_date DESC) T )
+		WHERE R BETWEEN #{startNo} AND #{endNo}
+	</select>
+	<!-- 검색 회원 수 -->
+	<select id="getSearchCount" parameterType="Map" resultType="int">
+		SELECT count(*) FROM members
+		<if test="columns=='id'">
+			where id like '%'||#{find}||'%'
+		</if>
+		<if test="columns=='name'">
+			where name like '%'||#{find}||'%'
+		</if>
+		<if test="columns=='authority'">
+			where authority=#{find}
+		</if>
+	</select>
 </mapper> 
