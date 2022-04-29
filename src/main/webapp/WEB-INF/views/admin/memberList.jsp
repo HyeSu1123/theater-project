@@ -11,7 +11,6 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/freeboard.css">
 <style type="text/css">
 @import url('https://fonts.googleapis.com/css2?family=Hahmlet:wght@200&family=IBM+Plex+Sans+KR:wght@300&display=swap');
-
 *{
 	font-family: 'Hahmlet', serif;
 	font-family: 'IBM Plex Sans KR', sans-serif;	
@@ -23,7 +22,7 @@
 <hr>
 <div style="margin:auto;">
 	<div style="text-align:right;">
-		<form action="search.do">
+		<form action="search.do" method="post">
 			<select name="columns" id="columns">
 				<option value="id">아이디</option>
 				<option value="name">이름</option>
@@ -56,7 +55,7 @@
 		</tr>
 		<c:forEach var="vo" items="${list}" varStatus="status">
 		<tr>
-			<td>${status.count}</td> 	
+			<td>${status.count+(page.pageNo-1)*10}</td> 	
 	 		<td><%-- <a href="detail?idx=${vo.id}&pageNo=${page.pageNo}" class="title"> --%>${vo.id}</td>
 	 		<td>${vo.name }</td>
 	 		<td>${vo.birth_date}</td>
@@ -91,21 +90,38 @@
 	</table>
 </div>
 
-<div style="text-align: center;">
-	<a class="pagenum" href="?pageNo=1">&lt;&lt;</a>   <!-- 요청url은 동일하고 파라미터만 변경됩니다. -->
+<div style="text-align: center;">		<!-- a태그에서 onclick 사용할 땐 자바스크립트라고 표시 -->
+	<a class="pagenum" onclick="javascript:goPage(1)">&lt;&lt;</a>   <!-- 요청url은 동일하고 파라미터만 변경됩니다. -->
 	<a class="${page.startPage>1? 'pagenum':'none'}" 
-		href="?pageNo=${page.startPage-1 }">&lt;</a>  
+		 onclick="javascript:goPage('${page.startPage-1 }')">&lt;</a>  
 	
 	<c:forEach var="i" begin="${page.startPage }" end="${page.endPage}">  <!-- 페이지목록의 범위  -->
-		<a class="pagenum" href="?pageNo=${i}">${i}</a>     <!-- 현재페이지 i값으로 변경  -->
+		<a class="pagenum" onclick="javascript:goPage('${i}')">${i}</a>     <!-- 현재페이지 i값으로 변경  -->
 	</c:forEach>
 	
 	<a class="${page.endPage!=page.totalPage? 'pagenum':'none'}" 
-		href="?pageNo=${page.endPage+1 }">&gt;</a> 
-	<a class="pagenum" href="?pageNo=${page.totalPage }">&gt;&gt;</a>
+		onclick="javascript:goPage('${page.endPage+1 }')">&gt;</a> 
+	<a class="pagenum" onclick="javascript:goPage('${page.totalPage }')">&gt;&gt;</a>
 </div>
-
+<form action="" method="post">
+	<input name="columns" type="hidden">
+	<input name="find" type="hidden">		<!-- find[0] -->
+	<input name="find" type="hidden">		<!-- find[1] -->
+	<input name="pageNo" type="hidden">
+</form>
 <script type="text/javascript">
+var href=window.location.pathname;				//memberList.do 또는 search.do 가져오기
+	function goPage(no){
+		const frm = document.forms[1];
+		frm.action=href;
+		frm.pageNo.value=no;
+		frm.columns.value='${columns}';
+		if('${columns}'=='authority')			
+			frm.find[1].value='${find}';		//컨트롤러에서 find 값 2개를 배열로 받기 때문  ArrayIndexOutOfBoundsException
+		else
+			frm.find[0].value='${find}';
+		frm.submit();
+	}
    		//조회 후에 select 남아있게 하기
 		const sel = document.querySelectorAll("#columns>option");	/* > 자식요소  */
 		sel.forEach(function(item){
