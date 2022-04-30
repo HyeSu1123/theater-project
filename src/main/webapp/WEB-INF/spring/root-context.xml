@@ -47,4 +47,17 @@
 	</bean>
 	<!-- 트랜잭션 적용을 어노테이션으로 하기 위한 설정 -->
 	<tx:annotation-driven transaction-manager="transactionManager"/>	
+	
+	<!-- MessageSource -->
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="defaultEncoding">
+		<value>UTF-8</value>
+		</property>
+		   <property name="basenames">
+		        <list>
+		               <value>messages/messages_ko</value>
+		        </list>
+	   </property>
+	</bean>
+	
 </beans>

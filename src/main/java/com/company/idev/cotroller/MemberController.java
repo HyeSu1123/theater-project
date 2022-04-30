@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.company.idev.dto.Member;
 import com.company.idev.mapper.MemberMapper;
-
 @Controller
 @RequestMapping(value = "/member")
 public class MemberController {
