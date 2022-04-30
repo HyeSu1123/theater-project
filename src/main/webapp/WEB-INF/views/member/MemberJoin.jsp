@@ -127,6 +127,13 @@
 			alert("번호 형식을 맞춰주세요(ex:010-0000-0000)");
 			return false;
 		}
+		const agree = frm.agree;
+		if(!agree.checked){
+			alert("약관 동의를 체크해주세요");
+			agree.focus();
+			return false;
+		}
+		
 		document.appForm.submit();
 	}
 	
