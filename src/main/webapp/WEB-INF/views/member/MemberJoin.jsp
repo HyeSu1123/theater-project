@@ -19,6 +19,8 @@
 		var id = document.appForm.id.value;
 		var url="./idCheck.do?id="+id;
 		window.open(url,"아이디 중복체크",'height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
+		
+		
 	}
 	
 	const sendit = function(){

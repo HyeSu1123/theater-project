@@ -8,10 +8,16 @@
 <title>Insert title here</title>
 </head>
 <body>
+<c:if test="${success=='y' }">
+	<script>
+		alert("로그인이 완료되었습니다.!");
+		location.href='${pageContext.request.contextPath }/';
+	</script>
+</c:if>
 		<!-- 헤더 시작 -->
 		<header>
 			<div class="header_area box_inner clear">
-				<h1><a href="./home.jsp">Freddo</a></h1>
+				<h1><a href="${pageContext.request.contextPath }/">Freddo</a></h1>
 				<p class="opengnb">
 					<a href="#">
 					<b class="hdd">메뉴열기</b>
@@ -21,11 +27,11 @@
 				<div class="header_cont">
 					<ul class="util clear">
 						<li>
-						<c:if test="${member != null }">${member.id }님 안녕하세요.<a href="#">로그아웃</a></c:if>
-						<c:if test="${member == null }"><a href="/">로그인</a></c:if>
+						<c:if test="${member != null }">${member.id }님 안녕하세요.<a href="${pageContext.request.contextPath }/member/logout.do">로그아웃</a></c:if>
+						<c:if test="${member == null }"><a href="${pageContext.request.contextPath }/member/login.do">로그인</a></c:if>
 						</li>
 						<li><c:if test="${member != null }"><a href="#">마이페이지</a></c:if>
-						<li><c:if test="${member == null }"><a href="member/join.do">회원가입</a></c:if>
+						<li><c:if test="${member == null }"><a href="${pageContext.request.contextPath }/member/join.do">회원가입</a></c:if>
 						</li>
 					</ul>
 					<nav>
