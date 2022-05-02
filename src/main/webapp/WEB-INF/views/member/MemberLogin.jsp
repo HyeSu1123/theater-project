@@ -17,7 +17,7 @@
 <body>
 	<!-- wrap시작 -->
 	<div id="wrap">
-<%@ include file="../includes/top.jsp" %>
+<%@ include file="../home.jsp" %>
 		<!-- 컨테이너시작 -->
 		<div id="container">
 			<div class="location_area member">
@@ -30,7 +30,7 @@
 				</div>
 			</div>
 			<!-- 본문 -->
-			<form name="appLogin" method="post" action="login.do">
+			<form name="appLogin" method="post" action="./login.do">
 			<label for="id">ID</label><br>
 			<input type="text" name="id" id="id" placeholder="ID를 입력해주세요"><br><br>
 			<label for="password">password</label><br>

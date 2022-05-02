@@ -144,7 +144,7 @@
 <body>
 	<!-- wrap시작 -->
 	<div id="wrap">
-<%@ include file="../includes/top.jsp" %>
+<%@ include file="../home.jsp" %>
 
 		<!-- 컨테이너시작 -->
 		<div id="container">
