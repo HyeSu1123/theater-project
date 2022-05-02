@@ -27,7 +27,7 @@
 				<div class="header_cont">
 					<ul class="util clear">
 						<li>
-						<c:if test="${member != null }">"${member.id }님 환영합니다.<a href="/logout.do">로그아웃</a></c:if>
+						<c:if test="${member != null }">"${member.id }님 환영합니다.<a href="logout.do">로그아웃</a></c:if>
 						<c:if test="${member == null }"><a href="login.do">로그인</a></c:if>
 						</li>
 						<li>

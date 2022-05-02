@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import com.company.idev.dto.Member;
 import com.company.idev.mapper.MemberMapper;
@@ -68,6 +70,12 @@ public class HomeController {
 			url ="redirect:login.do?success=n";
 		}
 		return url;
+	}
+	//로그아웃
+	@GetMapping("/logout.do")
+	public String logout(SessionStatus status) { //현재세션 상태 객체
+		status.setComplete();	//@SessionAttributes로 설정된 애트리뷰트 값을 clear 한다.
+		return "redirect:/";
 	}
 	
 
