@@ -34,6 +34,16 @@
 	VALUES(#{id},#{password}, #{name}, #{birth_date}, #{gender}, #{email}, #{phone},sysdate,'1')
 	</insert>
 	
+	<!-- 회원정보조회 -->
+	<select id="findPassword" parameterType="String" resultType="Member">
+		select * from members where email=#{email}
+	</select>
+	
+	<!-- 패스워드변경 -->
+	<update id="updatePassword">
+		update members set password=#{password} where email=#{email}
+	</update>
+	
 	<!-- 관리자용 회원가입 -->
 	<insert id="insertAdmin" parameterType="Member">
 	INSERT INTO MEMBERS

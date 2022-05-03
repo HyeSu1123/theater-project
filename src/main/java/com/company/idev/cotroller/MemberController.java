@@ -1,26 +1,44 @@
 package com.company.idev.cotroller;
 
 
+import java.io.File;
+import java.io.IOException;
+import java.util.Random;
+
+import javax.mail.internet.MimeMessage;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.company.idev.dto.Member;
 import com.company.idev.mapper.MemberMapper;
 @Controller
-@RequestMapping(value = {"/member","/"})
+@RequestMapping(value = "/member")
 public class MemberController {
 	private static final Logger logger
 	= LoggerFactory.getLogger(MemberController.class);
 	
 	@Autowired
 	MemberMapper mapper;
+	
+	@Autowired
+	private JavaMailSender mailSender;
 	
 	@Autowired
 	public BCryptPasswordEncoder pwEncoder;
@@ -56,7 +74,97 @@ public class MemberController {
 		return "member/idCheck";
 	}
 
+/*	//비밀번호 찾기 페이지로 이동
+	@GetMapping("/pw_find.do")
+	public String pw_find() {
+		return "member/pw_find";
+	}
 	
+	@PostMapping("/pw_find.do")
+	public String pw_findAction(Member vo, Model model) {
+		Member member = mapper.findPassword(vo);
+		if(member == null) {
+			model.addAttribute("check",1);
+		}else {
+			model.addAttribute("check", 0);
+			model.addAttribute("updateid",member.getId());
+		}
+		return "member/pw_find";
+	}*/
+	
+	@RequestMapping(value = "/pw_auth.do")
+	public ModelAndView pw_auth(HttpSession session, HttpServletRequest request, HttpServletResponse response) throws IOException {
+		String email = (String)request.getParameter("email");
+		String id = (String)request.getParameter("id");
+
+		Member vo = mapper.findPassword(email);
+			
+		if(vo != null) {
+		Random r = new Random();
+		int num = r.nextInt(999999); // 랜덤난수설정
 		
+		if (vo.getId().equals(id)) {
+			session.setAttribute("email", vo.getEmail());
+
+			String setfrom = "test@gmail.com"; // naver 
+			String tomail = email; //받는사람
+			String title = "[삼삼하개] 비밀번호변경 인증 이메일 입니다"; 
+			String content = System.getProperty("line.separator") + "안녕하세요 회원님" + System.getProperty("line.separator")
+					+ "비밀번호찾기(변경) 인증번호는 " + num + " 입니다." + System.getProperty("line.separator"); // 
+
+			try {
+				MimeMessage message = mailSender.createMimeMessage();
+				MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "utf-8");
+
+				messageHelper.setFrom(setfrom); 
+				messageHelper.setTo(tomail); 
+				messageHelper.setSubject(title);
+				messageHelper.setText(content); 
+			
+				mailSender.send(message);
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+
+			ModelAndView mv = new ModelAndView();
+			mv.setViewName("member/pw_auth");
+			mv.addObject("num", num);
+			return mv;
+		}else {
+			ModelAndView mv = new ModelAndView();
+			mv.setViewName("member/pw_find");
+			return mv;
+		}
+		}else {
+			ModelAndView mv = new ModelAndView();
+			mv.setViewName("member/pw_find");
+			return mv;
+		}
+	
+	}
+	//이메일 인증번호 확인
+	@RequestMapping(value = "/pw_set.do", method = RequestMethod.POST)	
+	public String pw_set(@RequestParam(value="email_injeung") String email_injeung,
+				@RequestParam(value = "num") String num) throws IOException{
+			
+			if(email_injeung.equals(num)) {
+				return "member/pw_new";
+			}
+			else {
+				return "member/pw_find";
+			}
+	} 
+	
+	@PostMapping("/pw_new.do")
+	public String pw_new(Member vo, HttpSession session) throws IOException{
+		int result = mapper.updatePassword(vo);
+		if(result == 1) {
+			return "memer/MemberLogin";
+		}
+		else {
+			System.out.println("pw_update"+ result);
+			return "member/pw_new";
+		}
+}
 	
 }

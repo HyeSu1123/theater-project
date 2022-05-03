@@ -33,6 +33,20 @@
 			<version>${org.springframework-version}</version>
 		</dependency>
 						<!-- 추가 설정-->
+		<!-- 이메일발송 -->				
+		<dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>1.4.7</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>${org.springframework-version}</version>
+        </dependency>
+				
+		
+		
 		<!-- security 복호화 -->
         <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-core -->
         <dependency>

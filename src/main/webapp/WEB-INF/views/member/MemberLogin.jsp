@@ -37,7 +37,7 @@
 			<input type="password" name="password" id="password" placeholder="password를 입력해주세요"><br><br>
 			<input type="submit" value="로그인"><br>
 			<a href="member/join.do">아직 ID가 없으신가요?</a>
-			
+			<a href="member/pw_auth.do">비밀번호 찾기</a>
 			</form>
 		</div>
 	</div>

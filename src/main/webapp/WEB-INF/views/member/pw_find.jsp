@@ -5,17 +5,19 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+ 	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common.css">
 </head>
 <body>
-<form class = "content" action="pw_auth.me" method="post">
+<%@ include file="../home.jsp" %>
+<form class = "content" action="./pw_auth.do" method="post">
 	<div class="textbox">
-  		<input id="text" name=name required="" type="text" />
-  		<label for="text">이름</label>
-   		<div class="error">이름을 입력하세요  </div>
+  		<label for="text">ID</label>
+  		<input id="id" name="id" required="" type="text" />
+   		<div class="error">아이디를 입력하세요  </div>
  	</div>
 	<div class="textbox">
-  		<input id="email" name=email required="/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)?$/i" type="email" />
   		<label for="email">이메일</label>
+  		<input id="email" name="email" required="/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)?$/i" type="text" />
   	<div class="error">유효하지 않은 이메일주소 입니다  </div>
 	</div><br><br>
    	<input type="submit" id="check" value="비밀번호찾기">
