@@ -53,7 +53,9 @@
 	}
 </script>
 <script type="text/javascript">
-	if(${message != null}) alert('${message}');
+	setTimeout(function(){			//setTimeout 설정(100ms)
+		if(${message != null}) alert('${message}');
+	},100);
 </script>
 </head>
 <body>
