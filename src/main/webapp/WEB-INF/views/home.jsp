@@ -26,14 +26,14 @@
 				</p>
 				<div class="header_cont">
 					<ul class="util clear">
-						<li>
-						<c:if test="${member != null }">"${member.id }님 환영합니다.<a href="logout.do">로그아웃</a></c:if>
-						<c:if test="${member == null }"><a href="login.do">로그인</a></c:if>
-						</li>
-						<li>
-						<c:if test="${member != null }"><a href="#">마이페이지</a></c:if>
-						<c:if test="${member == null }"><a href="${pageContext.request.contextPath }/member/join.do">회원가입</a></c:if>
-						</li>
+						<c:if test="${member == null }">
+							<li><a href="${pageContext.request.contextPath }/login.do">회원 로그인</a></li>
+							<li><a href="${pageContext.request.contextPath }/member/join.do">회원가입</a></li>
+						</c:if>
+						<c:if test="${member != null }">
+							${member.id }님 환영합니다.<a href="logout.do">로그아웃</a>
+							<a href="#">마이페이지</a>
+						</c:if>
 					</ul>
 					<nav>
 						<ul class="gnb clear">

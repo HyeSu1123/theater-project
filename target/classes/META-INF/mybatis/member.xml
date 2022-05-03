@@ -8,10 +8,15 @@
 	</select>
 
 	<!-- 회원 로그인 -->
-	<select id="login" resultType="Member" parameterType="java.util.HashMap">
-	select * from members where id=#{id} and password=#{password}
+	<select id="login" resultType="Member" >
+	select * from members where id=#{id} AND authority='1'
 	</select>
-
+	
+<!-- 암호화 전
+ 	<select id="login" resultType="Member" parameterType="java.util.HashMap">
+	select * from members where id=#{id} and password=#{password} AND authority='1'
+	</select> -->
+		
 	<!-- 관리자 로그인 -->	
 	<select id="loginadmin" resultType="Member" parameterType="java.util.HashMap">
 	SELECT * FROM members where id=#{id} and password=#{password} AND authority='0'

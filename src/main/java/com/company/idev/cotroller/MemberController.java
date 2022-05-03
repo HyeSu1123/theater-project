@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,6 +26,9 @@ public class MemberController {
 	@Autowired
 	MemberMapper mapper;
 	
+	@Autowired
+	public BCryptPasswordEncoder pwEncoder;
+	
 	@GetMapping("/join.do")
 	public String join() {
 		return "member/MemberJoin";
@@ -33,8 +37,15 @@ public class MemberController {
 	//회원가입
 	@PostMapping("/join.do")
 	public String appForm(Member member) {
+		String rawPw = "";
+		String encodePw="";
+		
+		rawPw = member.getPassword();
+		encodePw = pwEncoder.encode(rawPw);
+		member.setPassword(encodePw);
+		
 		mapper.insert(member);
-		return "redirect:../";
+		return "redirect:/login.do";
 	}
 
 	//아이디 중복 체크

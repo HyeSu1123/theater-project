@@ -2,6 +2,7 @@ package com.company.idev;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,8 +21,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.company.idev.dto.Member;
 import com.company.idev.mapper.MemberMapper;
@@ -36,6 +40,8 @@ public class HomeController {
 	
 	@Autowired
 	MemberMapper mapper;
+	@Autowired
+	public BCryptPasswordEncoder pwEncoder;
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
@@ -52,18 +58,35 @@ public class HomeController {
 		
 		return "home";
 	}
-	//·Î±×ÀÎ
+	//íšŒì› ë¡œê·¸ì¸
 	@GetMapping("/login.do")
 	public String login(@ModelAttribute("success") String success) {
 		return "member/MemberLogin";
 	}
 	@PostMapping("/login.do")
-	public String login(@RequestParam Map<String,String> map, Model model,HttpSession session){
-		Member member=mapper.login(map);
+	public String login(Member id, Model model,HttpServletRequest req, RedirectAttributes rttr){
+		HttpSession session =req.getSession();
+		Member login = mapper.login(id);
+		boolean passMatch = pwEncoder.matches(id.getPassword(), login.getPassword());
+		
+		if(login != null && passMatch) {
+			session.setAttribute("member", login);
+			
+				model.addAttribute("success","y");
+				return "redirect:/";
+			}else {
+				session.setAttribute("member", null);
+			}
+			return "redirect:login.do?success=n";
+	}
+	//ê´€ë¦¬ì
+	@PostMapping("/admin.do")
+	public String loginadmin(@RequestParam Map<String,String> map, Model model,HttpSession session){
+		Member admin = mapper.loginadmin(map);
 		String url;
-		if(member != null) {
-			session.setAttribute("member", member);
-			model.addAttribute("member",member);
+		if(admin != null) {
+			session.setAttribute("admin", admin);
+			model.addAttribute("admin",admin);
 			model.addAttribute("success","y");
 			url ="redirect:/";
 		}else {
@@ -71,10 +94,10 @@ public class HomeController {
 		}
 		return url;
 	}
-	//·Î±×¾Æ¿ô
+	//ë¡œê·¸ì•„ì›ƒ
 	@GetMapping("/logout.do")
-	public String logout(SessionStatus status) { //ÇöÀç¼¼¼Ç »óÅÂ °´Ã¼
-		status.setComplete();	//@SessionAttributes·Î ¼³Á¤µÈ ¾ÖÆ®¸®ºäÆ® °ªÀ» clear ÇÑ´Ù.
+	public String logout(SessionStatus status) { //í˜„ì¬ì„¸ì…˜ ìƒíƒœ ê°ì²´
+		status.setComplete();	//@SessionAttributesë¡œ ì„¤ì •ëœ ì• íŠ¸ë¦¬ë·°íŠ¸ ê°’ì„ clear í•œë‹¤.
 		return "redirect:/";
 	}
 	
