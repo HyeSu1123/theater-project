@@ -8,12 +8,12 @@ import com.company.idev.dto.Member;
 
 public interface MemberMapper {
 	List<Member> selectAll();
-	//Member login(Map<String, String> map);	//�쉶�썝 濡쒓렇�씤
-	Member login(Member id);
-	Member loginadmin(Map<String, String> map); //愿�由ъ옄濡쒓렇�씤
+	//Member login(Map<String, String> map);	//암호화 하기전 회원 로그인
+	Member login(Member id);	//암호화 한 후 회원 로그인
+	Member loginadmin(Map<String, String> map); //관리자 로그인
 	int checkid(String id);
-	void insert(Member member);	//�쉶�썝媛��엯
-	void insertAdmin(Member admin);	//愿�由ъ옄 媛��엯
+	void insert(Member member);	//회원가입
+	void insertAdmin(Member admin);	//관리자 가입
 	void update(Member member);
 	void delete(Member member);
 	
