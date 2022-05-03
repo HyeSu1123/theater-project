@@ -1,9 +1,5 @@
 package com.company.idev.cotroller;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,7 +30,7 @@ public class MemberController {
 		return "member/MemberJoin";
 	}
 	
-	//È¸¿ø°¡ÀÔ
+	//íšŒì›ê°€ì…
 	@PostMapping("/join.do")
 	public String appForm(Member member) {
 		String rawPw = "";
@@ -48,13 +44,13 @@ public class MemberController {
 		return "redirect:/login.do";
 	}
 
-	//¾ÆÀÌµğ Áßº¹ Ã¼Å©
+	//ì•„ì´ë”” ì²´í¬
 	@GetMapping("/idCheck.do")
 	public String idCheck(String id,Model model) {
 		String msg;
 		if(mapper.checkid(id) == 0)
-			msg="»ç¿ëÇÒ ¼ö ÀÖ´Â ¾ÆÀÌµğ ÀÔ´Ï´Ù.";
-		else msg="»ç¿ëÇÒ ¼ö ¾ø´Â ÀÌ¸ŞÀÏ ÀÔ´Ï´Ù.";
+			msg="ì‚¬ìš©ê°€ëŠ¥í•œ ì•„ì´ë””ì…ë‹ˆë‹¤.";
+		else msg="ì‚¬ìš©í•  ìˆ˜ ì—†ëŠ” ì•„ì´ë””ì…ë‹ˆë‹¤.";
 		model.addAttribute("id", id);
 		model.addAttribute("msg", msg);
 		return "member/idCheck";
