@@ -58,11 +58,11 @@ header > .header_area >h1 >a{
 	display: block;
 	width: 270px;
 	height: 70px;
-	/* background: url(../images/Freddo.png) no-repeat; */
-	/* overflow: hidden;
-	text-indent: -9999999px; */
+	background: url(./images/Freddo.png) no-repeat;
+	overflow: hidden;
+	text-indent: -9999999px;
 }
-/* .closePop{font-size:0;} */
+ .closePop{font-size:0;}
 
 .header_cont{
 	float:right;
@@ -118,6 +118,8 @@ header > .header_area >h1 >a{
 .gnb_depth .submenu_list li a{display: inline-block; padding: 20px; }
 .gnb_depth .submenu_list li:last-child a{
 	padding-right:0; 
+}
+
 }
 /*메일*/
 .error{

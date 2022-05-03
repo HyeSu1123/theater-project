@@ -4,6 +4,8 @@ package com.company.idev.cotroller;
 import java.io.File;
 import java.io.IOException;
 import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
@@ -66,9 +68,23 @@ public class MemberController {
 	@GetMapping("/idCheck.do")
 	public String idCheck(String id,Model model) {
 		String msg;
-		if(mapper.checkid(id) == 0)
-			msg="사용가능한 아이디입니다.";
-		else msg="사용할 수 없는 아이디입니다.";
+		Pattern p = Pattern.compile("[\s]");
+		Matcher m = p.matcher(id);
+		Pattern reg =Pattern.compile("[^a-z0-9]");
+		Matcher mreg = reg.matcher(id);
+		
+		if(mapper.checkid(id) != 0)
+			msg="사용할 수 없는 아이디입니다.";
+		else if(id=="") {
+			msg="사용할 수 없는 아이디입니다.";
+		}else if(id.length() < 5 || id.length() > 10) {
+			msg="사용할 수 없는 아이디입니다.";
+		}else if(m.find()) {
+			msg="사용할 수 없는 아이디입니다.";
+		}else if(mreg.find()) {
+			msg="사용할 수 없는 아이디입니다.";
+		}
+		else msg="사용가능한 아이디입니다.";
 		model.addAttribute("id", id);
 		model.addAttribute("msg", msg);
 		return "member/idCheck";

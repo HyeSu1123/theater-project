@@ -10,7 +10,7 @@
  --%></head>
 <c:if test="${success=='n' }">
 	<script type="text/javascript">
-		alert("로그인 정보가 올바르지 않습니다.");
+		alert("아이디 또는 비밀번호를 다시 입력해주세요.");
 		location.href="./login.do"; 
 	</script>	
 </c:if>
