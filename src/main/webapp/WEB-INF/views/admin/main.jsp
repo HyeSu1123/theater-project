@@ -14,7 +14,7 @@
 			<li><a href="memberList.do">회원 목록</a></li>
 			<li>공연
 				<ul>
-					<li>공연 등록</li>
+					<li><a href="performInsert.do">공연 등록</a></li>
 					<li>공연 스케줄 등록</li>
 				</ul>
 			</li>
