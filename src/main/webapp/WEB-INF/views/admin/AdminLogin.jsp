@@ -5,15 +5,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>로그인</title>
+<title>관리자</title>
 <%-- 	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common.css">
- --%>
- </head>
+ </head>--%>
 <body>
 <c:if test="${success=='n' }">
 	<script type="text/javascript">
 		alert("아이디 또는 비밀번호를 다시 입력해주세요.");
-		location.href="./login.do"; 
+		location.href="./admin.do"; 
 	</script>	
 </c:if>
 	<!-- wrap시작 -->
@@ -25,7 +24,7 @@
 				<div class="box_inner">
 					<h2 class="tit_page">Freddo</h2>
 					<p class="location">
-						MEMBER <span class="path">/</span> 로그인
+						ADMIN <span class="path">/</span> 로그인
 					</p>
 					
 				</div>
@@ -37,16 +36,15 @@
 				</ul>
 			</div>
 			<!-- 본문 -->
-			<form name="appLogin" method="post" action="./login.do">
+			<form name="adminLogin" method="post" action="./admin.do">
 			<label for="id">ID</label><br>
 			<input type="text" name="id" id="id" placeholder="ID를 입력해주세요"><br><br>
 			<label for="password">password</label><br>
 			<input type="password" name="password" id="password" placeholder="password를 입력해주세요"><br><br>
-			<input type="hidden" name="authority" value = "1">
+			<input type="hidden" name="authority" value = "0">
 			<input type="submit" value="로그인"><br>
 			<div>
-			<span>아직 ID가 없으신가요?</span><a href="member/join.do">회원가입</a>
-			<a href="member/pw_auth.do">비밀번호 찾기</a>
+			<span>아직 ID가 없으신가요?</span><a href="admin/adminjoin.do">회원가입</a>
 			</div>
 			</form>
 		</div>

@@ -7,20 +7,24 @@
 	select * from members
 	</select>
 
-	<!-- 회원 로그인 -->
+	<!-- 회원 로그인-->
 	<select id="login" resultType="Member" >
-	select * from members where id=#{id} AND authority='1'
+	select id,password,authority from members where id=#{id} AND authority='1'
+	</select>
+	<!-- 관리자 로그인-->
+	<select id="loginAdmin" resultType="Member" >
+	select id,password,authority from members where id=#{id} AND authority='0'
 	</select>
 	
-<!-- 암호화 전
+<!--  암호화 전 
  	<select id="login" resultType="Member" parameterType="java.util.HashMap">
 	select * from members where id=#{id} and password=#{password} AND authority='1'
 	</select> -->
 		
-	<!-- 관리자 로그인 -->	
+	<!-- 관리자 로그인 
 	<select id="loginadmin" resultType="Member" parameterType="java.util.HashMap">
 	SELECT * FROM members where id=#{id} and password=#{password} AND authority='0'
-	</select>
+	</select>-->
 	
 	<!-- 중복확인 -->
 	<select id="checkid" resultType="int" parameterType="String">

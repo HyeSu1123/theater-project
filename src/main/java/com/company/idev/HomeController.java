@@ -2,11 +2,8 @@ package com.company.idev;
 
 import java.text.DateFormat;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Locale;
-import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -20,10 +17,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.company.idev.dto.Member;
@@ -33,7 +26,7 @@ import com.company.idev.mapper.MemberMapper;
  * Handles requests for the application home page.
  */
 @Controller
-@SessionAttributes("member")
+//@SessionAttributes("member")
 public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
@@ -59,45 +52,63 @@ public class HomeController {
 		return "home";
 	}
 	//회원 로그인
-	@GetMapping("/login.do")
-	public String login(@ModelAttribute("success") String success) {
-		return "member/MemberLogin";
-	}
-	@PostMapping("/login.do")
-	public String login(Member id, Model model,HttpServletRequest req, RedirectAttributes rttr){
-		HttpSession session =req.getSession();
-		Member login = mapper.login(id);
-		boolean passMatch = pwEncoder.matches(id.getPassword(), login.getPassword());
-		
-		if(login != null && passMatch) {
-			session.setAttribute("member", login);
+		@GetMapping("/login.do")
+		public String login(@ModelAttribute("success") String success) {
+			return "member/MemberLogin";
+		}
+		@PostMapping("/login.do")
+		public String login(Member vo,HttpSession session, RedirectAttributes rttr){
+			logger.info("login");
 			
-				model.addAttribute("success","y");
+			session.getAttribute("member");
+			Member login = mapper.login(vo);
+			boolean passMatch;
+			
+			if(login != null) {
+				passMatch = pwEncoder.matches(vo.getPassword(), login.getPassword());
+			}else {
+				passMatch = false;
+			}
+			
+			if(login != null && passMatch == true) {
+				session.setAttribute("member", login);
 				return "redirect:/";
 			}else {
 				session.setAttribute("member", null);
 			}
 			return "redirect:login.do?success=n";
-	}
-	//관리자
-	@PostMapping("/admin.do")
-	public String loginadmin(@RequestParam Map<String,String> map, Model model,HttpSession session){
-		Member admin = mapper.loginadmin(map);
-		String url;
-		if(admin != null) {
-			session.setAttribute("admin", admin);
-			model.addAttribute("admin",admin);
-			model.addAttribute("success","y");
-			url ="redirect:/";
-		}else {
-			url ="redirect:login.do?success=n";
 		}
-		return url;
+	//관리자
+	@GetMapping("/admin.do")
+	public String loginadmin(@ModelAttribute("success") String success) {
+		return "admin/AdminLogin";
+	}
+	@PostMapping("/admin.do")
+	public String loginadmin(Member vo,HttpSession session, RedirectAttributes rttr){
+		logger.info("admin login");
+		
+		session.getAttribute("admin");
+		Member login = mapper.loginAdmin(vo);
+		boolean passMatch;
+		
+		if(login != null) {
+			passMatch = pwEncoder.matches(vo.getPassword(), login.getPassword());
+		}else {
+			passMatch = false;
+		}
+		
+		if(login != null && passMatch == true) {
+			session.setAttribute("admin", login);
+			return "redirect:/";
+			}else {
+				session.setAttribute("admin", null);
+			}
+			return "redirect:admin.do?success=n";
 	}
 	//로그아웃
 	@GetMapping("/logout.do")
-	public String logout(SessionStatus status) { //현재세션 상태 객체
-		status.setComplete();	//@SessionAttributes로 설정된 애트리뷰트 값을 clear 한다.
+	public String logout(HttpSession session) { 
+		session.invalidate();
 		return "redirect:/";
 	}
 	

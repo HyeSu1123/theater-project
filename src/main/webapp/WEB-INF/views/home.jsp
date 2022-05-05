@@ -1,19 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" 
 	pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
 <html>
 <head>
 	<title>Home</title>
 <%-- 	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common.css">
  --%></head>
 <body>
-<c:if test="${success=='y' }">
-	<script>
-		alert("로그인이 완료되었습니다.!");
-		location.href='./';
-	</script>
-</c:if>
+
 		<!-- 헤더 시작 -->
 		<header>
 			<div class="header_area box_inner clear">
@@ -26,13 +20,13 @@
 				</p>
 				<div class="header_cont">
 					<ul class="util clear">
-						<c:if test="${member == null }">
-							<li><a href="${pageContext.request.contextPath }/login.do">회원 로그인</a></li>
+						<c:if test="${member == null}">
+							<li><a href="${pageContext.request.contextPath }/login.do">로그인</a></li>
 							<li><a href="${pageContext.request.contextPath }/member/join.do">회원가입</a></li>
 						</c:if>
-						<c:if test="${member != null }">
+						<c:if test="${member != null}">
 							${member.id }님 환영합니다.<a href="logout.do">로그아웃</a>
-							<a href="#">마이페이지</a>
+							<a href="#">MyPage</a>
 						</c:if>
 					</ul>
 					<nav>

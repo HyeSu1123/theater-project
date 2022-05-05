@@ -1,7 +1,6 @@
 package com.company.idev.cotroller;
 
 
-import java.io.File;
 import java.io.IOException;
 import java.util.Random;
 import java.util.regex.Matcher;
@@ -15,7 +14,6 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.FileSystemResource;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -40,10 +38,10 @@ public class MemberController {
 	MemberMapper mapper;
 	
 	@Autowired
-	private JavaMailSender mailSender;
+	public BCryptPasswordEncoder pwEncoder;
 	
 	@Autowired
-	public BCryptPasswordEncoder pwEncoder;
+	private JavaMailSender mailSender;
 	
 	@GetMapping("/join.do")
 	public String join() {
