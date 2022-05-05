@@ -14,10 +14,61 @@
 }
 </style>
 <script type="text/javascript">
-	function selectCheck(){
-		var form=document.forms[0];
-		if(form.grade.value=='none')
+//공연 시작일자 최소값: 오늘
+/* 	var today = new Date();
+	var dd = today.getDate();
+	var mm = today.getMonth()+1;
+	var yyyy = today.getFullYear();
+	if(dd<10){
+	  dd='0'+dd
+	} 
+	if(mm<10){
+	  mm='0'+mm
+	} 
+
+	today = yyyy+'-'+mm+'-'+dd;
+	form.start_date.setAttribute("min", today); */
+	function validCheck(){
+	var form=document.forms[0];
+	var title = form.perform_title;
+	var showtime = form.showtime;
+	var grade = form.grade;
+	var start_date = form.start_date;
+	var end_date = form.end_date;
+	var pics = form.pics;
+	var detail = form.detail;
+		if(title.value==""){
+			alert('공연 제목을 입력해주세요')
+			title.focus();
+		}
+		else if(showtime.value==""){
+			alert('관람 시간을 입력해주세요')
+			showtime.focus();
+		}
+		else if(grade.value=='none'){
 			alert('관람 등급을 선택해주세요.');
+			grade.focus();
+		}
+		else if(start_date.value==""){
+			alert('공연 시작 일자를 선택해주세요')
+			start_date.focus();
+		}
+		else if(end_date.value==""){
+			alert('공연 종료 일자를 선택해주세요')
+			end_date.focus();
+		}
+		else if(pics.value==""){
+			alert('공연 포스터를 첨부해주세요')
+			pics.focus();
+		}
+		else if(detail.value==""){
+			alert('상세 내용을 입력해주세요')
+			detail.focus();
+		}
+		else if(form.end_date.value<form.start_date.value){
+			alert('공연 시작/종료 일자를 확인하세요.');
+			form.start_date.focus();
+		}
 		else
 			form.submit();
 	}
@@ -32,13 +83,13 @@
 			<tr>
 				<th class="notice" width="20%">공연 제목</th>
 				<td width="80%">
-					<input type="text" name="perform_title" required>
+					<input type="text" name="perform_title">
 				</td>
 			</tr>
 			<tr>
 				<th class="notice" width="20%">관람 시간</th>
 				<td width="80%">
-					<input type="text" name="showtime" required>
+					<input type="text" name="showtime">
 				</td>
 			</tr>
 			<tr>
@@ -56,19 +107,19 @@
 			<tr>
 				<th class="notice" width="20%">공연 시작 일자</th>
 				<td width="80%">
-					<input type="date" name="start_date" required>
+					<input type="date" name="start_date">
 				</td>
 			</tr>
 			<tr>
 				<th class="notice" width="20%">공연 종료 일자</th>
 				<td width="80%">
-					<input type="date" name="end_date" required>
+					<input type="date" name="end_date">
 				</td>
 			</tr>
 			<tr>
 				<th class="notice" width="20%">공연 포스터</th>
 				<td width="80%">
-					<input type="file" name="pics" accept="image/*" required>
+					<input type="file" name="pics" accept="image/*">
 				</td>
 			</tr>
 			
@@ -77,13 +128,13 @@
 				<td width="80%">
 					<div>
 						<textarea  rows="20" cols="80" name="detail" 
-		                style="width:100%;resize: none;" placeholder="내용을 입력하세요." required="required"></textarea>
+		                style="width:100%;resize: none;" placeholder="내용을 입력하세요."></textarea>
 					</div>
 				</td>
 			</tr>
 		</table>
 		<div style="text-align:center;">
-			<button type="button" onclick="selectCheck()">등록</button>
+			<button type="button" onclick="validCheck()">등록</button>
 			<button type="button" onclick="location.href='main.do'">취소</button>
 		</div>
 	</form>
