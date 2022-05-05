@@ -20,9 +20,12 @@
 				</p>
 				<div class="header_cont">
 					<ul class="util clear">
-						<c:if test="${member == null}">
+						<c:if test="${member == null && admin == null}">
 							<li><a href="${pageContext.request.contextPath }/login.do">로그인</a></li>
 							<li><a href="${pageContext.request.contextPath }/member/join.do">회원가입</a></li>
+						</c:if>
+						<c:if test="${admin != null }">
+							${admin.id }님 안녕하세요. <a href="logout.do">로그아웃</a>
 						</c:if>
 						<c:if test="${member != null}">
 							${member.id }님 환영합니다.<a href="logout.do">로그아웃</a>
