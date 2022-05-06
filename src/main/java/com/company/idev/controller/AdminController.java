@@ -224,4 +224,13 @@ public class AdminController {
 		} 
 		return "redirect:main.do";
 	}
+
+	//1:1 문의 목록
+	@GetMapping("questionList.do")
+	public String questionList() {
+		
+		return "admin/questionList";
+	}
+	
+
 }
