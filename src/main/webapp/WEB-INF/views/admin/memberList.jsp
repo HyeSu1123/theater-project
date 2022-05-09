@@ -30,7 +30,7 @@
 			
 			form.appendChild(input);
 			form.setAttribute('method', 'post');
-			form.setAttribute('action', 'adminUpdate.do')
+			form.setAttribute('action', 'adminupdate.do')
 			document.body.appendChild(form);
 			form.submit();
 		}
@@ -46,7 +46,7 @@
 			
 			form.appendChild(input);
 			form.setAttribute('method', 'post');
-			form.setAttribute('action', 'memberDelete.do')
+			form.setAttribute('action', 'memberdelete.do')
 			document.body.appendChild(form);
 			form.submit();
 	
@@ -81,7 +81,7 @@
 				</select>
 			</span>
 			<button>검색</button>
-			<button type="button" onclick="location.href='memberList.do'">전체보기</button>
+			<button type="button" onclick="location.href='memberlist.do'">전체보기</button>
 		</form>
 	</div>
 	<table>
@@ -95,7 +95,7 @@
 		<th width="7%"></th>
 		</tr>
 		<c:forEach var="vo" items="${list}" varStatus="status">
-		<tr>
+		<tr class="list">
 			<td>${status.count+(page.pageNo-1)*10}</td> 	
 	 		<td><%-- <a href="detail?idx=${vo.id}&pageNo=${page.pageNo}" class="title"> --%>${vo.id}</td>
 	 		<td>${vo.name }</td>
