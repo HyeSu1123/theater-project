@@ -15,11 +15,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.company.idev.dto.Answer;
 import com.company.idev.dto.Member;
 import com.company.idev.dto.Notice;
 import com.company.idev.dto.PageDto;
 import com.company.idev.dto.Performance;
 import com.company.idev.dto.Question;
+import com.company.idev.mapper.AnswerMapper;
 import com.company.idev.mapper.MemberMapper;
 import com.company.idev.mapper.NoticeMapper;
 import com.company.idev.mapper.QuestionMapper;
@@ -38,6 +40,9 @@ public class AdminController {
 	
 	@Autowired
 	QuestionMapper question_mapper;
+	
+	@Autowired
+	AnswerMapper answer_mapper;
 	
 	private final AdminService service;
 	
@@ -246,7 +251,7 @@ public class AdminController {
 		
 		return "admin/questionList";
 	}
-	
+//검색하여 조회
 	@RequestMapping("questionsearch.do")
 	public String questionSearch(@RequestParam(required=false, defaultValue = "1")
 			int pageNo,@RequestParam String columns,
@@ -272,7 +277,15 @@ public class AdminController {
 		
 		return "admin/questionList";
 	}
-	
-	
+//1:1 문의 상세	
+	@GetMapping("questiondetail.do")
+	public String questionDetail(int idx,@RequestParam(required=false, defaultValue = "1") int pageNo, Model model) {
+		Question detail = question_mapper.selectOne(idx);
+		List<Answer> answer = answer_mapper.selectAnswer(idx);
+		model.addAttribute("detail", detail);
+		model.addAttribute("answer", answer);
+		model.addAttribute("pageNo", pageNo);
+		return "admin/questionDetail";
+	}
 	
 }
