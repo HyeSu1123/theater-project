@@ -4,20 +4,33 @@ import java.io.File;
 import java.io.IOException;
 import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.company.idev.dto.Answer;
 import com.company.idev.dto.Performance;
+import com.company.idev.dto.Question;
+import com.company.idev.mapper.AnswerMapper;
 import com.company.idev.mapper.PerformanceMapper;
+import com.company.idev.mapper.QuestionMapper;
 
 @Service
 public class AdminServiceImpl implements AdminService {
 	
 	private final PerformanceMapper dao;
 	
+	
 	public AdminServiceImpl(PerformanceMapper dao) {
 		this.dao = dao;
 	}
+	
+	@Autowired	
+	private AnswerMapper answer_dao;
+	
+	@Autowired
+	private QuestionMapper question_dao;
 
 
 	public int fileSave(Performance vo) {
@@ -39,5 +52,14 @@ public class AdminServiceImpl implements AdminService {
 			vo.setPoster(newfile.toString());
 			return dao.insertPerform(vo);
 	}
-
+	
+	@Transactional
+	public void insertAnswer(Answer vo) {
+		answer_dao.insertAnswer(vo);
+		Question detail = question_dao.selectOne(vo.getQuestion_idx());
+		if(detail.getStatus().equals("답변 대기"))
+			question_dao.updateStatus(vo.getQuestion_idx());
+	}
+	
+	
 }
