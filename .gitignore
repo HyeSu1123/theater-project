@@ -144,7 +144,7 @@ spring-*/src/main/java/META-INF/MANIFEST.MF
 bin/
 !**/src/main/**/bin/
 !**/src/test/**/bin/
-target/classes/META-INF/*
+**/target/classes/META-INF/
 
 ### Maven ###
 target/
