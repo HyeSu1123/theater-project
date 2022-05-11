@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>My Page</title>
 <%-- 	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common.css">
  --%>
  <script type="text/javascript">
@@ -44,6 +44,29 @@
  	}
  	function save(){
  	    document.forms[0].action='update.do';
+ 	    const frm = document.appForm;
+ 	    const email = frm.email;
+		const reg4 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+		if(email.value == ""){
+			email.focus();
+			alert("이메일을 입력해주세요");
+			return false;
+		}else if(!reg4.test(email.value)){
+			email.focus();
+			alert("이메일 형식을 맞춰주세요(ex:abc@naver.com)");
+			return false;
+		}
+		const phone = frm.phone;
+		const reg5 = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
+		if(phone.value == ""){
+			phone.focus();
+			alert("번호를 입력해주세요");
+			return false;
+		}else if(!reg5.test(phone.value)){
+			phone.focus();
+			alert("번호 형식을 맞춰주세요(ex:010-0000-0000)");
+			return false;
+		}
  	    document.forms[0].submit();
 		
  	}
@@ -54,11 +77,12 @@
  		}
  	}
  </script>
+
 </head>
 <body>
 	<!-- wrap시작 -->
 	<div id="wrap">
-<%@ include file="../home.jsp" %>
+<%@ include file="../includes/top.jsp" %>
 		<!-- 컨테이너시작 -->
 		<div id="container">
 			<div class="location_area member">
@@ -73,7 +97,7 @@
 			<!-- 본문 -->
 				<h3>${member.name }님의 프로필 </h3>
 			<fieldset>
-			<form action="./update.do" method="post">
+			<form action="./update.do" method="post" name="appForm">
 			<input type="hidden" name="id" value="${member.id}">
 			
 				<table>

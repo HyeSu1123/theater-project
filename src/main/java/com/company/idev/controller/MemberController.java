@@ -20,14 +20,12 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.company.idev.dto.Member;
 import com.company.idev.mapper.MemberMapper;
@@ -98,20 +96,22 @@ public class MemberController {
 	
 	//마이페이지 수정
 	@PostMapping("update.do")
-	public String memberUpdate(Member member,HttpSession session,Model model) {
+	public String memberUpdate(Member member,HttpSession session,RedirectAttributes rda) {
 		mapper.update(member);	
 		logger.info("들어오는 값"+member);
 		Member m = (Member)session.getAttribute("member");
 		m.setEmail(member.getEmail());
 		m.setPhone(member.getPhone());
 		session.setAttribute("member", m);
+		rda.addFlashAttribute("message", "수정되었습니다.");
 		return "redirect:mypage.do";
 	}
 	
 	//회원탈퇴
 	@PostMapping("delete.do")
-	public String delete(Member id) {
+	public String delete(Member id,RedirectAttributes rda) {
 		mapper.delete(id);
+		rda.addFlashAttribute("message", "탈퇴되었습니다.");
 		return "redirect:/logout.do";
 	}
 	

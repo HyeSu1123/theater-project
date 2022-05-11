@@ -1,5 +1,6 @@
 package com.company.idev.controller;
 
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -16,11 +17,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.company.idev.dto.Member;
 import com.company.idev.mapper.MemberMapper;
 
+
 @Controller
 @RequestMapping(value = "/admin")
 public class AdminController {
 	private static final Logger logger
-	= LoggerFactory.getLogger(MemberController.class);
+	= LoggerFactory.getLogger(AdminController.class);
 	
 	@Autowired
 	MemberMapper mapper;
@@ -72,6 +74,14 @@ public class AdminController {
 		model.addAttribute("id", id);
 		model.addAttribute("msg", msg);
 		return "member/idCheck";
+	}
+	
+	//회원목록
+	@GetMapping("/list.do")
+	public String list(Model model) {
+		List<Member> list = mapper.selectAll();
+		model.addAttribute("list",list);
+		return "admin/MemberList";
 	}
 	
 }

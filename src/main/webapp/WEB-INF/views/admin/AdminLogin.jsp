@@ -5,19 +5,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>관리자</title>
+<title>Admin</title>
 <%-- 	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common.css">
  </head>--%>
 <body>
-<c:if test="${success=='n' }">
-	<script type="text/javascript">
-		alert("아이디 또는 비밀번호를 다시 입력해주세요.");
-		location.href="./admin.do"; 
-	</script>	
-</c:if>
 	<!-- wrap시작 -->
 	<div id="wrap">
-<%@ include file="../home.jsp" %>
+<%@ include file="../includes/top.jsp" %>
 		<!-- 컨테이너시작 -->
 		<div id="container">
 			<div class="location_area member">

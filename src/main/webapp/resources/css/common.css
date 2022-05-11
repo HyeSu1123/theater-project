@@ -1,0 +1,127 @@
+/* 공통부분 */
+body{
+	font-size:16px;
+	height: 100%;
+	white-space: normal;
+	word-break: normal;
+	word-wrap: break-word;
+	line-height: 1;
+	letter-spacing: -1;
+}
+*{
+	margin: 0;
+	padding: 0;
+}
+ul,ol,li{
+	list-style: none;
+}
+a{
+	text-decoration:none;
+}
+.box_inner{
+	width: 1050px;
+	margin: 0 auto;
+}
+input, select, textarea, button, form, label{ vertical-align: middle;}
+
+input[type=text], input[type=password],input[type=tel],input[type=email]{
+	box-sizing: border-box;
+	display: inline-block;
+	height: 45px;
+	padding: 0 17px;
+	border: 1px solid #ccc;
+	line-height: normal;
+	font-size: 13px;
+}
+input[type=radio].radio{
+	display: inline-block;
+	padding-left: 20px;
+	margin-right: 20px;
+	cursor: pointer;
+	vertical-align: middle;
+	font-size: 15px;
+	line-height: 15px;
+}
+
+header{
+	position: fixed;
+	tip: 0; left:0;
+	width: 100%;
+	height: 113px;
+	z-index: 100;
+}
+header > .header_area > h1{
+	float: left;
+	padding: 45px 0 0;
+}
+header > .header_area >h1 >a{
+	display: block;
+	width: 270px;
+	height: 70px;
+	background: url(./images/Freddo.png) no-repeat;
+	overflow: hidden;
+	text-indent: -9999999px;
+}
+ .closePop{font-size:0;}
+
+.header_cont{
+	float:right;
+	width: 700px;
+}
+.header_cont .util{
+	text-align: right;
+	padding-top: 10px;
+}
+.header_cont .util li{display: inline;}
+.header_cont .util li:first-child:after {
+	content:'|';
+	display: inline-block;
+	padding: 0 10px;
+	font-size: 10px;
+	position: relative;
+	top: -2px;
+}
+.header_cont .util li a{
+	font-size: 14px;
+}
+.header_cont .gnb{
+	float:right;
+	box-sizing: border-box;
+	padding-top: 5px;
+}
+.header_cont .gnb li{float:left;}
+.header_cont .gnb li a{
+	display: block;
+	padding: 25px 40px;
+	font-size: 15px;
+}
+.header_cont .gnb li:last-child a{padding-right: 0;}
+.gnb_depth{
+	position: absolute;
+	left: 0;
+	top: 110px;
+	width: 100%;
+	z-index: 100;
+	/* display: none; */
+}
+.gnb_depth .submenu_list{
+	width: 1050px;
+	margin: 0; auto;
+	text-align: left;
+	box-sizing: border-box;
+}
+.gnb_depth2_1 .submenu_list{padding-left: 520px;}
+.gnb_depth2_2 .submenu_list{padding-left: 600px;}
+.gnb_depth2_3 .submenu_list{padding-left: 830px;}
+
+.gnb_depth .submenu_list li{display: inline; }
+.gnb_depth .submenu_list li a{display: inline-block; padding: 20px; }
+.gnb_depth .submenu_list li:last-child a{
+	padding-right:0; 
+}
+
+}
+/*메일*/
+.error{
+	color:red;
+}
