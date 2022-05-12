@@ -128,6 +128,7 @@ $RECYCLE.BIN/
 # Created by https://www.toptal.com/developers/gitignore/api/maven
 # Edit at https://www.toptal.com/developers/gitignore?templates=maven
 
+<<<<<<< HEAD
 # Eclipse artifacts, including WTP generated manifests
 .classpath
 .project
@@ -146,6 +147,8 @@ bin/
 !**/src/test/**/bin/
 target/classes/META-INF/
 
+=======
+>>>>>>> branch 'branchM' of https://github.com/HyeSu1123/theater-project.git
 ### Maven ###
 target/
 pom.xml.tag

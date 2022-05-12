@@ -13,14 +13,13 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.company.idev.dto.Member;
-import com.company.idev.mapper.MemberMapper;
+import com.company.idev.dto.Members;
+import com.company.idev.mapper.MembersMapper;
 
 /**
  * Handles requests for the application home page.
@@ -32,7 +31,8 @@ public class HomeController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	@Autowired
-	MemberMapper mapper;
+	MembersMapper mapper;
+	
 	@Autowired
 	public BCryptPasswordEncoder pwEncoder;
 	/**
@@ -51,18 +51,17 @@ public class HomeController {
 		
 		return "home";
 	}
-	//주석
 	//회원 로그인
 		@GetMapping("/login.do")
 		public String login() {
 			return "member/MemberLogin";
 		}
 		@PostMapping("/login.do")
-		public String login(Member vo,HttpSession session, RedirectAttributes rda){
+		public String login(Members vo,HttpSession session, RedirectAttributes rda){
 			logger.info("login");
 			
 			session.getAttribute("member");
-			Member login = mapper.login(vo);
+			Members login = mapper.login(vo);
 			boolean passMatch;
 			
 			if(login != null) {
@@ -88,11 +87,11 @@ public class HomeController {
 		return "admin/AdminLogin";
 	}
 	@PostMapping("/admin.do")
-	public String loginadmin(Member vo,HttpSession session,RedirectAttributes rda){
+	public String loginadmin(Members vo,HttpSession session,RedirectAttributes rda){
 		logger.info("admin login");
 		
 		session.getAttribute("admin");
-		Member login = mapper.loginAdmin(vo);
+		Members login = mapper.loginAdmin(vo);
 		boolean passMatch;
 		
 		if(login != null) {

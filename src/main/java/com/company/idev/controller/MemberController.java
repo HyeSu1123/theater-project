@@ -27,8 +27,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.company.idev.dto.Member;
-import com.company.idev.mapper.MemberMapper;
+import com.company.idev.dto.Members;
+import com.company.idev.mapper.MembersMapper;
+
 @Controller
 @RequestMapping(value = "/member")
 public class MemberController {
@@ -36,10 +37,10 @@ public class MemberController {
 	= LoggerFactory.getLogger(MemberController.class);
 	
 	@Autowired
-	MemberMapper mapper;
+	MembersMapper mapper;
 	
 	@Autowired
-	public BCryptPasswordEncoder pwEncoder;
+	public  BCryptPasswordEncoder pwEncoder;
 	
 	@Autowired
 	private JavaMailSender mailSender;
@@ -51,7 +52,7 @@ public class MemberController {
 	
 	//회원가입
 	@PostMapping("/join.do")
-	public String appForm(Member member) {
+	public String appForm(Members member) {
 		String rawPw = "";
 		String encodePw="";
 		
@@ -67,7 +68,7 @@ public class MemberController {
 	@GetMapping("/idCheck.do")
 	public String idCheck(String id,Model model) {
 		String msg;
-		Pattern p = Pattern.compile("[\s]");
+		Pattern p = Pattern.compile("[\\s]");
 		Matcher m = p.matcher(id);
 		Pattern reg =Pattern.compile("[^a-z0-9]");
 		Matcher mreg = reg.matcher(id);
@@ -96,10 +97,10 @@ public class MemberController {
 	
 	//마이페이지 수정
 	@PostMapping("update.do")
-	public String memberUpdate(Member member,HttpSession session,RedirectAttributes rda) {
+	public String memberUpdate(Members member,HttpSession session,RedirectAttributes rda) {
 		mapper.update(member);	
 		logger.info("들어오는 값"+member);
-		Member m = (Member)session.getAttribute("member");
+		Members m = (Members)session.getAttribute("member");
 		m.setEmail(member.getEmail());
 		m.setPhone(member.getPhone());
 		session.setAttribute("member", m);
@@ -109,7 +110,7 @@ public class MemberController {
 	
 	//회원탈퇴
 	@PostMapping("delete.do")
-	public String delete(Member id,RedirectAttributes rda) {
+	public String delete(Members id,RedirectAttributes rda) {
 		mapper.delete(id);
 		rda.addFlashAttribute("message", "탈퇴되었습니다.");
 		return "redirect:/logout.do";
@@ -139,7 +140,7 @@ public class MemberController {
 		String email = (String)request.getParameter("email");
 		String id = (String)request.getParameter("id");
 
-		Member vo = mapper.findPassword(email);
+		Members vo = mapper.findPassword(email);
 			
 		if(vo != null) {
 		Random r = new Random();
@@ -198,7 +199,7 @@ public class MemberController {
 	} 
 	
 	@PostMapping("/pw_new.do")
-	public String pw_new(Member vo, HttpSession session) throws IOException{
+	public String pw_new(Members vo, HttpSession session) throws IOException{
 		int result = mapper.updatePassword(vo);
 		if(result == 1) {
 			return "memer/MemberLogin";

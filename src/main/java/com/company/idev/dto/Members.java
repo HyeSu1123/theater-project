@@ -5,10 +5,11 @@ import java.sql.Date;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class Member {
+@AllArgsConstructor
+public class Members {
 	private String id;
 	private String password;
 	private String name;
@@ -18,4 +19,5 @@ public class Member {
 	private String phone;
 	private Date reg_date;
 	private int authority;
+	
 }
