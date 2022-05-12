@@ -4,9 +4,10 @@
 <html>
 <head>
 	<title>Home</title>
-<%-- 	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common.css">
- --%></head>
+	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common.css">
+</head>
 <body>
+
 <script type="text/javascript">
 	if(${message != null}) alert('${message}');
 </script>

@@ -4,10 +4,11 @@
 <html>
 <head>
 	<title>Home</title>
-<%-- 	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common.css">
- --%></head>
+ 	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common.css">
+
+</head>
 <body>
 <%@ include file="./includes/top.jsp" %>
-공연 전시 포스터 올리기
+
 </body>
 </html>
