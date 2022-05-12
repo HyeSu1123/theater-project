@@ -16,14 +16,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.company.idev.dto.Answer;
-import com.company.idev.dto.Member;
+import com.company.idev.dto.Members;
 import com.company.idev.dto.Notice;
 import com.company.idev.dto.PageDto;
 import com.company.idev.dto.Performance;
 import com.company.idev.dto.Question;
 import com.company.idev.dto.Schedules;
 import com.company.idev.mapper.AnswerMapper;
-import com.company.idev.mapper.MemberMapper;
+import com.company.idev.mapper.MembersMapper;
 import com.company.idev.mapper.NoticeMapper;
 import com.company.idev.mapper.PerformanceMapper;
 import com.company.idev.mapper.QuestionMapper;
@@ -32,11 +32,11 @@ import com.company.idev.service.AdminService;
 
 @Controller
 @RequestMapping("/admin")
-public class AdminController {
-	private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
+public class AdminController2 {
+	private static final Logger logger = LoggerFactory.getLogger(AdminController2.class);
 	
 	@Autowired
-	MemberMapper mapper;
+	MembersMapper mapper;
 	
 	@Autowired
 	NoticeMapper notice_mapper;
@@ -55,7 +55,7 @@ public class AdminController {
 	
 	private final AdminService service;
 	
-	public AdminController(AdminService service) {
+	public AdminController2(AdminService service) {
 		this.service = service;
 	}
 	
@@ -72,7 +72,7 @@ public class AdminController {
 		Map<String,Integer> map = new HashMap<>();
 		map.put("startNo", page.getStartNo());
 		map.put("endNo", page.getEndNo());
-		List<Member> list = mapper.getPageList(map);
+		List<Members> list = mapper.getPageList(map);
 		
 		model.addAttribute("page",page);
 		model.addAttribute("list",list);
@@ -95,7 +95,7 @@ public class AdminController {
 		
 		int startNo = page.getStartNo();
 		int endNo = page.getEndNo();
-		List<Member> list = mapper.searchPageList(columns,find,startNo,endNo);
+		List<Members> list = mapper.searchPageList(columns,find,startNo,endNo);
 		logger.info("[My]"+list);
 		
 		model.addAttribute("columns",columns);
@@ -108,7 +108,7 @@ public class AdminController {
 //관리자로 변경	
 	@PostMapping("adminupdate.do")
 	public String adminUpdate(String id, Model model) {
-		Member vo = mapper.getOne(id);
+		Members vo = mapper.getOne(id);
 		model.addAttribute("vo",vo);
 		return "admin/memberUpdate";
 	}
@@ -121,7 +121,7 @@ public class AdminController {
 //회원 삭제	
 	@PostMapping("memberdelete.do")
 	public String memberDelete(String id, Model model) {
-		Member vo = mapper.getOne(id);
+		Members vo = mapper.getOne(id);
 		model.addAttribute("vo",vo);
 		return "admin/memberDelete";
 	}

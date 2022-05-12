@@ -9,7 +9,7 @@
 	</settings>	
 	 -->
 	<typeAliases>
-		<typeAlias type="com.company.idev.dto.Member" alias="Member"/>
+		<typeAlias type="com.company.idev.dto.Members" alias="Members"/>
 		<typeAlias type="com.company.idev.dto.Answer" alias="Answer"/>
 		<typeAlias type="com.company.idev.dto.Notice" alias="Notice"/>
 		<typeAlias type="com.company.idev.dto.Payment" alias="Payment"/>
