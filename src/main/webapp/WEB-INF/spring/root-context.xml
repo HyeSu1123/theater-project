@@ -51,4 +51,36 @@
 	</bean>
 	<!-- 트랜잭션 적용을 어노테이션으로 하기 위한 설정 -->
 	<tx:annotation-driven transaction-manager="transactionManager"/>	
+	
+	<!-- MessageSource -->
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="defaultEncoding">
+		<value>UTF-8</value>
+		</property>
+		   <property name="basenames">
+		        <list>
+		               <value>messages/messages_ko</value>
+		        </list>
+	   </property>
+	</bean>
+	
+	<bean id="mailSender"
+		class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.gmail.com" />
+		<property name="port" value="587" />
+		<property name="username" value="test@gmail.com" />
+		<property name="password" value="lazerzhzxukvpchv" />
+		<property name="defaultEncoding" value="utf-8" />
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+                <prop key="mail.smtp.auth">true    </prop>
+                <prop key="mail.transport.protocol">smtp</prop>
+                <prop key="mail.debug">true</prop>
+                <prop key="mail.smtp.ssl.trust">smtp.gmail.com</prop>
+                <prop key="mail.smtp.ssl.protocols">TLSv1.2</prop>
+			</props>
+		</property>
+	</bean>
+	
 </beans>
