@@ -54,11 +54,11 @@ public class HomeController {
 	//주석
 	//회원 로그인
 		@GetMapping("/login.do")
-		public String login(@ModelAttribute("success") String success) {
+		public String login() {
 			return "member/MemberLogin";
 		}
 		@PostMapping("/login.do")
-		public String login(Member vo,HttpSession session, RedirectAttributes rttr){
+		public String login(Member vo,HttpSession session, RedirectAttributes rda){
 			logger.info("login");
 			
 			session.getAttribute("member");
@@ -73,19 +73,22 @@ public class HomeController {
 			
 			if(login != null && passMatch == true) {
 				session.setAttribute("member", login);
+				rda.addFlashAttribute("message", "로그인 되었습니다");
 				return "redirect:/";
 			}else {
 				session.setAttribute("member", null);
+				rda.addFlashAttribute("message", "아이디나 비밀번호를 다시 입력해주세요");
+
 			}
-			return "redirect:login.do?success=n";
+			return "redirect:login.do";
 		}
 	//관리자
 	@GetMapping("/admin.do")
-	public String loginadmin(@ModelAttribute("success") String success) {
+	public String loginadmin() {
 		return "admin/AdminLogin";
 	}
 	@PostMapping("/admin.do")
-	public String loginadmin(Member vo,HttpSession session){
+	public String loginadmin(Member vo,HttpSession session,RedirectAttributes rda){
 		logger.info("admin login");
 		
 		session.getAttribute("admin");
@@ -100,16 +103,19 @@ public class HomeController {
 		
 		if(login != null && passMatch == true) {
 			session.setAttribute("admin", login);
+			rda.addFlashAttribute("message", "안녕하세요 관리자님.");
 			return "redirect:/";
 			}else {
 				session.setAttribute("admin", null);
 			}
-			return "redirect:admin.do?success=n";
+			return "redirect:admin.do";
 	}
 	//로그아웃
 	@GetMapping("/logout.do")
-	public String logout(HttpSession session) { 
+	public String logout(HttpSession session,RedirectAttributes rda) { 
 		session.invalidate();
+		rda.addFlashAttribute("message", "로그아웃되었습니다.");
+
 		return "redirect:/";
 	}
 	
