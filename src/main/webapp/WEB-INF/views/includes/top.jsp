@@ -2,11 +2,11 @@
 	pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
-<head>
+
 <meta charset="UTF-8">
 <title>Insert title here</title>
-</head>
-<body>
+
+
 		<!-- 헤더 시작 -->
 		<header>
 			<div class="header_area box_inner clear">
@@ -45,7 +45,7 @@
 								<a href="" class="openAll3">고객센터</a>
 								<div class="gnb_depth gnb_depth2_3">
 									<ul class="submenu_list">
-										<li><a href="">1:1문의하기</a></li>
+										<li><a href="1to1">1:1문의하기</a></li>
 									</ul>
 								</div>
 							</li>
@@ -56,5 +56,5 @@
 			</div>
 		</header>
 		<!-- 헤더 끝 -->
-</body>
+
 </html>

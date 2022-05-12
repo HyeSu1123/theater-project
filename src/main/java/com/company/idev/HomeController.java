@@ -8,11 +8,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
- * C:\dev\teamPl\theater-project ¿©±â¿¡ .gitignore ³Ö¾î³õ°í ÇØºÁ¿ä 
+ * C:\dev\teamPl\theater-project ì—¬ê¸°ì— .gitignore ë„£ì–´ë†“ê³  í•´ë´ìš” 
  * 
  */
 @Controller
@@ -39,13 +40,14 @@ public class HomeController {
 	@RequestMapping(value="memberJoin")
 	public String restForm() {
 		return "member/MemberJoin";
-	} //Áö±İÀº push ´Â ÇÏ¸é ¾ÈµÇ¿ä. master 
+	} //ì§€ê¸ˆì€ push ëŠ” í•˜ë©´ ì•ˆë˜ìš”. master 
 	
-	
-	public static void test() {
-		//Å×½ºÆ®¿ë ¸Ş¼Òµå - git  
-		//master´Â º´ÇÕÇÒ¶§¸¸ ½ºÀ§Ä¡·Î ¹Ù²Ù°í Ç×»ó Dasan ºê·£Ä¡¿¡¼­  
-		//´Ù»ê¾¾´Â ¤·ÀÌ»óÅÂ·Î ¸ÃÀº ±â´ÉÀ» ±¸ÇöÇÏ¸é µÇ¿ä. masterÇÏ°í º´ÇÕÇÏ´Â°ÍÀº ´ÙµÈ´ÙÀ½
-	
+	@GetMapping("1to1")
+	public String personalBoard() {
+		return "PersonalBoard";
 	}
+	
+		 
+	
+	
 }

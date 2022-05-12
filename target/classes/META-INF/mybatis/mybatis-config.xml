@@ -10,6 +10,7 @@
 	 -->
 	<typeAliases>
 		<typeAlias type="com.company.idev.dto.Member" alias="Member"/>
+		<typeAlias type="com.company.idev.dto.Question" alias="Question"/>
 	</typeAliases>
 
 
