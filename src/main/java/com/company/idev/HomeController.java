@@ -92,6 +92,7 @@ public class HomeController {
 		
 		session.getAttribute("admin");
 		Members login = mapper.loginAdmin(vo);
+		
 		boolean passMatch;
 		
 		if(login != null) {
@@ -100,19 +101,21 @@ public class HomeController {
 			passMatch = false;
 		}
 		
-		if(login.getAuthority() != 0 && passMatch == true) {
-			session.setAttribute("admin", null);
-			rda.addFlashAttribute("message", "승인 요청중입니다. 현재 이용하실 수 없습니다.");
-			return "redirect:admin.do";
-		}
 		
+		logger.info("관리자 번호 확인" + vo.getAuthority());
 		if(login != null && passMatch == true) {
 			session.setAttribute("admin", login);
 			rda.addFlashAttribute("message", "안녕하세요 관리자님.");
 			return "redirect:/";
-			}else {
+			}
+//		else if(vo.getAuthority()!=0 ) {
+//			session.setAttribute("admin",login);
+//			rda.addFlashAttribute("message", "승인 요청중입니다. 현재 이용하실 수 없습니다.");
+//			return "redirect:admin.do";
+//		}
+		else {
 				session.setAttribute("admin", null);
-				rda.addFlashAttribute("message", "아이디나 비밀번호를 다시 입력해주세요.");
+				rda.addFlashAttribute("message", "승인 요청중입니다. 현재 이용하실 수 없습니다.");
 			}
 			return "redirect:admin.do";
 	}
