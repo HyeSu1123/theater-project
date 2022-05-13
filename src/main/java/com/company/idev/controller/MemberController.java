@@ -52,7 +52,7 @@ public class MemberController {
 	
 	//회원가입
 	@PostMapping("/join.do")
-	public String appForm(Members member) {
+	public String appForm(Members member,RedirectAttributes rda) {
 		String rawPw = "";
 		String encodePw="";
 		
@@ -60,6 +60,7 @@ public class MemberController {
 		encodePw = pwEncoder.encode(rawPw);
 		member.setPassword(encodePw);
 		
+		rda.addFlashAttribute("message","가입이 완료되었습니다");
 		mapper.insert(member);
 		return "redirect:/login.do";
 	}

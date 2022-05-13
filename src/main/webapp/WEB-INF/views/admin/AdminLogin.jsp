@@ -8,6 +8,7 @@
 <title>Admin</title>
 <%-- 	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common.css">
  </head>--%>
+
 <body>
 	<!-- wrap시작 -->
 	<div id="wrap">

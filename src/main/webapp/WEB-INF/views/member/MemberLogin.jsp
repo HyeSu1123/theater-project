@@ -10,9 +10,7 @@
  --%>
  </head>
 <body>
-<script type="text/javascript">
-	if(${message != null}) alert('${message}');
-</script>
+
 	<!-- wrap시작 -->
 	<div id="wrap">
 <%@ include file="../includes/top.jsp" %>

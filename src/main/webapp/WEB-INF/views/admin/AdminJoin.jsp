@@ -9,6 +9,7 @@
  --%>
  <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/validation.js">
 </script>
+
 </head>
 <body>
 	<!-- wrap시작 -->

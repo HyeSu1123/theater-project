@@ -115,6 +115,9 @@
 		 		<c:if test="${vo.authority==0}">
 		 			<span style="color:red;font-weight:bolder;">관리자</span>
 		 		</c:if>
+		 		<c:if test="${vo.authority==3}">
+		 			<span style="color:green;font-weight:bolder;">관리자 승인 요청</span>
+		 		</c:if>
 		 		<%-- <c:choose>
 		 			<c:when test="${vo.authority==1}">
 		 				<span>일반 회원</span>

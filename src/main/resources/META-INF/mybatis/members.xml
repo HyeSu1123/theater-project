@@ -44,7 +44,7 @@
 	<insert id="insertAdmin" parameterType="Members">
 	INSERT INTO MEMBERS
 	(ID, PASSWORD, NAME, BIRTH_DATE, GENDER, EMAIL, PHONE, REG_DATE,AUTHORITY)
-	VALUES(#{id},#{password}, #{name}, #{birth_date}, #{gender}, #{email}, #{phone}, sysdate,'0')
+	VALUES(#{id},#{password}, #{name}, #{birth_date}, #{gender}, #{email}, #{phone}, sysdate,'3')
 	</insert>
 	
 	<!-- 회원 정보 수정 -->
