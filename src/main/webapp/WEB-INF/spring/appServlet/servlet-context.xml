@@ -14,15 +14,29 @@
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
+	<resources location="/resource/js/" mapping="js/**"/>
+	<resources location="/resource/images/" mapping="/img/**"></resources>
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
+		
 	</beans:bean>
 	
 	<context:component-scan base-package="com.company.idev" />
 	
+	<!-- 파일 업로드 처리를 위한 빈 설정 -->
+	<beans:bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- 1kb=1024바이트
+			파일 업로드를 여러개 할 때 최대 크기, 파일 1개에 대한 최대 크기 제한
+		 -->
+		<beans:property name="maxUploadSize" value="104857600" /><!-- 100MB -->
+		<beans:property name="maxUploadSizePerFile"
+			value="20971520" /><!-- 20MB -->
+		<beans:property name="defaultEncoding" value="utf-8" />
+	</beans:bean>
 	
 	
 </beans:beans>

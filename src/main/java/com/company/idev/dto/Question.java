@@ -5,7 +5,7 @@ import java.sql.Date;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
- 
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -16,6 +16,4 @@ public class Question {
 	private String question_content;
 	private Date question_date;
 	private String status;
-	
-	
 }

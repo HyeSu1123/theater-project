@@ -1,0 +1,255 @@
+
+.border_opt{
+	border: 1px solid #cccccc;
+	border-radius: 4px;
+}
+.pagenum {
+    border: 1px solid gray;
+    color: #0178b6;
+    padding: 3px 9px;
+    text-decoration: none;  /*  밑줄제거  */
+    cursor: pointer;
+    display: inline-block;
+	text-align:center;
+	font-size: 9pt;
+}
+.pagenum:hover{
+	  background-color:gray;
+	  color:white;
+} 
+span.pagenum{
+	border:1px solid gray;
+	font-weight:bold;
+	background-color:gray;
+	color:white;
+}
+
+
+table { 
+	width: 70%; 
+	margin: 20px auto;
+	border-collapse:collapse;
+	
+}
+
+tr,th,td{
+		/* border: 1px solid #cccccc; */
+		padding: 4px;
+		text-align: left;
+		border-bottom: 1px solid #eee;
+}
+th {
+		font-size:90%;
+		border-bottom:1px solid gray;
+}
+.title {
+	color: #1a1aff;
+	text-decoration: none;  /*  밑줄제거  */
+	font: bold;
+	text-align: center;
+}
+
+input[type=submit],input[type=reset],input[type=button]{
+    color:white;
+    padding: 5px 10px;
+	text-align:center;
+	display: inline-block;
+	border-radius: 4px;
+	border: none;
+	cursor: pointer;
+} 
+.btn-small{width:70px;height:30px;background-color: skyblue; color:white;border: none}
+
+.btn{width:100px;height:30px;background-color: green;}
+ 
+.td1{
+    padding: 5px 10px;
+    text-align: left;
+    border-collapse:collapse;
+    border-radius: 6px;
+   
+}
+
+
+.comment {
+	border: 1px solid #dddddd;
+	padding : 8px 30px;
+	margin-bottom: 6px;
+}
+.comment_title {
+	font: bold;
+	font-size: 130%;
+	padding: 20px 0x;
+	display: block;
+}
+.content {
+	padding : 8px 4px;
+	margin-bottom: 8px;
+ }
+
+.name {
+	width:40%;
+	display: inline-block;
+	color:  #4080bf;
+}
+
+.now {
+	color : gray;
+	width:50%;
+	display: inline-block;
+	
+}
+
+.left{
+	text-align: left;
+	padding-left: 10px;
+}
+
+.none {
+	display: none;
+}
+table.notice{
+	border:1px 0px solid #eee;
+	border-top:2px solid black;
+}
+th.notice{
+	background-color:#eee;
+	border-bottom:1px solid #eee;
+}
+/* 회원목록 드롭다운 리스트 */
+.dropbtn {
+  background-color:white;
+  color: gray;
+  padding: 4px 16px;
+  font-size: 6px;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 140px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  border-radius:5px;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  border-radius:5px;
+  
+}
+
+.dropdown-content a:hover {background-color: coral;color:white;box-shadow: 0px 10px 20px 0px rgba(0,0,0,0.2);}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #ddd;}
+
+/*list hover시 색*/
+.list:hover{
+	background-color: #f9f9f9;
+}	
+/* 메뉴바 include */	
+.accordion, #logo{
+  background-color: #3498db;
+  color: #fafafa;
+  cursor: pointer;
+  padding: 14px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: 0.4s;
+  font-size: 18px;
+  font-weight: 600;
+  text-shadow: 
+    -1px -1px 1px #777,
+    1px 1px 1px #555;
+}
+#logo{
+	text-align:center;
+	height:68px;
+	font-size:22px;
+	border-right:1px solid #2980b9;
+	border-bottom:1px solid #2070a9;
+}
+#logo:hover{
+	background-color: #2980b9;
+	font-size:23px;
+}
+.active, .accordion:hover {
+  background-color: #2980b9;
+}
+
+.panel {
+  padding: 0;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+.panel > div{
+	margin:0;
+	background-color: #444;
+	padding: 0;
+	width:100%;
+}
+.panel > div > a{
+	text-decoration: none;
+	color:#fafafa;
+	display:block;
+    font-size: 15px;
+    padding: 10px 15px;
+    font-weight: 600;
+}
+.panel > div>a:hover{
+	background-color: #333;
+    border-left:4px solid #2980b9;
+    padding-left: 11px;
+}
+
+nav{
+    position:fixed;
+    top: 0;
+    left: 0;
+    background-color: #3498db;
+    height: 100%;
+}
+.menubar{
+	width:200px;
+	margin: 0;
+    padding: 0;
+}
+.icon{
+	margin:10px;
+	margin-right:20px;
+	
+}
+.icon>i{
+	width:25px;
+}
+section{
+	margin-left:220px;
+}
+
+.accordion:not([type="button"]):after {
+  content: '\23F7';
+  color: #fafafa;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:not([type="button"]):after {
+  content: "\23F6";
+}
