@@ -23,14 +23,25 @@ private static final Logger log = LoggerFactory.getLogger(MemberLoginInterceptor
 		HttpSession session = request.getSession();
 		Members member = (Members) session.getAttribute("member");
 		if(member == null) {	
-			String msg="로그인 하세요.";
-			//String url=request.getContextPath();
+			String msg="로그인해주세";
+			String url=request.getContextPath();
 
+			response.setContentType("text/html;charset=utf-8"); 
+			PrintWriter out = response.getWriter(); 
+			StringBuilder alerts = new  StringBuilder("<script>alert('") 
+					  .append(msg)
+					  .append("');")
+					  .append("location.href='")
+					  .append(url)
+					  .append("';")
+					  .append("</script>"); 
+			out.print(alerts.toString()); 
+			//out.flush();	//출력버퍼 비우기
 			
 						
-			return false;		//요청에 정해진 handler 메소드로 제어(실행)가 이동되지 않습니다.
+			return false;	
 		}else {
-		//로그인 된 상태이므로 요청에 따라 handler 메소드로 이동합니다.
+		
 			return true;
 		}
 	}

@@ -30,20 +30,17 @@
 						</c:if>
 						<c:if test="${admin != null }">
 							<li>${admin.id }님 안녕하세요. <a href="${pageContext.request.contextPath }/logout.do">로그아웃</a></li>
-							<li><a href="${pageContext.request.contextPath }/admin/performinsert.do">공연 등록</a></li>
-							<li><a href="${pageContext.request.contextPath }/admin/noticeupdate.do">공지사항 등록</a></li>
-							<li><a href="${pageContext.request.contextPath }/admin/memberlist.do">회원 목록</a></li>
-							
+							<li><a href="${pageContext.request.contextPath }/admin/main.do">관리자 페이지</a></li>
 						</c:if>
 						<c:if test="${member != null}">
 							<li>${member.id }님 환영합니다.<a href="${pageContext.request.contextPath }/logout.do">로그아웃</a></li>
 							<li><a href="${pageContext.request.contextPath }/member/mypage.do">MyPage</a></li>
 						</c:if>
 					</ul>
-					<nav>
+					<nav id="menu">
 						<ul class="gnb clear">
 							<li>
-								<a href="" class="openAll1">공연 전시</a>
+								<a href="" class="openAll1">공연▪전시</a>
 								<div class="gnb_depth gnb_depth2_1">
 									<ul class="submenu_list">
 										<li><a href="">공연 전시</a></li>

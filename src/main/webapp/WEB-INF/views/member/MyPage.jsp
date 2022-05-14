@@ -80,20 +80,16 @@
 
 </head>
 <body>
-	<!-- wrap시작 -->
-	<div id="wrap">
-<%@ include file="../includes/top.jsp" %>
+<%@ include file="../includes/banner.jsp" %>
 		<!-- 컨테이너시작 -->
-		<div id="container">
-			<div class="location_area member">
-				<div class="box_inner">
-					<h2 class="tit_page">Freddo</h2>
-					<p class="location">
-						MyPage <span class="path">/</span> 마이페이지
-					</p>
-					
-				</div>
-			</div>
+<section id="main" class="wrapper">
+	<header>
+		<h2>FREDDO</h2>
+			<p class="location">
+			MyPage <span class="path">/</span> 내 정보
+			</p>
+	</header>
+	<div class="inner">
 			<!-- 본문 -->
 				<h3>${member.name }님의 프로필 </h3>
 			<fieldset>
@@ -134,7 +130,7 @@
 						</td>
 					</tr>
 					<tr>
-					<td>
+					<td colspan="2" style="text-align: center;">
 						<span id="func">
 							<a class= "button" href="javascript:update()">수정</a>
 							<a class= "button" href="javascript:deleteOk()">회원탈퇴</a>
@@ -144,7 +140,7 @@
 				</table>
 				</form>
 				</fieldset>
-		</div>
 	</div>
+</section>
 </body>
 </html>

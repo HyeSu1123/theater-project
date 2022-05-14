@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%@ include file="../includes/top2.jsp" %>
+
 <form action="pw_set.do" method="post">
 	<input type="hidden" name ="num" value="${num }">
 		<div class=content>

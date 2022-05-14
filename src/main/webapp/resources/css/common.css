@@ -307,6 +307,7 @@ header > .header_area > h1 > a{
 }
 .header_cont .gnb li{ float:left; }
 .header_cont .gnb li a{ display: block; padding:26px 40px; font-size: 18px; color:#fff; }
+
 .header_cont .gnb li:last-child a{ padding-right: 0; }
 .gnb_depth{
     position: absolute;

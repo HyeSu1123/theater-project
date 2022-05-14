@@ -18,6 +18,7 @@
 <body>
 <!-- 메뉴바 include -->
 <%@include file="menubar.jsp" %>
+<h1><a href="${pageContext.request.contextPath }/">회원 페이지로 넘어가기</a></h1>
 
 
 </body>

@@ -26,6 +26,23 @@
 	
 	<context:component-scan base-package="com.company.idev" />
 	
+	<!-- 인터셉터 구현체 -->
+	<beans:bean id="memberLoginIntercepter" class="com.company.idev.interceptor.MemberLoginInterceptor"/>
+	<beans:bean id="adminLoginInterceptor" class="com.company.idev.interceptor.AdminLoginInterceptor"/>
+	
+	<!-- 인터셉터의 동작 범위를 설정 -->
+	<!--	<interceptors>
+
+		<interceptor>
+			<mapping path="/admin/*"/>
+			 매핑에 제외할 url 설정 
+			<exclude-mapping path="/admin/adminjoin.do"/>
+			<exclude-mapping path="/admin/main.do"/>
+			<exclude-mapping path="/admin/memberlist.do"/>
+			<beans:ref bean="adminLoginInterceptor"/>
+		</interceptor>
+	</interceptors> -->
+	
 	<!-- 파일 업로드 처리를 위한 빈 설정 -->
 	<beans:bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
