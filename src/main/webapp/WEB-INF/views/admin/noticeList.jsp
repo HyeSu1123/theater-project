@@ -10,13 +10,6 @@
 <meta charset="UTF-8">
 <title>공지사항 목록</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/freeboard.css">
-<style type="text/css">
-@import url('https://fonts.googleapis.com/css2?family=Hahmlet:wght@200&family=IBM+Plex+Sans+KR:wght@300&display=swap');
-*{
-	font-family: 'Hahmlet', serif;
-	font-family: 'IBM Plex Sans KR', sans-serif;	
-}
-</style>
 <script type="text/javascript">
 	setTimeout(function(){			//setTimeout 설정(100ms)
 		if(${message != null}) alert('${message}');
@@ -26,24 +19,38 @@
 </head>
 <body>
 <!-- 메뉴바 include -->
-<%@include file="menubar.jsp" %>
-<section>
+<%@ include file="../includes/banner.jsp" %>
+		<!-- 컨테이너시작 -->
+	<section id="main" class="wrapper">
+		<header>
+			<h2>FREDDO</h2>
+				<p class="location">
+				NOTICE <span class="path">/</span> 공지사항
+				</p>
+		</header>
+		<div class="inner">
 	<h3>공지사항 목록</h3>
 	<hr>
 	<div style="margin:auto;">
 		<div style="text-align:right;">
 			<form action="noticesearch.do" method="post">
+			<div class="row gtr-uniform">
+			<div class="col-4">
 				<select name="columns" id="columns">
 					<option value="title">제목</option>
 					<option value="content">내용</option>
 					<option value="titleContent">제목+내용</option>
 				</select>
+			</div>
 				<!-- 아래 find는 2개 중에 하나만 화면에 표시  -->
 				<span id="content">
 					<input name="find" placeholder="검색할 내용 입력" value="${find}">
 				</span>
+				<div>
 				<button>검색</button>
 				<button type="button" onclick="location.href='noticelist.do'">전체보기</button>
+				</div>
+				</div>
 			</form>
 		</div>
 		<table>
@@ -96,7 +103,9 @@
 		<input name="find" type="hidden">		
 		<input name="pageNo" type="hidden">
 	</form>
+	</div>
 </section>
+<%@ include file="../includes/footer.jsp" %>
 <script type="text/javascript">
 	var href=window.location.pathname;				//memberList.do 또는 search.do 가져오기
 	function goPage(no){

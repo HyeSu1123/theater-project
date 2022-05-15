@@ -7,8 +7,6 @@
 <head>
 <meta charset="UTF-8">
 <title>My Page</title>
-<%-- 	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common.css">
- --%>
  <script type="text/javascript">
  	function update() {
 		document.getElementById('change').innerHTML=`
@@ -142,5 +140,6 @@
 				</fieldset>
 	</div>
 </section>
+<%@ include file="../includes/footer.jsp" %>
 </body>
 </html>

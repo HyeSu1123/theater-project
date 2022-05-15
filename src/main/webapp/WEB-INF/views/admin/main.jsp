@@ -5,21 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>관리자 페이지</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/freeboard.css">
-<style type="text/css">
-@import url('https://fonts.googleapis.com/css2?family=Hahmlet:wght@200&family=IBM+Plex+Sans+KR:wght@300&display=swap');
-*{
-	font-family: 'Hahmlet', serif;
-	font-family: 'IBM Plex Sans KR', sans-serif;	
-}
-</style>
-<script src="https://kit.fontawesome.com/7ebf19920b.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <!-- 메뉴바 include -->
 <%@include file="menubar.jsp" %>
-<h1><a href="${pageContext.request.contextPath }/">회원 페이지로 넘어가기</a></h1>
-
-
-</body>
+갈 길이 멀다.
+<%@ include file="../includes/footer.jsp" %></body>
 </html>

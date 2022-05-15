@@ -28,6 +28,7 @@
 		<!-- Menu -->
 			<nav id="menu">
 				<ul class="links">
+				<c:if test="${member == null && admin == null || member != null}">
 					<li><a href="${pageContext.request.contextPath }/">Home</a></li>
 					<li><a href="">Performance</a></li>
 					<li>
@@ -42,6 +43,32 @@
 							<li><a href="">1:1 문의하기</a></li>
 						</ul>
 					</li>
+					</c:if>
+					<c:if test="${admin != null}">
+				<li><a href="${pageContext.request.contextPath }/main.do">ADMIN PAGE</a></li>
+					<li><a href="${pageContext.request.contextPath }/admin/memberlist.do">Member List</a></li>
+					<li>
+						<a href="">Performance</a>
+						<ul class="open">
+							<li><a href="${pageContext.request.contextPath }/admin/performinsert.do">공연 등록</a></li>
+							<li><a href="${pageContext.request.contextPath }/admin/scheduleinsert.do">공연 스케줄 등록</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="">Community</a>
+						<ul class="open">
+							<li><a href="${pageContext.request.contextPath }/admin/noticelist.do">Notice List</a></li>
+							<li><a href="${pageContext.request.contextPath }/admin/noticeinsert.do">Notice Insert</a></li>
+							<li><a href="">관람 후기</a></li>
+						</ul>
+					</li>
+					<li><a href="">Service center</a>
+						<ul class="open">
+							<li><a href="">1:1 문의하기</a></li>
+							<li><a href="${pageContext.request.contextPath }/admin/questionlist.do">1:1 문의 답변 등록</a></li>
+						</ul>
+					</li>
+				</c:if>
 				</ul>
 				<ul class="actions stacked">
 					<c:if test="${member == null && admin == null}">

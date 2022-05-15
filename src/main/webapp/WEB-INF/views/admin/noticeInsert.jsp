@@ -6,19 +6,20 @@
 <meta charset="UTF-8">
 <title>공지사항 등록</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/freeboard.css">
-<style type="text/css">
-@import url('https://fonts.googleapis.com/css2?family=Hahmlet:wght@200&family=IBM+Plex+Sans+KR:wght@300&display=swap');
-*{
-	font-family: 'Hahmlet', serif;
-	font-family: 'IBM Plex Sans KR', sans-serif;	
-}
-</style>
 <script src="https://kit.fontawesome.com/7ebf19920b.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <!-- 메뉴바 include -->
-<%@include file="menubar.jsp" %>
-<section>
+<%@ include file="../includes/banner.jsp" %>
+		<!-- 컨테이너시작 -->
+	<section id="main" class="wrapper">
+		<header>
+			<h2>FREDDO</h2>
+				<p class="location">
+				NOTICE <span class="path">/</span> 공지사항
+				</p>
+		</header>
+		<div class="inner">
 	<h3>공지사항 등록</h3>
 	<hr>
 	<div style="margin:auto;">
@@ -46,6 +47,8 @@
 			</div>
 		</form>
 	</div>
+	</div>
 </section>
+<%@ include file="../includes/footer.jsp" %>
 </body>
 </html>
