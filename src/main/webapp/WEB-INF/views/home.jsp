@@ -10,7 +10,6 @@
 <body>
 <%@ include file="./includes/top2.jsp" %>
 
-
 		<!-- One -->
 			<section id="one" class="wrapper style1 split">
 				<div class="inner">

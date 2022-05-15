@@ -134,7 +134,7 @@ public class MemberController {
 			model.addAttribute("updateid",member.getId());
 		}
 		return "member/pw_find";
-	}*/
+	}
 	
 	@RequestMapping(value = "/pw_auth.do")
 	public ModelAndView pw_auth(HttpSession session, HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -185,7 +185,7 @@ public class MemberController {
 			return mv;
 		}
 	
-	}
+	}*/
 	//이메일 인증번호 확인
 	@RequestMapping(value = "/pw_set.do", method = RequestMethod.POST)	
 	public String pw_set(@RequestParam(value="email_injeung") String email_injeung,
@@ -199,9 +199,11 @@ public class MemberController {
 			}
 	} 
 	
-	@PostMapping("/pw_new.do")
-	public String pw_new(Members vo, HttpSession session) throws IOException{
-		int result = mapper.updatePassword(vo);
+/*	@PostMapping("/pw_new.do")
+	public String pw_new(@RequestParam("member") String id, @RequestParam("oldPw") String oldPw, @RequestParam("newPw") 
+		String newPw, HttpSession session, RedirectAttributes redirectAttributes) {
+
+		int result = mapper.updatePassword(id);
 		if(result == 1) {
 			return "memer/MemberLogin";
 		}
@@ -209,6 +211,17 @@ public class MemberController {
 			System.out.println("pw_update"+ result);
 			return "member/pw_new";
 		}
-}
+}*/
+	@PostMapping("/pw_new.do")
+	public String pw_new(Members pw,HttpSession session,RedirectAttributes rda) {
+		mapper.updatePassword(pw);	
+		logger.info("들어오는 값"+pw);
+		Members m = (Members)session.getAttribute("member");
+		m.setPassword(pw.getPassword());
+		session.setAttribute("member", m);
+		rda.addFlashAttribute("message", "수정되었습니다.");
+		return "redirect:mypage.do";
+	}
+	
 	
 }

@@ -16,8 +16,6 @@
 	<select id="loginAdmin" resultType="Members" >
 	select * from members where id=#{id} AND authority='0'
 	</select>
-
-	
 	
 	<!-- 아이디 중복확인 -->
 	<select id="checkid" resultType="int" parameterType="String">
@@ -33,12 +31,12 @@
 	
 	<!-- 비번찾기 -->
 	<select id="findPassword" parameterType="String" resultType="Members">
-		select * from members where email=#{email}
+		select * from members where id=#{id}
 	</select>
 	
 	<!-- 패스워드변경 -->
 	<update id="updatePassword">
-		update members set password=#{password} where email=#{email}
+		update members set password=#{password} where id=#{id}
 	</update>
 	
 	<!-- 관리자용 회원가입 -->

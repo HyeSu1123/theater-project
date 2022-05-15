@@ -16,7 +16,9 @@
 		<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/assets/css/main.css" />
 	</head>
 	<body class="is-preload">
-
+<script type="text/javascript">
+	if(${message != null}) alert('${message}');
+</script>
 		<!-- Header -->
 			<header id="header">
 				<h1><a href="${pageContext.request.contextPath }/">FREDDO</a></h1>
