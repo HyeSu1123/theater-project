@@ -9,7 +9,7 @@
 	  values(question_idx_seq.nextval,#{id},#{question_title},#{question_content},SYSDATE,DEFAULT)
 	  </insert>
 	  
-	 <select id="getQuestion" resultType="Question" parameterType="String">
+	 <select id="getQuestion" resultType="Question" parameterType="Members">
 	 select *from question where id=#{id} order by question_date
 	 </select>
 	 

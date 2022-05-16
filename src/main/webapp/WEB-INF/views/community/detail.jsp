@@ -164,7 +164,7 @@ function deleteOk(){
 							pattern="yyyy-MM-dd a hh:mm" value="${cmt.comment_date }" />
 							</span> <span style="float: right;"> <a
 							href="javascript:delete_cmt(`${cmt.idx }`)"> <img
-							alt="삭제" src="${image }/delete.png" style="width: 20px;"></a>
+							alt="삭제" src="${image}/delete.png" style="width: 20px;"></a>
 								</span>
 						</div>
 						<div style="padding-top: 10px">
