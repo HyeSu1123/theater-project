@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.company.idev.dto.Members;
@@ -51,6 +52,7 @@ public class HomeController {
 		
 		return "home";
 	}
+	
 	//회원 로그인
 		@GetMapping("/login.do")
 		public String login() {
@@ -127,6 +129,7 @@ public class HomeController {
 
 		return "redirect:/";
 	}
+	
 	
 
 }

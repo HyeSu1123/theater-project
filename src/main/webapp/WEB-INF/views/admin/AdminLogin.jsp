@@ -25,9 +25,9 @@
 		
 			<!-- 본문 -->
 			<form name="adminLogin" method="post" action="./admin.do">
-			<label for="id">ID</label><br>
+			<label for="id">ID</label>
 			<input type="text" name="id" id="id" placeholder="ID를 입력해주세요"><br>
-			<label for="password">password</label><br>
+			<label for="password">password</label>
 			<input type="password" name="password" id="password" placeholder="password를 입력해주세요"><br>
 			<input type="hidden" name="authority" id="authority" value="3"> 
 			<input type="submit" value="Login" class="primary" />
