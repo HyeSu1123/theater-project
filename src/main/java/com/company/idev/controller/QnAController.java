@@ -14,12 +14,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.company.idev.dto.Answer;
+import com.company.idev.dto.Members;
 import com.company.idev.dto.Question;
 import com.company.idev.mapper.AnswerMapper;
 import com.company.idev.mapper.QuestionMapper;
 
 
 @Controller
+@RequestMapping(value = "/member")
 public class QnAController {
 	private static final Logger logger=
 			LoggerFactory.getLogger(QnAController.class);
@@ -27,13 +29,11 @@ public class QnAController {
 	@Autowired
 	QuestionMapper mapper;
 	
-	@Autowired
-	AnswerMapper mapper2;
+
 	
 	
-	
-	@RequestMapping("Board1to1")//문의내역 아이디로 검색해서 가져오고 내역 view띄워줌
-	public String Board1to1 (Model model,Question question) {
+	@RequestMapping("/Board1to1")//문의내역 아이디로 검색해서 가져오고 내역 view띄워줌
+	public String Board1to1 (Members member,Model model,Question question) {
 		String id="id";//추후에 member.getid()로 변경
 	
 		model.addAttribute("list",mapper.getQuestion(id));
