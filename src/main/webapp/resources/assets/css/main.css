@@ -1936,7 +1936,7 @@ input, select, textarea {
 					background-color: #3998d3;
 				}
 
-/* Features */
+/* Features 
 
 	.features {
 		display: -moz-flex;
@@ -2001,7 +2001,7 @@ input, select, textarea {
 	.features section {
 		background-color: #ffffff;
 		border-bottom: solid 1px #eaeaea;
-	}
+	}*/
 
 /* Form */
 
@@ -3694,6 +3694,311 @@ input, select, textarea {
 			}
 
 		}
+		
+		/* 새로 추가Features ==========================================================================*/
+
+	.features {
+		display: -moz-flex;
+		display: -webkit-flex;
+		display: -ms-flex;
+		display: flex;
+		-moz-flex-direction: row;
+		-webkit-flex-direction: row;
+		-ms-flex-direction: row;
+		flex-direction: row;
+		-moz-flex-wrap: wrap;
+		-webkit-flex-wrap: wrap;
+		-ms-flex-wrap: wrap;
+		flex-wrap: wrap;
+		margin: 0 0 2em 0;
+	}
+
+		.features section {
+			-moz-flex-grow: 0;
+			-webkit-flex-grow: 0;
+			-ms-flex-grow: 0;
+			flex-grow: 0;
+			-moz-flex-shrink: 0;
+			-webkit-flex-shrink: 0;
+			-ms-flex-shrink: 0;
+			flex-shrink: 0;
+			border-left: solid 1px;
+			border-top: solid 1px;
+			padding: 2em 3em;
+			text-align: center;
+			width: calc(100% / 3);
+		}
+
+			.features section:nth-child(3n - 2) {
+				border-left-width: 0;
+			}
+
+			.features section:nth-child(-n + 3) {
+				border-top-width: 0;
+			}
+
+		@media screen and (max-width: 980px) {
+
+			.features {
+				-moz-flex-direction: column;
+				-webkit-flex-direction: column;
+				-ms-flex-direction: column;
+				flex-direction: column;
+			}
+
+				.features section {
+					padding: 3em 3em 1em 3em ;
+					border-left: 0;
+					width: 100%;
+				}
+
+					.features section:nth-child(-n + 3) {
+						border-top-width: 1px;
+					}
+
+					.features section:first-child {
+						border-top-width: 0;
+						padding-top: 1em;
+					}
+
+					.features section:last-child {
+						padding-bottom: 0;
+					}
+
+		}
+
+		@media screen and (max-width: 736px) {
+
+			.features section {
+				padding: 3em 2em 1em 2em ;
+			}
+
+		}
+
+	.features section {
+		border-color: rgba(67, 75, 86, 0.25);
+	}
+		
+/* Carousel ==================================================================== */
+
+	.carousel {
+		padding: 5em 12em;
+		position: relative;
+	}
+
+		.carousel article {
+			-moz-transform: translateY(0.5em);
+			-webkit-transform: translateY(0.5em);
+			-ms-transform: translateY(0.5em);
+			transform: translateY(0.5em);
+			-moz-transition: all 0.35s ease-in-out;
+			-webkit-transition: all 0.35s ease-in-out;
+			-ms-transition: all 0.35s ease-in-out;
+			transition: all 0.35s ease-in-out;
+			background-color: #ffffff;
+			box-shadow: 0 0 2em 0 rgba(0, 0, 0, 0.1);
+			margin: 0 auto;
+			opacity: 0;
+			visibility: hidden;
+			width: 100%;
+		}
+
+			.carousel article.visible {
+				-moz-transform: translateY(0);
+				-webkit-transform: translateY(0);
+				-ms-transform: translateY(0);
+				transform: translateY(0);
+				opacity: 1;
+				visibility: visible;
+			}
+
+			.carousel article .image {
+				border-radius: 0;
+				height: 17em;
+				width: 100%;
+			}
+
+				.carousel article .image img {
+					border-radius: 0;
+					display: block;
+					height: 100%;
+					width: 100%;
+				}
+
+			.carousel article .content {
+				padding: 3.5em 5em 1.5em 5em ;
+				text-align: center;
+			}
+
+		.carousel nav a {
+			text-decoration: none;
+			-moz-transition: opacity 0.2s ease-in-out;
+			-webkit-transition: opacity 0.2s ease-in-out;
+			-ms-transition: opacity 0.2s ease-in-out;
+			transition: opacity 0.2s ease-in-out;
+			height: 100%;
+			opacity: 0.325;
+			position: absolute;
+			top: 0;
+			width: 12em;
+		}
+
+			.carousel nav a:before {
+				-moz-osx-font-smoothing: grayscale;
+				-webkit-font-smoothing: antialiased;
+				display: inline-block;
+				font-style: normal;
+				font-variant: normal;
+				text-rendering: auto;
+				line-height: 1;
+				text-transform: none !important;
+				font-family: 'Font Awesome 5 Free';
+				font-weight: 400;
+			}
+
+			.carousel nav a .label {
+				display: none;
+			}
+
+			.carousel nav a:before {
+				display: block;
+				font-size: 5em;
+				height: 2em;
+				left: 50%;
+				line-height: 2em;
+				margin: -1em 0 0 -1em;
+				position: absolute;
+				text-align: center;
+				top: 50%;
+				width: 2em;
+			}
+
+			.carousel nav a.previous {
+				left: 0;
+			}
+
+				.carousel nav a.previous:before {
+					content: '\f104';
+					font-weight: 900;
+				}
+
+			.carousel nav a.next {
+				right: 0;
+			}
+
+				.carousel nav a.next:before {
+					content: '\f105';
+					font-weight: 900;
+				}
+
+			.carousel nav a:hover {
+				opacity: 1;
+			}
+
+		.carousel.accent1 {
+			background-color: #575b72;
+		}
+
+			.carousel.accent1 nav a {
+				color: #ffffff;
+			}
+
+		.carousel.accent2 {
+			background-color: #4cabb1;
+		}
+
+			.carousel.accent2 nav a {
+				color: #ffffff;
+			}
+
+		.carousel.accent3 {
+			background-color: #69c7ad;
+		}
+
+			.carousel.accent3 nav a {
+				color: #ffffff;
+			}
+
+		.carousel.accent4 {
+			background-color: #fed586;
+		}
+
+			.carousel.accent4 nav a {
+				color: #ffffff;
+			}
+
+		@media screen and (max-width: 1680px) {
+
+			.carousel article .content {
+				padding: 4em 4em 2em 4em ;
+			}
+
+		}
+
+		@media screen and (max-width: 1280px) {
+
+			.carousel {
+				padding: 5em 5em;
+			}
+
+				.carousel nav a {
+					width: 5em;
+				}
+
+		}
+
+		@media screen and (max-width: 736px) {
+
+			.carousel {
+				padding: 2em;
+			}
+
+				.carousel article {
+					-moz-transform: translateY(0);
+					-webkit-transform: translateY(0);
+					-ms-transform: translateY(0);
+					transform: translateY(0);
+					display: block !important;
+					margin: 2em 0 0 0;
+					opacity: 1;
+					visibility: visible;
+				}
+
+					.carousel article:first-child {
+						margin-top: 0;
+					}
+
+					.carousel article .image {
+						height: 14em;
+					}
+
+					.carousel article .content {
+						padding: 3em 2em 1em 2em ;
+					}
+
+				.carousel nav {
+					display: none;
+				}
+
+		}
+
+		@media screen and (max-width: 480px) {
+
+			.carousel {
+				padding: 1.5em;
+			}
+
+				.carousel article {
+					margin: 1.5em 0 0 0;
+				}
+
+					.carousel article .image {
+						height: 9em;
+					}
+
+		}
+
+		
 
 /* Footer */
 
