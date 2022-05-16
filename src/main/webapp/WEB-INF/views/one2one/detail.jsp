@@ -83,5 +83,6 @@
         </div>
         </section>
     <!-- wrap 끝 -->
+    <%@ include file="../includes/footer.jsp" %>
 </body>
 </html>

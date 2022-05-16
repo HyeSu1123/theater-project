@@ -35,7 +35,7 @@ public class ReviewboardContrloller {
 	@Autowired
 	Review_commentMapper cmt_mapper;
 	
-	@RequestMapping("/list")
+	@RequestMapping("/list.do")
 	public String list(@RequestParam(required = false , defaultValue = "1")int pageNo,
 						Model model) {
 		PageDto page = new PageDto(pageNo, 10, mapper.getCount());
@@ -51,28 +51,28 @@ public class ReviewboardContrloller {
 		return "community/list";
 	}
 	
-	@GetMapping("/insert")
+	@GetMapping("/insert.do")
 	public String insert(int pageNo,Model model) {
 		model.addAttribute("page", pageNo);
 		return "community/insert";
 	}
 	
-	@PostMapping("/insert")
+	@PostMapping("/insert.do")
 	public String save(Reviewboard dto){
 		mapper.insert(dto);
-		return "redirect:list";   //1ÆäÀÌÁö·Î ÀÌµ¿
+		return "redirect:list.do";   //1í˜ì´ì§€ë¡œ ì´ë™
 	}
 	
-	@GetMapping("/detail")
+	@GetMapping("/detail.do")
 	public String detail(int idx,int pageNo,Model model) {
-		//Á¶È¸¼öÁõ°¡ ¸ÕÀú
+		//ì¡°íšŒìˆ˜ì¦ê°€ ë¨¼ì €
 		mapper.readCount(idx);
-		Reviewboard bean = mapper.getOne(idx);		//sql½ÇÇà
+		Reviewboard bean = mapper.getOne(idx);		//sqlì‹¤í–‰
 		model.addAttribute("bean", bean);
 		model.addAttribute("page", pageNo);
 		
 		
-		//´ñ±Û¸ñ·ÏÀ» detail.jsp ¿¡ Ãâ·ÂÇØ¾ß ÇÕ´Ï´Ù.
+		//ëŒ“ê¸€ëª©ë¡ì„ detail.jsp ì— ì¶œë ¥í•´ì•¼ í•©ë‹ˆë‹¤.
 		List<Review_comment> cmtlist = cmt_mapper.list(idx);
 		model.addAttribute("cmtlist", cmtlist);
 		return "community/detail";
@@ -85,7 +85,7 @@ public class ReviewboardContrloller {
 		
 		model.addAttribute("idx", vo.getIdx());
 		model.addAttribute("pageNo", pageNo);
-		return "redirect:detail";
+		return "redirect:detail.do";
 	}
 
 	@GetMapping("delete")
@@ -93,32 +93,32 @@ public class ReviewboardContrloller {
 		
 		mapper.delete(idx);
 		model.addAttribute("pageNo", pageNo);
-		return "redirect:list";
+		return "redirect:list.do";
 	}
 	
-	// ¿©±â¼­ºÎÅÍ´Â ´ñ±Û Ã³¸®
+	// ì—¬ê¸°ì„œë¶€í„°ëŠ” ëŒ“ê¸€ ì²˜ë¦¬
 	
 	@Transactional
 	@PostMapping("comment")
 	public String comment_save(Review_comment dto,int pageNo,Model model) {
-		//´ñ±Û ÀÔ·Â¿ä¼Ò °ªµé db¿¡ ÀúÀå -> detail (±Û »ó¼¼º¸±â)
+		//ëŒ“ê¸€ ì…ë ¥ìš”ì†Œ ê°’ë“¤ dbì— ì €ì¥ -> detail (ê¸€ ìƒì„¸ë³´ê¸°)
 		cmt_mapper.insert(dto);
 		
-		//mref°ªÀÌ freeboardÅ×ÀÌºíÀÇ idxÀÔ´Ï´Ù.
+		//mrefê°’ì´ freeboardí…Œì´ë¸”ì˜ idxì…ë‹ˆë‹¤.
 		cmt_mapper.commentCountUp(dto.getBd_idx());
 		
-		//idx ´Â commenets Å×ÀÌºíÀÇ ½ÃÄö½º °ªÀ¸·Î Áö±İ ¾ø´Â »óÅÂÀÔ´Ï´Ù.
-		model.addAttribute("idx", dto.getBd_idx());  //¸ŞÀÎ±ÛÀÇ idx°ª Àü´Ş
+		//idx ëŠ” commenets í…Œì´ë¸”ì˜ ì‹œí€€ìŠ¤ ê°’ìœ¼ë¡œ ì§€ê¸ˆ ì—†ëŠ” ìƒíƒœì…ë‹ˆë‹¤.
+		model.addAttribute("idx", dto.getBd_idx());  //ë©”ì¸ê¸€ì˜ idxê°’ ì „ë‹¬
 		model.addAttribute("pageNo", pageNo);
-		return "redirect:detail";
+		return "redirect:detail.do";
 	}
 	@Transactional
-	@GetMapping("comment")  //idx: ´ñ±Û idx , mref:¸ŞÀÎ±Û idx
+	@GetMapping("comment")  //idx: ëŒ“ê¸€ idx , mref:ë©”ì¸ê¸€ idx
 	public String delete(int idx,int pageNo,int mref,Model model) {
 		cmt_mapper.delete(idx);
 		cmt_mapper.commentCountDown(mref);
-		model.addAttribute("idx",mref );  //¸ŞÀÎ±ÛÀÇ idx°ª Àü´Ş
+		model.addAttribute("idx",mref );  //ë©”ì¸ê¸€ì˜ idxê°’ ì „ë‹¬
 		model.addAttribute("pageNo", pageNo);
-		return "redirect:detail";
+		return "redirect:detail.do";
 }
 }

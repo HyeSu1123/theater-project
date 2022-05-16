@@ -138,30 +138,8 @@
 				</table>
 				</form>
 				</fieldset>
-                    <table>
-					 	<tr><th width="10%">문의번호</th>
-					 		<th width="40%">제목</th>
-					 		<th width="15%">아이디</th>
-					 		<th width="15%">작성일</th>
-					 		<th width="20%">답변상태</th></tr>
-					 	<c:forEach var="vo" items="${list}"> 
-						<tr>
-							<td align="center">${vo.question_idx }</td> 	
-					 		<td align="center"><a href="detail?question_idx=${vo.question_idx }">${vo.question_title }</a></td>
-					 		<td align="center">${vo.id }</td>
-					 		<td align="center">
-					 		<fmt:formatDate value="${vo.question_date }" pattern="yyyy-MM-dd"/>  
-					 		</td >
-					 		<td align="center">${vo.status}</td>
-					 		
-					 	</tr>
-					 	</c:forEach>
-					 	<tr><td colspan="4" align="right">
-					 		<a class="button" href="javascript:history.back();">이전</a>
-					 		</td>
-					 	</tr>
-					</table>
-    			</div>
+				<a class="button primary small fit" href="${pageContext.request.contextPath }/member/qinsert.do">1:1문의 글 쓰기</a>
+	</div>	
 </section>
 <%@ include file="../includes/footer.jsp" %>
 </body>

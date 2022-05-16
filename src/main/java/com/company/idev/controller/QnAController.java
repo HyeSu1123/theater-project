@@ -2,6 +2,8 @@ package com.company.idev.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,38 +34,36 @@ public class QnAController {
 
 	
 	
-	@RequestMapping("/Board1to1")//문의내역 아이디로 검색해서 가져오고 내역 view띄워줌
-	public String Board1to1 (Members member,Model model,Question question) {
-		String id="id";//추후에 member.getid()로 변경
-	
+	@RequestMapping("Board1to1.do")//문의내역 아이디로 검색해서 가져오고 내역 view띄워줌
+	public String Board1to1 (Members member,Model model,HttpSession session,Question question) {
+		String id = member.getId();//추후에 member.getid()로 변경
 		model.addAttribute("list",mapper.getQuestion(id));
-		
 		return "one2one/Board1to1";
 	}
 	
 				
 	
 		
-	@RequestMapping("PersonalBoard")
+	@GetMapping("/qinsert.do")
 	public String PB() {
 		return "one2one/PersonalBoard";
 	}
 	
 	
-	@PostMapping("Qinsert")	//질문내용 DB 에저장 이후 문의내역 페이지 전달
-	public String Qinsert(Question question,Model model) {
+	@PostMapping("/qinsert.do")	//질문내용 DB 에저장 이후 문의내역 페이지 전달
+	public String Qinsert(Members member,Question question,Model model) {
 		
 		//db등록
 		mapper.insert(question);
 		
-		String id="id";//추후에 member.getid()로 변경
+		String id=member.getId();//추후에 member.getid()로 변경
 		
-		model.addAttribute("list",mapper.getQuestion(id));
-			return "one2one/Board1to1";
+		//model.addAttribute("list",mapper.getQuestion(id));
+			return "redirect:Board1to1.do";
 	}
 	
 	
-	@GetMapping("detail")//문의 내역에서 제목 클릭했을시 세부사항 전달
+	@GetMapping("/detail.do")//문의 내역에서 제목 클릭했을시 세부사항 전달
 	 	public String detail(int question_idx,Question question,Answer answer,Model model) {
 			question=mapper.getOne(question_idx);
 			answer=mapper.getAnswer(question_idx);

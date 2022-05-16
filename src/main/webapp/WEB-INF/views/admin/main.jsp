@@ -9,6 +9,5 @@
 <body>
 <!-- 메뉴바 include -->
 <%@include file="menubar.jsp" %>
-갈 길이 멀다.
 <%@ include file="../includes/footer.jsp" %></body>
 </html>

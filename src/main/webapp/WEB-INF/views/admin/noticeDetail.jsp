@@ -60,6 +60,7 @@ function deleteOk(){
 	</div>
 	<!-- 수정, 삭제, 목록 버튼 -->
 	<div style="text-align:center; " class="row gtr-uniform">	
+	<c:if test="${admin != null }">
 			<form action="noticeupdate.do" method="post">
 				<input name="idx" type="hidden" value="${detail.notice_idx}">
 				<input name="detail" type="hidden" value="${detail}">
@@ -72,7 +73,7 @@ function deleteOk(){
 	 			<input name="pageNo" type="hidden" value="${pageNo}">
 			 	<button type="button" onclick="deleteOk()">삭제</button>
 			 </form>
-			 
+	</c:if> 
 		<form action="" method="post" name="formlist">
 			<input name="columns" type="hidden">
 			<input name="find" type="hidden">		

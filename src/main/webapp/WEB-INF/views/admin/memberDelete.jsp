@@ -21,7 +21,7 @@
 <body>
 <!-- 메뉴바 include -->
 <%@ include file="../includes/banner.jsp" %>
-		<!-- 컨테이너시작 -->
+<!-- 컨테이너시작 -->
 <section id="main" class="wrapper">
 	<header>
 		<h2>FREDDO</h2>

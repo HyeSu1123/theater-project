@@ -10,13 +10,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>공연 후기 목록</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/freeboard.css">
-<style type="text/css">
-@import url('https://fonts.googleapis.com/css2?family=Hahmlet:wght@200&family=IBM+Plex+Sans+KR:wght@300&display=swap');
-*{
-	font-family: 'Hahmlet', serif;
-	font-family: 'IBM Plex Sans KR', sans-serif;	
-}
-</style>
+
 </head>
 <body>
 <%@ include file="../includes/banner.jsp" %>
@@ -25,16 +19,18 @@
 		<header>
 			<h2>FREDDO</h2>
 				<p class="location">
-				MEMBER <span class="path">/</span> 회원 로그인
+				COMMUNITY <span class="path">/</span> 후기 목록
 				</p>
 		</header>
-		<div class="inner"><h3>공연 후기 목록</h3>
+		<div class="inner">
+		<h3>공연 후기 목록</h3>
 
 <hr>
 
-<div style="margin:auto;">
+<div class="table-wrapper">
  <table>
- 	<tr><th width="10%">번호</th>
+ 	<tr>
+ 		<th width="10%">번호</th>
  		<th width="45%">제목</th>
  		<th width="15%">공연제목</th>
  		<th width="10%">조회수</th>
@@ -43,7 +39,7 @@
  	<c:forEach var="vo" items="${list }"> 
 	<tr>
 		<td>${vo.idx }</td> 	
- 		<td><a href="detail?idx=${vo.idx}&pageNo=${page.pageNo}" class="title">${vo.subject }</a>
+ 		<td><a href="detail.do?idx=${vo.idx}&pageNo=${page.pageNo}" class="title">${vo.subject }</a>
  		...<span style="color:orange;font-size: 80%;">(${vo.commentCount})
  		</span></td>
  		<td>${vo.title }</td>	
@@ -55,8 +51,18 @@
  	</c:forEach>
  	<tr><td colspan="4">Go!
  	<!-- a태그 url요청 get 메소드 -->
- 	<a class="button" href="insert?pageNo=${page.pageNo }">글쓰기</a>
- 	<a class="button" href="${pageContext.request.contextPath }">홈</a></td>
+ 	<c:choose>    
+		<c:when test="${member == null}">  
+	<!-- 로그인 안했을 때 메뉴 --> 
+		<a class="button" href="${pageContext.request.contextPath }">홈</a></td>
+		</c:when>
+		<c:otherwise>  
+		<!-- 로그인했을 때 메뉴 -->
+	 	<a class="button" href="insert.do?pageNo=${page.pageNo }">글쓰기</a>
+	 			<a class="button" href="${pageContext.request.contextPath }">홈</a></td>
+		</c:otherwise>
+	</c:choose>
+ 	
  	<td>작성글 총 개수 : ${page.totalCount}</td>
  	</tr>
  </table>
@@ -78,5 +84,6 @@
 </div>
 </div>
 </section>
+<%@ include file="../includes/footer.jsp" %>
 </body>
 </html>

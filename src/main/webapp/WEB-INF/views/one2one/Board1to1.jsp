@@ -29,7 +29,7 @@
 					 	<c:forEach var="vo" items="${list}"> 
 						<tr>
 							<td align="center">${vo.question_idx }</td> 	
-					 		<td align="center"><a href="detail?question_idx=${vo.question_idx }">${vo.question_title }</a></td>
+					 		<td align="center"><a href="detail.do?question_idx=${vo.question_idx }">${vo.question_title }</a></td>
 					 		<td align="center">${vo.id }</td>
 					 		<td align="center">
 					 		<fmt:formatDate value="${vo.question_date }" pattern="yyyy-MM-dd"/>  
@@ -48,5 +48,6 @@
     <!-- wrap 끝 -->
     </div>
     </section>
+    <%@ include file="../includes/footer.jsp" %>
 </body>
 </html>

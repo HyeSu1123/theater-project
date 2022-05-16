@@ -6,7 +6,7 @@
   <!-- 새글 쓰기  -->
 	<insert id="insert" parameterType="Reviewboard">
 	INSERT INTO REVIEWBOARD (idx,id,subject,title,content)
-	VALUES (review_seq.nextval, #{id},#{subject},#{title},#{content})
+	VALUES (seat_idx_seq.nextval, #{id},#{subject},#{title},#{content})
 	</insert>
 	<!-- 글 수정 --><update id="update" parameterType="Reviewboard">
 	UPDATE REVIEWBOARD SET content=#{content},SUBJECT =CONCAT('(수정)',subject ),
