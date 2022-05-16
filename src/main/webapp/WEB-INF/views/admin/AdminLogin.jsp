@@ -6,42 +6,37 @@
 <head>
 <meta charset="UTF-8">
 <title>Admin</title>
-<%-- 	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common.css">
- </head>--%>
+</head>
 <body>
-	<!-- wrap시작 -->
-	<div id="wrap">
-<%@ include file="../includes/top.jsp" %>
+<%@ include file="../includes/banner.jsp" %>
 		<!-- 컨테이너시작 -->
-		<div id="container">
-			<div class="location_area member">
-				<div class="box_inner">
-					<h2 class="tit_page">Freddo</h2>
-					<p class="location">
-						ADMIN <span class="path">/</span> 로그인
-					</p>
-					
-				</div>
-			</div>
-			<div>
-				<ul>
-					<li><a href="./login.do">회원 로그인</a></li>
-					<li><a href="./admin.do">관리자 로그인</a></li>
-				</ul>
-			</div>
+	<section id="main" class="wrapper">
+		<header>
+			<h2>FREDDO</h2>
+				<p class="location">
+				ADMIN <span class="path">/</span> 관리자 로그인
+				</p>
+		</header>
+		<div class="inner">
+			<ul class="actions">
+				<li><a href="./login.do" class="button primary">MEMBER LOGIN</a></li>
+				<li><a href="./admin.do" class="button">ADMIN LOGIN</a></li>
+			</ul>
+		
 			<!-- 본문 -->
 			<form name="adminLogin" method="post" action="./admin.do">
-			<label for="id">ID</label><br>
-			<input type="text" name="id" id="id" placeholder="ID를 입력해주세요"><br><br>
-			<label for="password">password</label><br>
-			<input type="password" name="password" id="password" placeholder="password를 입력해주세요"><br><br>
-			<input type="hidden" name="authority" value = "0">
-			<input type="submit" value="로그인"><br>
+			<label for="id">ID</label>
+			<input type="text" name="id" id="id" placeholder="ID를 입력해주세요"><br>
+			<label for="password">password</label>
+			<input type="password" name="password" id="password" placeholder="password를 입력해주세요"><br>
+			<input type="hidden" name="authority" id="authority" value="3"> 
+			<input type="submit" value="Login" class="primary" />
 			<div>
-			<span>아직 ID가 없으신가요?</span><a href="admin/adminjoin.do">회원가입</a>
+				<br><span>관리자가 아니신가요?</span><a href="admin/adminjoin.do">회원가입</a>
 			</div>
 			</form>
-		</div>
-	</div>
+			</div>
+		</section>
+<%@ include file="../includes/footer.jsp" %>		
 </body>
 </html>

@@ -7,13 +7,7 @@
 <meta charset="UTF-8">
 <title>공지사항 상세</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/freeboard.css">
-<style type="text/css">
-@import url('https://fonts.googleapis.com/css2?family=Hahmlet:wght@200&family=IBM+Plex+Sans+KR:wght@300&display=swap');
-*{
-	font-family: 'Hahmlet', serif;
-	font-family: 'IBM Plex Sans KR', sans-serif;	
-}
-</style>
+
 <script type="text/javascript">
 function deleteOk(){
 	if(confirm('해당 글을 삭제하시겠습니까?')==true){
@@ -30,8 +24,16 @@ function deleteOk(){
 </head>
 <body>
 <!-- 메뉴바 include -->
-<%@include file="menubar.jsp" %>
-<section>
+<%@ include file="../includes/banner.jsp" %>
+		<!-- 컨테이너시작 -->
+	<section id="main" class="wrapper">
+		<header>
+			<h2>FREDDO</h2>
+				<p class="location">
+				NOTICE <span class="path">/</span> 공지사항
+				</p>
+		</header>
+		<div class="inner">
 	<h3>공지사항</h3>
 	<hr>
 	<div style="margin:auto;">
@@ -57,7 +59,7 @@ function deleteOk(){
 		
 	</div>
 	<!-- 수정, 삭제, 목록 버튼 -->
-	<div style="text-align:center;">	
+	<div style="text-align:center; " class="row gtr-uniform">	
 			<form action="noticeupdate.do" method="post">
 				<input name="idx" type="hidden" value="${detail.notice_idx}">
 				<input name="detail" type="hidden" value="${detail}">
@@ -110,8 +112,9 @@ function deleteOk(){
 		</c:choose>
 		</table>
 	</div>
+	</div>
 </section>
-
+<%@ include file="../includes/footer.jsp" %>
 <script type="text/javascript">
 const url = new URL(window.location.href);	
 const urlParams = url.searchParams;			//URLSearchParams 객체

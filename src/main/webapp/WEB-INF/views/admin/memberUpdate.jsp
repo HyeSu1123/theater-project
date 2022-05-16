@@ -7,14 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>회원 정보 변경</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/freeboard.css">
-<style type="text/css">
-@import url('https://fonts.googleapis.com/css2?family=Hahmlet:wght@200&family=IBM+Plex+Sans+KR:wght@300&display=swap');
-*{
-	font-family: 'Hahmlet', serif;
-	font-family: 'IBM Plex Sans KR', sans-serif;	
-}
-</style>
+
 <script type="text/javascript">	
 	function confirm(id){		//등록할 건지 확인
 		var answer = prompt(id+"님을 관리자로 등록하시겠습니까?\n등록하려면 '관리자로 등록'을 입력하세요.","")
@@ -28,8 +21,16 @@
 </head>
 <body>
 <!-- 메뉴바 include -->
-<%@include file="menubar.jsp" %>
-<section>
+<%@ include file="../includes/banner.jsp" %>
+		<!-- 컨테이너시작 -->
+	<section id="main" class="wrapper">
+		<header>
+			<h2>FREDDO</h2>
+				<p class="location">
+				MEMBER LIST UPDATE <span class="path">/</span> 관리자 변경
+				</p>
+		</header>
+		<div class="inner">
 	<h3>관리자 등록</h3>
 	<hr>
 	<div style="margin:auto;">
@@ -71,6 +72,8 @@
 			</div>
 		</form>
 	</div>
+	</div>
 </section>
+<%@ include file="../includes/footer.jsp" %>
 </body>
 </html>

@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%@ include file="../includes/top2.jsp" %>
+
 <form action="./pw_new.do" method="POST" class="content">
 	<div class="textbox">
 		<input id="pw" name="pw" type="password"><label>새비밀번호</label>

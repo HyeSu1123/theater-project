@@ -25,8 +25,16 @@
 </head>
 <body>
 <!-- 메뉴바 include -->
-<%@include file="menubar.jsp" %>
-<section>
+<%@ include file="../includes/banner.jsp" %>
+		<!-- 컨테이너시작 -->
+	<section id="main" class="wrapper">
+		<header>
+			<h2>FREDDO</h2>
+				<p class="location">
+				SCHEDULE INSERT <span class="path">/</span> 공연 스케줄 등록
+				</p>
+		</header>
+		<div class="inner">
 	<h3>공연 스케줄 등록</h3>
 	<hr>
 	<form action="scheduleinsert.do" method="post">
@@ -78,7 +86,9 @@
 			
 		</div>
 	</form>
+	</div>
 </section>
+<%@ include file="../includes/footer.jsp" %>
 <script type="text/javascript">
 function toDate(timestamp){				//timestamp => date 변환 함수 yyyy-MM-dd
 	var date= new Date(timestamp);

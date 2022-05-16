@@ -32,7 +32,14 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
-						<!-- 추가 설정-->
+		<!-- 추가 설정-->
+		<!-- Jackson -->
+		<dependency> 
+			<groupId>org.codehaus.jackson</groupId> 
+			<artifactId>jackson-mapper-asl</artifactId> 
+			<version>1.9.13</version> 
+		</dependency>
+						
 		<!-- 이메일발송 -->				
 		<dependency>
             <groupId>javax.mail</groupId>

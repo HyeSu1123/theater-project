@@ -2,20 +2,15 @@ package com.company.idev.controller;
 
 
 import java.io.IOException;
-import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.mail.internet.MimeMessage;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,7 +19,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.company.idev.dto.Members;
@@ -52,7 +46,7 @@ public class MemberController {
 	
 	//회원가입
 	@PostMapping("/join.do")
-	public String appForm(Members member) {
+	public String appForm(Members member,RedirectAttributes rda) {
 		String rawPw = "";
 		String encodePw="";
 		
@@ -60,6 +54,7 @@ public class MemberController {
 		encodePw = pwEncoder.encode(rawPw);
 		member.setPassword(encodePw);
 		
+		rda.addFlashAttribute("message","가입이 완료되었습니다");
 		mapper.insert(member);
 		return "redirect:/login.do";
 	}
@@ -133,7 +128,7 @@ public class MemberController {
 			model.addAttribute("updateid",member.getId());
 		}
 		return "member/pw_find";
-	}*/
+	}
 	
 	@RequestMapping(value = "/pw_auth.do")
 	public ModelAndView pw_auth(HttpSession session, HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -184,7 +179,7 @@ public class MemberController {
 			return mv;
 		}
 	
-	}
+	}*/
 	//이메일 인증번호 확인
 	@RequestMapping(value = "/pw_set.do", method = RequestMethod.POST)	
 	public String pw_set(@RequestParam(value="email_injeung") String email_injeung,
@@ -198,9 +193,11 @@ public class MemberController {
 			}
 	} 
 	
-	@PostMapping("/pw_new.do")
-	public String pw_new(Members vo, HttpSession session) throws IOException{
-		int result = mapper.updatePassword(vo);
+/*	@PostMapping("/pw_new.do")
+	public String pw_new(@RequestParam("member") String id, @RequestParam("oldPw") String oldPw, @RequestParam("newPw") 
+		String newPw, HttpSession session, RedirectAttributes redirectAttributes) {
+
+		int result = mapper.updatePassword(id);
 		if(result == 1) {
 			return "memer/MemberLogin";
 		}
@@ -208,6 +205,17 @@ public class MemberController {
 			System.out.println("pw_update"+ result);
 			return "member/pw_new";
 		}
-}
+}*/
+	@PostMapping("/pw_new.do")
+	public String pw_new(Members pw,HttpSession session,RedirectAttributes rda) {
+		mapper.updatePassword(pw);	
+		logger.info("들어오는 값"+pw);
+		Members m = (Members)session.getAttribute("member");
+		m.setPassword(pw.getPassword());
+		session.setAttribute("member", m);
+		rda.addFlashAttribute("message", "수정되었습니다.");
+		return "redirect:mypage.do";
+	}
+	
 	
 }

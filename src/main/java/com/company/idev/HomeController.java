@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.company.idev.dto.Members;
@@ -51,6 +52,7 @@ public class HomeController {
 		
 		return "home";
 	}
+	
 	//회원 로그인
 		@GetMapping("/login.do")
 		public String login() {
@@ -92,6 +94,7 @@ public class HomeController {
 		
 		session.getAttribute("admin");
 		Members login = mapper.loginAdmin(vo);
+		
 		boolean passMatch;
 		
 		if(login != null) {
@@ -100,12 +103,21 @@ public class HomeController {
 			passMatch = false;
 		}
 		
+		
+		logger.info("관리자 번호 확인" + vo.getAuthority());
 		if(login != null && passMatch == true) {
 			session.setAttribute("admin", login);
 			rda.addFlashAttribute("message", "안녕하세요 관리자님.");
 			return "redirect:/";
-			}else {
+			}
+//		else if(vo.getAuthority()!=0 ) {
+//			session.setAttribute("admin",login);
+//			rda.addFlashAttribute("message", "승인 요청중입니다. 현재 이용하실 수 없습니다.");
+//			return "redirect:admin.do";
+//		}
+		else {
 				session.setAttribute("admin", null);
+				rda.addFlashAttribute("message", "승인 요청중입니다. 현재 이용하실 수 없습니다.");
 			}
 			return "redirect:admin.do";
 	}
@@ -117,6 +129,7 @@ public class HomeController {
 
 		return "redirect:/";
 	}
+	
 	
 
 }

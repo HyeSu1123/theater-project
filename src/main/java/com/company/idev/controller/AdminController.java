@@ -3,6 +3,10 @@ package com.company.idev.controller;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -63,8 +67,98 @@ public class AdminController {
 		this.service = service;
 	}
 	
-	//관리자 회원가입
+	//관리자
+		@GetMapping("/admin.do")
+		public String loginadmin() {
+			return "admin/AdminLogin";
+		}
+		@PostMapping("/admin.do")
+		public String loginadmin(Members vo,HttpSession session,RedirectAttributes rda){
+			logger.info("admin login");
+			
+			session.getAttribute("admin");
+			Members login = mapper.loginAdmin(vo);
+			
+			boolean passMatch;
+			
+			if(login != null) {
+				passMatch = pwEncoder.matches(vo.getPassword(), login.getPassword());
+			}else {
+				passMatch = false;
+			}
+			
+			
+			logger.info("관리자 번호 확인" + vo.getAuthority());
+			if(login != null && passMatch == true) {
+				session.setAttribute("admin", login);
+				rda.addFlashAttribute("message", "안녕하세요 관리자님.");
+				return "redirect:/";
+				}
+//			else if(vo.getAuthority()!=0 ) {
+//				session.setAttribute("admin",login);
+//				rda.addFlashAttribute("message", "승인 요청중입니다. 현재 이용하실 수 없습니다.");
+//				return "redirect:admin.do";
+//			}
+			else {
+					session.setAttribute("admin", null);
+					rda.addFlashAttribute("message", "승인 요청중입니다. 현재 이용하실 수 없습니다.");
+				}
+				return "redirect:admin.do";
+		}
+		//로그아웃
+		@GetMapping("/logout.do")
+		public String logout(HttpSession session,RedirectAttributes rda) { 
+			session.invalidate();
+			rda.addFlashAttribute("message", "로그아웃되었습니다.");
+
+			return "redirect:/";
+		}
 	
+	//관리자 회원가입
+	@GetMapping("/adminjoin.do")
+	public String join() {
+		return "admin/AdminJoin";
+	}
+	
+	@PostMapping("/adminjoin.do")
+	public String appForm(Members admin,RedirectAttributes rda) {
+		String rawPw = "";
+		String encodePw="";
+		
+		rawPw = admin.getPassword();
+		encodePw = pwEncoder.encode(rawPw);
+		admin.setPassword(encodePw);
+		
+		rda.addFlashAttribute("message","승인 요청되었습니다. 승인 완료 후 이용 가능합니다");
+		mapper.insertAdmin(admin);
+		return "redirect:/admin.do";
+	}
+
+	//아이디 체크
+	@GetMapping("/idCheck.do")
+	public String idCheck(String id,Model model) {
+		String msg;
+		Pattern p = Pattern.compile("[\\s]");
+		Matcher m = p.matcher(id);
+		Pattern reg =Pattern.compile("[^a-z0-9]");
+		Matcher mreg = reg.matcher(id);
+		
+		if(mapper.checkid(id) != 0)
+			msg="사용할 수 없는 아이디입니다.";
+		else if(id=="") {
+			msg="사용할 수 없는 아이디입니다.";
+		}else if(id.length() < 5 || id.length() > 10) {
+			msg="사용할 수 없는 아이디입니다.";
+		}else if(m.find()) {
+			msg="사용할 수 없는 아이디입니다.";
+		}else if(mreg.find()) {
+			msg="사용할 수 없는 아이디입니다.";
+		}
+		else msg="사용가능한 아이디입니다.";
+		model.addAttribute("id", id);
+		model.addAttribute("msg", msg);
+		return "member/idCheck";
+	}
 	
 	
 	

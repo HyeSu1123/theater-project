@@ -9,13 +9,6 @@
 <meta charset="UTF-8">
 <title>1:1 문의 답변</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/freeboard.css">
-<style type="text/css">
-@import url('https://fonts.googleapis.com/css2?family=Hahmlet:wght@200&family=IBM+Plex+Sans+KR:wght@300&display=swap');
-*{
-	font-family: 'Hahmlet', serif;
-	font-family: 'IBM Plex Sans KR', sans-serif;	
-}
-</style>
 <script type="text/javascript">
 	setTimeout(function(){			//setTimeout 설정(210ms)
 		if(${message != null}) alert('${message}');
@@ -25,8 +18,16 @@
 </head>
 <body>
 <!-- 메뉴바 include -->
-<%@include file="menubar.jsp" %>
-<section>
+<%@ include file="../includes/banner.jsp" %>
+		<!-- 컨테이너시작 -->
+	<section id="main" class="wrapper">
+		<header>
+			<h2>FREDDO</h2>
+				<p class="location">
+				PERFORM INSERT <span class="path">/</span> 공연 등록
+				</p>
+		</header>
+		<div class="inner">
 	<h3>1:1 문의 답변</h3>
 	<hr>
 	<div style="margin:auto;">
@@ -84,6 +85,8 @@
 			</form>
 		</div>
 	</div>
+	</div>
 </section>
+<%@ include file="../includes/footer.jsp" %>
 </body>
 </html>

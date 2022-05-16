@@ -12,7 +12,7 @@ public interface MembersMapper {
 	Members loginAdmin(Members id); //암호화 한 후 관리자 로그인
 	int checkid(String id);	//아이디 체크
 	Members findPassword(String id); //비밀번호 찾기
-	int updatePassword(Members email);
+	void updatePassword(Members password); //비밀번호 바꾸기
 
 	void insert(Members member);	//회원가입
 	void insertAdmin(Members admin);	//관리자 가입

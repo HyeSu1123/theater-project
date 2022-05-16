@@ -9,6 +9,7 @@
 </head>
 <body>
 <%@ include file="../home.jsp" %>
+
 <form class = "content" action="./pw_auth.do" method="post">
 	<div class="textbox">
   		<label for="text">ID</label>
