@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.company.idev.mapper.ReviewBoardMapper">
+  <!-- 새글 쓰기  -->
+	<insert id="insert" parameterType="Reviewboard">
+	INSERT INTO REVIEWBOARD (idx,id,subject,title,content)
+	VALUES (review_seq.nextval, #{id},#{subject},#{title},#{content})
+	</insert>
+	<!-- 글 수정 --><update id="update" parameterType="Reviewboard">
+	UPDATE REVIEWBOARD SET content=#{content},SUBJECT =CONCAT('(수정)',subject ),
+			wdate=sysdate 
+	WHERE idx=#{idx}
+	</update>
+	<!-- 글 상세보기 -->
+	<select id="getOne" parameterType="int" resultType="Reviewboard">
+	SELECT * FROM REVIEWBOARD WHERE idx=#{idx} 
+	</select>
+	<!-- 조회수 증가 -->
+	<update id="readCount" parameterType="int">
+	UPDATE REVIEWBOARD SET readCount=readCount+1 WHERE idx=#{idx}
+	</update>
+	
+	
+	
+	<select id="getPageList" parameterType="Map" resultType="Reviewboard">
+	SELECT * FROM (
+		SELECT rownum AS R ,T.* FROM 
+ 			(SELECT * FROM REVIEWBOARD ORDER BY idx desc ) T)	
+	WHERE R BETWEEN #{startNo} AND #{endNo}	
+	</select>
+	
+	<select id="getCount" resultType="int">
+	SELECT count(*) FROM REVIEWBOARD
+	</select>
+	
+	<delete id="delete" parameterType="int">
+	DELETE FROM REVIEWBOARD WHERE idx=#{idx}
+	</delete>
+  </mapper>

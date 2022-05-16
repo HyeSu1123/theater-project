@@ -40,7 +40,7 @@
 					</li>
 					<li><a href="">Service center</a>
 						<ul class="open">
-							<li><a href="">1:1 문의하기</a></li>
+							<li><a href="${pageContext.request.contextPath }/member/Board1to1.do">1:1 문의하기</a></li>
 						</ul>
 					</li>
 					</c:if>
@@ -64,7 +64,7 @@
 					</li>
 					<li><a href="">Service center</a>
 						<ul class="open">
-							<li><a href="">1:1 문의하기</a></li>
+							<li><a href="${pageContext.request.contextPath }/member/Qinsert.do">1:1 문의하기</a></li>
 							<li><a href="${pageContext.request.contextPath }/admin/questionlist.do">1:1 문의 답변 등록</a></li>
 						</ul>
 					</li>

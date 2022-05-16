@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.idev.mapper.Review_commentMapper">
+
+	<insert id="insert" parameterType="Review_comment">
+	insert into RVCOMMENTS(idx,bd_idx,id,content)
+	values(cmt_idx_seq.nextval,#{bd_idx},#{id},#{content})
+	</insert>
+	<select id="list" parameterType="int" resultType="Review_comment">
+	<!-- 메인글에 대한 댓글 목록 가져오기 -->
+	select * from RVCOMMENTS where bd_idx=#{bd_idx}
+	</select>
+	<update id="commentCountUp" parameterType="int">
+	<!-- freeboard테이블의 댓글갯수 컬럼값 증가 : insert 의 트랜잭션 -->
+	update REVIEWBOARD set commentCount=commentCount+1
+	where idx=#{idx}	
+	</update>
+	
+	<delete id="delete" parameterType="int">
+	delete from comments where idx=#{idx}
+	</delete>
+	<update id="commentCountDown" parameterType="int">
+	<!-- freeboard테이블의 댓글갯수 컬럼값 감소 : delete의 트랜잭션-->
+	update REVIEWBOARD set commentCount=commentCount-1
+	where idx=#{idx}	
+	</update>
+	<!-- 댓글 추가/삭제 동시에 적용가능 -->
+	<update id="updateCmtCount" parameterType="int">
+		update REVIEWBOARD set commentCount=(
+			select count(*)	from comments where bd_idx=#{idx}
+		)
+		where idx=#{idx}
+	</update>
+	
+	
+</mapper>

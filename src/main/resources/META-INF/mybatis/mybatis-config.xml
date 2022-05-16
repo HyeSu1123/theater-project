@@ -16,7 +16,7 @@
 		<typeAlias type="com.company.idev.dto.Performance" alias="Performance"/>
 		<typeAlias type="com.company.idev.dto.Question" alias="Question"/>
 		<typeAlias type="com.company.idev.dto.Review_comment" alias="Review_comment"/>
-		<typeAlias type="com.company.idev.dto.Review" alias="Review"/>
+		<typeAlias type="com.company.idev.dto.Reviewboard" alias="Reviewboard"/>
 		<typeAlias type="com.company.idev.dto.Schedules" alias="Schedules"/>
 		<typeAlias type="com.company.idev.dto.Ticket" alias="Ticket"/>
 		<typeAlias type="java.util.Map" alias="Map"/>

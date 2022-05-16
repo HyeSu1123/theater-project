@@ -93,7 +93,7 @@
 			<fieldset>
 			<form action="./update.do" method="post" name="appForm">
 			<input type="hidden" name="id" value="${member.id}">
-			
+			<!-- Qinsert.do -->
 				<table>
 					<tr>
 						<td>이름</td>
@@ -137,6 +137,8 @@
 					</tr>
 				</table>
 				</form>
+							<a href="${pageContext.request.contextPath }/member/PersonalBoard" class="button primary fit">1:1 문의하기</a>
+				
 				</fieldset>
 	</div>
 </section>
