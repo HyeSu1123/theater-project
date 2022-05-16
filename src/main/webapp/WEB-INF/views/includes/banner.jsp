@@ -35,15 +35,17 @@
 						<a href="">Community</a>
 						<ul class="open">
 							<li><a href="${pageContext.request.contextPath }/admin/noticelist.do">Notice</a></li>
-							<li><a href="">관람 후기</a></li>
+							<li><a href="${pageContext.request.contextPath }/community/list.do">관람 후기</a></li>
 						</ul>
 					</li>
+					</c:if>
+				<c:if test="${member != null}">
 					<li><a href="">Service center</a>
 						<ul class="open">
-							<li><a href="">1:1 문의하기</a></li>
+							<li><a href="${pageContext.request.contextPath }/member/Board1to1.do">1:1 문의하기</a></li>
 						</ul>
 					</li>
-				</c:if>
+					</c:if>
 				<c:if test="${admin != null}">
 				<li><a href="${pageContext.request.contextPath }/main.do">ADMIN PAGE</a></li>
 					<li><a href="${pageContext.request.contextPath }/admin/memberlist.do">Member List</a></li>
@@ -64,7 +66,7 @@
 					</li>
 					<li><a href="">Service center</a>
 						<ul class="open">
-							<li><a href="">1:1 문의하기</a></li>
+							<li><a href="${pageContext.request.contextPath }/member/qinsert.do">1:1 문의하기</a></li>
 							<li><a href="${pageContext.request.contextPath }/admin/questionlist.do">1:1 문의 답변 등록</a></li>
 						</ul>
 					</li>

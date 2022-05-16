@@ -15,23 +15,25 @@
 		<header>
 			<h2>FREDDO</h2>
 				<p class="location">
-				MEMBER <span class="path">/</span> 회원 로그인
+				COMMUNITY <span class="path">/</span> 후기 작성
 				</p>
 		</header>
 		<div class="inner">
-<h3>우리동네 커뮤니티</h3>
+<h3>관람후기 작성</h3>
 <hr>
 
-<form name="frm1" method="post" action="insert">
+<form name="frm1" method="post" action="./insert.do">
  <input type="hidden" name="ip" value="${pageContext.request.remoteAddr}">  <!-- 클라이언트 ip -->
- <table style="width:80%;">
+ <div class="table-wrapper">
+ <table>
  	<tr><td width="30%" class="td1">제목</td>
  		<td class="left"><input type="text" name="subject" size="70" class="input1" 
  					required="required"></td>
  	</tr>
  	<tr><td class="td1">작성자</td>
- 		<td class="left"><input type="text" name="id" size="70" class="input1" 
- 					required="required"></td>
+ 		<td class="left">
+ 		<input type="text" name="id" size="70" class="input1" 
+ 					required="required"  value=${member.id} readonly></td>
  	</tr>
  	 	<tr><td class="td1">공연 이름</td>
  		<td class="left"><input type="text" name="title" size="70" class="input1" 
@@ -42,17 +44,19 @@
  					required="required"></textarea></td>
  	</tr>
  	<tr><td colspan="2" align="center">
- 	<input type="submit" value="저장" class="btn" >
+ 	<input type="submit" value="저장" class="button primary" >
  	<!-- <a class="button" href="javascript:post_data();">저장</a> -->
- 	<input type="reset"  value="다시쓰기" class="btn">
+ 	<input type="reset"  value="다시쓰기" class="button">
  	<input type="button" value="목록" 
- 			onclick="location.href='list?pageNo=${page}'" class="btn">
+ 			onclick="location.href='list.do?pageNo=${page}'" class="button primary">
  			<!--글쓰기 오기전에 보고있었던 페이지 번호로 돌아가기  -->
  <!-- 	<a class="button" href="#">목록</a>  -->
  	</td></tr>
  </table>
+ </div>
  </form>
  </div>
  </section>
+ <%@ include file="../includes/footer.jsp" %>
 </body>
 </html>
