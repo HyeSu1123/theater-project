@@ -42,7 +42,7 @@
 					<c:if test="${member != null}">
 					<li><a href="">Service center</a>
 						<ul class="open">
-							<li><a href="${pageContext.request.contextPath }/member/Board1to1.do">1:1 문의하기</a></li>
+							<li><a href="${pageContext.request.contextPath }/member/qinsert.do">1:1 문의하기</a></li>
 						</ul>
 					</li>
 					</c:if>

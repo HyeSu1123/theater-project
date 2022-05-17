@@ -35,9 +35,9 @@ public class QnAController {
 	
 	
 	@RequestMapping("Board1to1.do")//문의내역 아이디로 검색해서 가져오고 내역 view띄워줌
-	public String Board1to1 (Members member,Model model,HttpSession session,Question question) {
-		String id = member.getId();//추후에 member.getid()로 변경
-		model.addAttribute("list",mapper.getQuestion(id));
+	public String Board1to1 (Members member,Model model,HttpSession session) {
+		Members id = (Members)session.getAttribute("member");
+		model.addAttribute("list",mapper.getQuestion(id.getId()));
 		return "one2one/Board1to1";
 	}
 	
