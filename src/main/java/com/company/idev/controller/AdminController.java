@@ -15,6 +15,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -67,6 +68,20 @@ public class AdminController {
 		this.service = service;
 	}
 	
+	@RequestMapping("/")
+	public String getnoticeList(@RequestParam(required=false, defaultValue = "1")
+	int pageNo,Model model) {
+		PageDto page = new PageDto(pageNo,10,notice_mapper.getCount());
+		
+		Map<String,Integer> map = new HashMap<>();
+		map.put("startNo", page.getStartNo());
+		map.put("endNo", page.getEndNo());
+		List<Notice> list = notice_mapper.getNoticeList(map);
+		
+		model.addAttribute("page",page);
+		model.addAttribute("listN",list);
+		return "admin/noticeList";
+	}
 	
 	//관리자 회원가입
 	@GetMapping("/adminjoin.do")
@@ -137,6 +152,8 @@ public class AdminController {
 		
 		return "admin/memberList";
 	}
+	
+	
 //검색하여 조회
 	@RequestMapping("membersearch.do")
 	public String search(@RequestParam(required=false, defaultValue = "1")

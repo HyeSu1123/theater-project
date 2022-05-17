@@ -21,4 +21,6 @@ public interface NoticeMapper {
 	int getSearchCount(Map<String,String> map);
 	void readCount(int idx);
 	void insertNotice(Notice vo);
+
+	List<Notice> getNoticeList(Map<String,Integer> map);
 }

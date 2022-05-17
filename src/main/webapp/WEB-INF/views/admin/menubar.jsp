@@ -68,8 +68,8 @@
 			<section id="banner">
 				<div class="inner">
 					<div class="content">
-						<h2>Sed feugiat amet adipiscing</h2>
-						<p>Amet tincidunt arcu suspendisse consequat</p>
+						<h2>FREDDO Administrator Page</h2>
+						<p>Various performances are waiting for you. Do you want to go see it with me now?</p>
 					</div>
 					<ul class="actions stacked">
 						<li><a href="#" class="button primary major">Get Started</a></li>

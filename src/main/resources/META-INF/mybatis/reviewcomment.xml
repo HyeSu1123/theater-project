@@ -19,17 +19,19 @@
 	</update>
 	
 	<delete id="delete" parameterType="int">
-	delete from comments where idx=#{idx}
+	delete from RVCOMMENTS where idx=#{idx}
 	</delete>
+	
 	<update id="commentCountDown" parameterType="int">
 	<!-- freeboard테이블의 댓글갯수 컬럼값 감소 : delete의 트랜잭션-->
 	update REVIEWBOARD set commentCount=commentCount-1
 	where idx=#{idx}	
 	</update>
+	
 	<!-- 댓글 추가/삭제 동시에 적용가능 -->
 	<update id="updateCmtCount" parameterType="int">
 		update REVIEWBOARD set commentCount=(
-			select count(*)	from comments where bd_idx=#{idx}
+			select count(*)	from comments where bd_idx=#{idx }
 		)
 		where idx=#{idx}
 	</update>

@@ -92,13 +92,15 @@
 			<section id="banner">
 				<div class="inner">
 					<div class="content">
-						<h2>Sed feugiat amet adipiscing</h2>
-						<p>Amet tincidunt arcu suspendisse consequat</p>
+						<h2>Why don't you have a good time at FREDDO?</h2>
+						<p>Various performances are waiting for you. Do you want to go see it with me now?</p>
 					</div>
-					<ul class="actions stacked">
-						<li><a href="#" class="button primary major">Get Started</a></li>
-						<li><a href="#" class="button major">More Info</a></li>
-					</ul>
+					<c:if test="${member == null && admin == null}">
+						<ul class="actions stacked">
+						<li><a href="${pageContext.request.contextPath }/login.do" class="button fit">Log In</a></li>
+						<li><a href="${pageContext.request.contextPath }/member/join.do" class="button primary fit">Sign Up</a></li>
+						</ul>
+					</c:if>
 				</div>
 			</section>
 
