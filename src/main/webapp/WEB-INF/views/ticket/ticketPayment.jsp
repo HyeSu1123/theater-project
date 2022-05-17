@@ -77,46 +77,56 @@ ul{
 </style>
 </head>
 <body>
-<div class="clearp2">
-	<div class="choice">1. 날짜/시간 선택</div>
-	<div class="choice2">2. 좌석 선택</div>
-	<div class="choice top">3. 결제</div>
-</div>
-<div class="clearp">
-	<div class="poster">
-	<img src="/upload/${performinfo.poster}" width="175px" height="250px" style="object-fit:contain">
-	</div>
-	<div class="perform_info">
-		<h4>${performinfo.perform_title}</h4>
-		<hr>
-		<table style="text-align:left;">
-			<tr>
-				<th style="width:30%;">극장 :</th>
-				<td>${performinfo.theater_name}</td>
-			</tr>
-			<tr>
-				<th>공연일</th>
-				<td><fmt:formatDate value="${scheduleinfo.perform_date}" pattern="yyyy년 MM월 dd일"/></td>
-			</tr>
-			<tr>
-				<th>공연 시간</th>
-				<td>${scheduleinfo.start_time}</td>
-			</tr>
-			<tr>
-				<th>인원</th>
-				<td>${number} 명</td>
-			</tr>
-			<tr>
-				<th>좌석</th>
-				<td>${choicedseat}</td>
-			</tr>
-			<tr>
-				<th>총 결제 금액</th>
-				<td>${payprice} 원</td>
-			</tr>
-		</table>
-	</div>
-</div>
+<%@ include file="../includes/banner.jsp" %>
+		<!-- 컨테이너시작 -->
+	<section id="main" class="wrapper">
+		<header>
+			<h2>FREDDO</h2>
+				<p class="location">
+				TICKET <span class="path">/</span> 결제
+				</p>
+		</header>
+		<div class="inner">
+		<div class="clearp2">
+			<div class="choice">1. 날짜/시간 선택</div>
+			<div class="choice2">2. 좌석 선택</div>
+			<div class="choice top">3. 결제</div>
+		</div>
+		<div class="clearp">
+			<div class="poster">
+				<img src="/upload/${performinfo.poster}" width="175px" height="250px" style="object-fit:contain">
+			</div>
+			<div class="perform_info">
+			<h4>${performinfo.perform_title}</h4>
+			<hr>
+			<table style="text-align:left;">
+				<tr>
+					<th style="width:30%;">극장 :</th>
+					<td>${performinfo.theater_name}</td>
+				</tr>
+				<tr>
+					<th>공연일</th>
+					<td><fmt:formatDate value="${scheduleinfo.perform_date}" pattern="yyyy년 MM월 dd일"/></td>
+				</tr>
+				<tr>
+					<th>공연 시간</th>
+					<td>${scheduleinfo.start_time}</td>
+				</tr>
+				<tr>
+					<th>인원</th>
+					<td>${number} 명</td>
+				</tr>
+				<tr>
+					<th>좌석</th>
+					<td>${choicedseat}</td>
+				</tr>
+				<tr>
+					<th>총 결제 금액</th>
+					<td>${payprice} 원</td>
+				</tr>
+			</table>
+			</div>
+		</div>
 <form action="ticketsuccess.do" method="post">
 	<input type="hidden" name="schedule_idx" value="${schedule_idx}">
 	<input type="hidden" name="choiceseat" value="${choiceseat}">
@@ -124,7 +134,9 @@ ul{
 	<input type="hidden" name="payprice" value="${payprice}">
 	<input type="hidden" name="id" value="${member.id}">
 </form>
-<button id="payment">결제하기</button>
+<button id="payment" class="button primary small">결제하기</button>
+</div>
+</section>
 <script type="text/javascript">
 //문서 준비 시 제일 먼저 실행
 $(document).ready(function(){

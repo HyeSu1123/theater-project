@@ -11,6 +11,9 @@
 </script>
 </head>
 <body>
+<script type="text/javascript">
+	if(${message != null}) alert('${message}');
+</script>
 	<!-- wrap시작 -->
 <%@ include file="../includes/banner.jsp" %>
 		<!-- Main -->

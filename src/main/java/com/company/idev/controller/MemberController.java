@@ -89,6 +89,7 @@ public class MemberController {
 	public String page() {
 		return "member/MyPage";
 	}
+
 	
 	//마이페이지 수정
 	@PostMapping("update.do")

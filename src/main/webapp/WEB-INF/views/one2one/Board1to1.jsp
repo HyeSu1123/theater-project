@@ -13,7 +13,7 @@
 		<header>
 			<h2>FREDDO</h2>
 				<p class="location">
-				NOTICE <span class="path">/</span> 문의내역
+				SERVICE CENTER <span class="path">/</span> 문의내역
 				</p>
 		</header>
 		<div class="inner">

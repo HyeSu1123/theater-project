@@ -9,15 +9,8 @@
 <meta charset="UTF-8">
 <title>공연 목록</title>
 <style type="text/css">
-@import url('https://fonts.googleapis.com/css2?family=Hahmlet:wght@200&family=IBM+Plex+Sans+KR:wght@300&display=swap');
-*{
-	font-family: 'Hahmlet', serif;
-	font-family: 'IBM Plex Sans KR', sans-serif;	
-}
-ul{
-	list-style:none;
-	padding-left:1px;]
-}
+
+
 .poster{
 	margin:20px;
 }
@@ -45,29 +38,39 @@ input[type="radio"] {display:none;}
 input[type="radio"] + label {display:inline-block;padding:20px; cursor:pointer;}
 input[type="radio"] + label:hover{ color:#2498db; font-weight:bold;}
 input[type="radio"]:checked + label {border-bottom:2px solid #3498db; color:#3498db;font-weight:bold;}
-.conbox{width:800px; margin:0 auto;display:none;}
 input[id="tab01"]:checked~.con1{display:block;}
 input[id="tab02"]:checked~.con2{display:block;}
 </style>
 </head>
 <body>
-<div class="tab_content" style="text-align:center">
-	<input type="radio" name="tabmenu" id="tab01" checked>
-	<label for="tab01">현재/예정 공연</label>
-	<input type="radio" name="tabmenu" id="tab02">
-	<label for="tab02">지난 공연</label>
+<%@ include file="../includes/banner.jsp" %>
+		<!-- 컨테이너시작 -->
+	<section id="main" class="wrapper">
+		<header>
+			<h2>FREDDO</h2>
+				<p class="location">
+				PERFORM <span class="path">/</span> 공연 목록
+				</p>
+		</header>
+		<div class="inner">
+		<div class="tab_content" style="text-align:center">
+		<input type="radio" name="tabmenu" id="tab01" checked>
+		<label for="tab01">현재/예정 공연</label>
+		<input type="radio" name="tabmenu" id="tab02">
+		<label for="tab02">지난 공연</label>
 	
-	<div class="conbox con1">
 			<div class="clear2" style="text-align:left">
 				<c:forEach var="vo" items="${nowlist}">
 				<div class="clearp">
 						<div class="poster">
 						<img src="/upload/${vo.poster}" width="175px" height="250px" style="object-fit:contain">
 						</div>
+						<div class="row">
 						<div class="perform_info">
+						<div class="col-6 col-12-medium">
 							<h3>${vo.perform_title}</h3>
 							<hr>
-							<ul>
+							<ul class="alt">
 								<li><span>공연 일정 : </span>
 									<fmt:formatDate value="${vo.start_date}" pattern="yyyy년 MM월 dd일"/> ~ 
 									<fmt:formatDate value="${vo.end_date}" pattern="yyyy년 MM월 dd일"/>
@@ -75,14 +78,14 @@ input[id="tab02"]:checked~.con2{display:block;}
 								<li><span>공연 장소 : </span>${vo.theater_name}</li>
 								<li><span>입 장 료  : </span>${vo.theater_fee}</li>
 								<li><span>관람 등급 : </span>${vo.grade} 관람가</li>
-								<li><span></span></li>
-								<li><span></span></li>
+							</ul>
+							<ul class="alt">
+								<li><button type="button" onclick="location.href='detailnow.do?idx=${vo.perform_idx}'">상세정보</button>
+								<button type="button" onclick="location.href='../ticket/choice.do?idx=${vo.perform_idx}&tidx=${vo.theater_idx}'">예매하기</button></li>
 							</ul>
 						</div>
-						<div class="perform_button">
-							<button type="button" onclick="location.href='detailnow.do?idx=${vo.perform_idx}'">상세정보</button>
-							<button type="button" onclick="location.href='../ticket/choice.do?idx=${vo.perform_idx}&tidx=${vo.theater_idx}'">예매하기</button>
-						</div>
+				</div>
+				</div>
 				</div>
 				</c:forEach>
 			</div>
@@ -95,10 +98,12 @@ input[id="tab02"]:checked~.con2{display:block;}
 						<div class="poster">
 						<img src="/upload/${vo.poster}" width="175px" height="250px" style="object-fit:contain">
 						</div>
+						<div class="row">
 						<div class="perform_info">
+						<div class="col-6 col-12-medium">
 							<h3>${vo.perform_title}</h3>
 							<hr>
-							<ul>
+							<ul class="alt">
 								<li><span>공연 일정 : </span>
 									<fmt:formatDate value="${vo.start_date}" pattern="yyyy년 MM월 dd일"/> ~ 
 									<fmt:formatDate value="${vo.end_date}" pattern="yyyy년 MM월 dd일"/>
@@ -106,12 +111,12 @@ input[id="tab02"]:checked~.con2{display:block;}
 								<li><span>공연 장소 : </span>${vo.theater_name}</li>
 								<li><span>입 장 료  : </span>${vo.theater_fee}</li>
 								<li><span>관람 등급 : </span>${vo.grade} 관람가</li>
-								<li><span></span></li>
-								<li><span></span></li>
+							</ul>
+							<ul class="alt">
+								<li><button type="button" onclick="location.href='detaillast.do?idx=${vo.perform_idx}'">상세정보</button><br></li>
 							</ul>
 						</div>
-						<div class="perform_button">
-							<button type="button" onclick="location.href='detaillast.do?idx=${vo.perform_idx}'">상세정보</button><br>
+						</div>
 						</div>
 				</div>
 				</c:forEach>
@@ -119,5 +124,8 @@ input[id="tab02"]:checked~.con2{display:block;}
 		</div>
 	</div>
 </div>
+</section>
+<%@ include file="../includes/footer.jsp" %>
+
 </body>
 </html>

@@ -29,6 +29,16 @@
 </style>
 </head>
 <body>
+<%@ include file="../includes/banner.jsp" %>
+		<!-- 컨테이너시작 -->
+	<section id="main" class="wrapper">
+		<header>
+			<h2>FREDDO</h2>
+				<p class="location">
+				TICKET <span class="path">/</span> 결제
+				</p>
+		</header>
+		<div class="inner">
 <div class="clearp">
 	<h2>예매가 완료되었습니다. 이용해 주셔서 감사합니다.</h2>
 </div>
@@ -74,5 +84,7 @@
 <div class="clearp">
 	<button onclick="location.href='${pageContext.request.contextPath}'">홈으로</button>
 </div>
+</div>
+</section>
 </body>
 </html>

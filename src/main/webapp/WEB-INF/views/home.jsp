@@ -95,17 +95,13 @@ function showSlides(a,n) {
 							  <span class="dot" onclick="currentSlide(${main.count },${stat.count})"></span>
 							</c:forEach>
 					</div>	
-					</div>
-		
-		<a class="prev" onclick="plusSlides(${main.count },-1)">&#10094;</a> 
-		<a class="next" onclick="plusSlides(${main.count },1)">&#10095;</a>
-	</div>
-
-	</c:forEach>
-				<nav>
+					<nav>
 					<a href="#" class="previous"><span class="label">Previous</span></a>
 					<a href="#" class="next"><span class="label">Next</span></a>
 				</nav>
+
+	</c:forEach>
+				
 			</section>
 
 
@@ -115,7 +111,6 @@ function showSlides(a,n) {
 				<div class="inner">
 					<div class="spotlights">
 						<section>
-							<span class="image"><img src="images/pic05.jpg" alt="" /></span>
 							<div class="content">
 								<h2>NOTICE</h2>
 								<div class="row">

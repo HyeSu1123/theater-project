@@ -75,7 +75,9 @@
  		}
  	}
  </script>
-
+<script type="text/javascript">
+	if(${message != null}) alert('${message}');
+</script>
 </head>
 <body>
 <%@ include file="../includes/banner.jsp" %>
@@ -139,6 +141,47 @@
 				</form>
 				</fieldset>
 				<a class="button primary small fit" href="${pageContext.request.contextPath }/member/qinsert.do">1:1문의 글 쓰기</a>
+	
+	<div class="clearp">
+	<h3>예매 내역</h3>
+</div>
+<div class="clearp">
+	<div class="poster">
+		<img src="/upload/${performinfo.poster}" width="175px" height="250px" style="object-fit:contain">
+	</div>
+	<div class="perform_info">
+		<h4>${performinfo.perform_title}</h4>
+		<hr>
+		<table style="text-align:left;">
+			<tr>
+				<th>예매 번호</th>
+				<td>${ticketno}</td>
+			</tr>
+			<tr>
+				<th style="width:30%;">극장</th>
+				<td>${performinfo.theater_name}</td>
+			</tr>
+			<tr>
+				<th>공연일</th>
+				<td><fmt:formatDate value="${scheduleinfo.perform_date}" pattern="yyyy년 MM월 dd일"/></td>
+			</tr>
+			<tr>
+				<th>공연 시간</th>
+				<td>${scheduleinfo.start_time}</td>
+			</tr>
+			<tr>
+				<th>인원</th>
+				<td>${number} 명</td>
+			</tr>
+			<tr>
+				<th>좌석</th>
+				<td>${choicedseat}</td>
+			</tr>
+
+		</table>
+	</div>
+</div>
+	
 	</div>	
 </section>
 <%@ include file="../includes/footer.jsp" %>

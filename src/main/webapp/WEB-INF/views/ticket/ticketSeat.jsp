@@ -226,6 +226,7 @@ input:disabled +label{
 </style>
 </head>
 <body>
+
 <div class="clearp2">
 	<div class="choice">1. 날짜/시간 선택</div>
 	<div class="choice2 top">2. 좌석 선택</div>

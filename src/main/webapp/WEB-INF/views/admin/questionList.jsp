@@ -19,7 +19,7 @@
 		<header>
 			<h2>FREDDO</h2>
 				<p class="location">
-				CONTACT LIST <span class="path">/</span> 1:1 문의 목록
+				SERVICE CENTER <span class="path">/</span> 1:1 문의 목록
 				</p>
 		</header>
 		<div class="inner">
@@ -110,6 +110,7 @@
 		<input name="find" type="hidden">		<!-- find[1] -->
 		<input name="pageNo" type="hidden">
 	</form>
+	</div>
 </section>
 <script type="text/javascript">
 var href=window.location.pathname;				//memberList.do 또는 search.do 가져오기
@@ -163,5 +164,6 @@ var href=window.location.pathname;				//memberList.do 또는 search.do 가져오
 			}
 		}
    </script>
+   <%@ include file="../includes/footer.jsp" %>
 </body>
 </html>

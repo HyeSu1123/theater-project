@@ -15,10 +15,10 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/assets/css/main.css" />
 	</head>
-	<body class="is-preload">
-<script type="text/javascript">
+	<script type="text/javascript">
 	if(${message != null}) alert('${message}');
 </script>
+	<body class="is-preload">
 		<!-- Header -->
 			<header id="header" class="alt">
 				<h1>
@@ -31,7 +31,7 @@
 				<ul class="links">
 				<c:if test="${member == null && admin == null || member != null}">
 					<li><a href="${pageContext.request.contextPath }/">Home</a></li>
-					<li><a href="">Performance</a></li>
+					<li><a href="${pageContext.request.contextPath }/perform/nowlist.do">Performance</a></li>
 					<li>
 						<a href="">Community</a>
 						<ul class="open">
@@ -53,6 +53,7 @@
 					<li>
 						<a href="">Performance</a>
 						<ul class="open">
+							<li><a href="${pageContext.request.contextPath }/perform/nowlist.do">공연 목록</a></li>
 							<li><a href="${pageContext.request.contextPath }/admin/performinsert.do">공연 등록</a></li>
 							<li><a href="${pageContext.request.contextPath }/admin/scheduleinsert.do">공연 스케줄 등록</a></li>
 						</ul>

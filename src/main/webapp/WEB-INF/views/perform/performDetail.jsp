@@ -37,6 +37,16 @@ ul{
 </style>
 </head>
 <body>
+<%@ include file="../includes/banner.jsp" %>
+		<!-- 컨테이너시작 -->
+	<section id="main" class="wrapper">
+		<header>
+			<h2>FREDDO</h2>
+				<p class="location">
+				PERFORM <span class="path"></span>
+				</p>
+		</header>
+		<div class="inner">
 <div style="margin:auto;">
 	<div class="clear2">
 		<div class="clearp">
@@ -54,8 +64,6 @@ ul{
 						<li><span>공연 장소 : </span>${detail.theater_name}</li>
 						<li><span>입 장 료  : </span>${detail.theater_fee}</li>
 						<li><span>관람 등급 : </span>${detail.grade} 관람가</li>
-						<li><span></span></li>
-						<li><span></span></li>
 					</ul>
 				</div>
 		</div>
@@ -65,5 +73,9 @@ ul{
 		<div class="clearp"><button type="button" onclick="history.back();">뒤로가기</button></div>
 	</div>
 </div>
+</div>
+</section>
+<%@ include file="../includes/footer.jsp" %>
+
 </body>
 </html>

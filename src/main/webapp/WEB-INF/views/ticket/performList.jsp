@@ -42,6 +42,16 @@ ul{
 </style>
 </head>
 <body>
+<%@ include file="../includes/banner.jsp" %>
+		<!-- 컨테이너시작 -->
+	<section id="main" class="wrapper">
+		<header>
+			<h2>FREDDO</h2>
+				<p class="location">
+				PERFORM <span class="path">/</span> 공연 목록
+				</p>
+		</header>
+		<div class="inner">
 <div style="margin:auto;">
 	<div class="clear2">
 		<c:forEach var="vo" items="${list}">
@@ -60,8 +70,6 @@ ul{
 						<li><span>공연 장소 : </span>${vo.theater_name}</li>
 						<li><span>입 장 료  : </span>${vo.theater_fee}</li>
 						<li><span>관람 등급 : </span>${vo.grade} 관람가</li>
-						<li><span></span></li>
-						<li><span></span></li>
 					</ul>
 				</div>
 				<div class="perform_button">
@@ -71,5 +79,9 @@ ul{
 		</c:forEach>
 	</div>
 </div>
+</div>
+</section>
+<%@ include file="../includes/footer.jsp" %>
+
 </body>
 </html>

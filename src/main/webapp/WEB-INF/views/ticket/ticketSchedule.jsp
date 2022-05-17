@@ -80,6 +80,7 @@ function validCheck(){
 </script>
 </head>
 <body>
+
 <div class="clearp2">
 	<div class="choice top">1. 날짜/시간 선택</div>
 	<div class="choice2">2. 좌석 선택</div>
@@ -100,8 +101,6 @@ function validCheck(){
 			<li><span>공연 장소 : </span>${perform.theater_name}</li>
 			<li><span>입 장 료  : </span>${perform.theater_fee}</li>
 			<li><span>관람 등급 : </span>${perform.grade} 관람가</li>
-			<li><span></span></li>
-			<li><span></span></li>
 		</ul>
 	</div>
 </div>

@@ -53,7 +53,7 @@ function deleteOk(){
 		
 			<h2>FREDDO</h2>
 			<p class="location">
-				MEMBER <span class="path">/</span> 공연 후기
+				COMMUNITY <span class="path">/</span> 공연 후기
 			</p>
 		</header>
 		<div class="inner">
@@ -190,5 +190,6 @@ function deleteOk(){
 			</form>
 		</div>
 	</section>
+	<%@ include file="../includes/footer.jsp" %>
 </body>
 </html>
