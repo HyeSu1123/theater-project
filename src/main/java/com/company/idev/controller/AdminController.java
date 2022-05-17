@@ -68,20 +68,7 @@ public class AdminController {
 		this.service = service;
 	}
 	
-	@RequestMapping("/")
-	public String getnoticeList(@RequestParam(required=false, defaultValue = "1")
-	int pageNo,Model model) {
-		PageDto page = new PageDto(pageNo,10,notice_mapper.getCount());
-		
-		Map<String,Integer> map = new HashMap<>();
-		map.put("startNo", page.getStartNo());
-		map.put("endNo", page.getEndNo());
-		List<Notice> list = notice_mapper.getNoticeList(map);
-		
-		model.addAttribute("page",page);
-		model.addAttribute("listN",list);
-		return "admin/noticeList";
-	}
+
 	
 	//관리자 회원가입
 	@GetMapping("/adminjoin.do")
