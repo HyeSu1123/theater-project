@@ -39,13 +39,13 @@
 						</ul>
 					</li>
 					</c:if>
-					<c:if test="${member != null}">
+					
 					<li><a href="">Service center</a>
 						<ul class="open">
 							<li><a href="${pageContext.request.contextPath }/member/Board1to1.do">1:1 문의 목록</a></li>
 						</ul>
 					</li>
-					</c:if>
+					
 					<c:if test="${admin != null}">
 				<li><a href="${pageContext.request.contextPath }/main.do">ADMIN PAGE</a></li>
 					<li><a href="${pageContext.request.contextPath }/admin/memberlist.do">Member List</a></li>
