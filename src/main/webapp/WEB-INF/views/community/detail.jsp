@@ -161,7 +161,7 @@ function deleteOk(){
 										
 										 <a
 											href="javascript:delete_cmt(`${cmt.idx}`)"> <img
-												alt="삭제" src="${image }/delete.png" style="width: 20px;"></a>
+												alt="삭제" src="${pageContext.request.contextPath }/resources/image/delete.png" style="width: 20px;"></a>
 										</span>
 								</c:when>
 								<c:otherwise>

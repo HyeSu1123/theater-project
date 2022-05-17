@@ -19,6 +19,8 @@
 		<typeAlias type="com.company.idev.dto.Reviewboard" alias="Reviewboard"/>
 		<typeAlias type="com.company.idev.dto.Schedules" alias="Schedules"/>
 		<typeAlias type="com.company.idev.dto.Ticket" alias="Ticket"/>
+		<typeAlias type="com.company.idev.dto.Theater" alias="Theater"/>
+		<typeAlias type="com.company.idev.dto.Seat" alias="Seat"/>
 		<typeAlias type="java.util.Map" alias="Map"/>
 	</typeAliases>
 

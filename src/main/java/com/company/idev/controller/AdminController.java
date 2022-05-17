@@ -28,12 +28,14 @@ import com.company.idev.dto.PageDto;
 import com.company.idev.dto.Performance;
 import com.company.idev.dto.Question;
 import com.company.idev.dto.Schedules;
+import com.company.idev.dto.Theater;
 import com.company.idev.mapper.AnswerMapper;
 import com.company.idev.mapper.MembersMapper;
 import com.company.idev.mapper.NoticeMapper;
 import com.company.idev.mapper.PerformanceMapper;
 import com.company.idev.mapper.QuestionMapper;
 import com.company.idev.mapper.SchedulesMapper;
+import com.company.idev.mapper.TheaterMapper;
 import com.company.idev.service.AdminService;
 
 @Controller
@@ -58,6 +60,9 @@ public class AdminController {
 	
 	@Autowired
 	SchedulesMapper schedule_mapper;
+	
+	@Autowired
+	TheaterMapper theater_mapper;
 	
 	@Autowired
 	public BCryptPasswordEncoder pwEncoder;
@@ -291,10 +296,13 @@ public class AdminController {
 
 //공연 등록
 	@GetMapping("performinsert.do")
-	public String performInsert() {
-		
+	public String performInsert(Model model) {
+		List<Theater> list = theater_mapper.selectAll();
+		model.addAttribute("list", list);
 		return "admin/performInsert";
 	}
+	
+	
 	@PostMapping("performinsert.do")
 	public String performInsertSave(Performance vo,RedirectAttributes rda){
 		logger.info("[My]"+vo);

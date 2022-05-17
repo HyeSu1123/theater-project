@@ -28,29 +28,23 @@
 	<div style="margin:auto;">
 		<div style="text-align:right;">
 			<form action="questionsearch.do" method="post">
-			<div class="row gtr-uniform">
-			<div class="col-4">
 				<select name="columns" id="columns">
 					<option value="id">아이디</option>
 					<option value="question_title">제목</option>
 					<option value="status">답변 상태</option>
 				</select>
-			</div>
 				<!-- 아래 find는 2개 중에 하나만 화면에 표시  -->
 				<span id="content">
 					<input name="find" placeholder="검색할 내용 입력" value="${find}">
 				</span>
 				<span id="status">
 					<select name="find" id="astatus">
-						<option value="답변 대기">답변 대기</option>
+						<option value="진행중">답변 대기</option>
 						<option value="답변 완료">답변 완료</option>
 					</select>
 				</span>
-				<div>
 				<button>검색</button>
 				<button type="button" onclick="location.href='questionlist.do'">전체보기</button>
-			</div>
-			</div>
 			</form>
 		</div>
 		<table>
@@ -70,7 +64,7 @@
 		 			<fmt:formatDate value="${vo.question_date}" pattern="yyyy-MM-dd"/>  <!-- 출력패턴 -->
 		 		</td>
 		 		<td>
-			 		<c:if test="${vo.status=='답변 대기'}">
+			 		<c:if test="${vo.status=='진행중'}">
 			 			<span style="color:red;font-weight:bolder;">답변 대기</span>
 			 		</c:if>
 			 		<c:if test="${vo.status=='답변 완료'}">
@@ -116,9 +110,7 @@
 		<input name="find" type="hidden">		<!-- find[1] -->
 		<input name="pageNo" type="hidden">
 	</form>
-	</div>
 </section>
-<%@ include file="../includes/footer.jsp" %>
 <script type="text/javascript">
 var href=window.location.pathname;				//memberList.do 또는 search.do 가져오기
 	function goPage(no){

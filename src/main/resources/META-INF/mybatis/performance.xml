@@ -54,3 +54,5 @@
 		WHERE p.theater_idx=t.theater_idx AND perform_idx=#{perform_idx}
 	</select>	
 </mapper>
+
+

@@ -21,7 +21,8 @@
 </script>
 		<!-- Header -->
 			<header id="header" class="alt">
-				<h1><a href="${pageContext.request.contextPath }/">FREDDO</a></h1>
+				<h1>
+				<a href="${pageContext.request.contextPath }/">FREDDO</a></h1>
 				<a href="#menu">Menu</a>
 			</header>
 
@@ -61,7 +62,7 @@
 						<ul class="open">
 							<li><a href="${pageContext.request.contextPath }/admin/noticelist.do">Notice List</a></li>
 							<li><a href="${pageContext.request.contextPath }/admin/noticeinsert.do">Notice Insert</a></li>
-							<li><a href="">관람 후기</a></li>
+							<li><a href="${pageContext.request.contextPath }/community/list.do">관람 후기</a></li>
 						</ul>
 					</li>
 					<li><a href="">Service center</a>
