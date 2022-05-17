@@ -55,7 +55,7 @@ public class QnAController {
 		String id=member.getId();//추후에 member.getid()로 변경
 		
 		//model.addAttribute("list",mapper.getQuestion(id));
-			return "redirect:Board1to1.do";
+			return "one2one/PersonalBoard";
 	}
 	
 	

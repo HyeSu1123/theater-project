@@ -66,7 +66,6 @@
 					</li>
 					<li><a href="">Service center</a>
 						<ul class="open">
-							<li><a href="${pageContext.request.contextPath }/member/qinsert.do">1:1 문의하기</a></li>
 							<li><a href="${pageContext.request.contextPath }/admin/questionlist.do">1:1 문의 답변 등록</a></li>
 						</ul>
 					</li>

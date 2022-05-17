@@ -31,10 +31,15 @@
 							<td >${vo.question_idx }</td> 	
 					 		<td ><a href="detail.do?question_idx=${vo.question_idx }">${vo.question_title }</a></td>
 					 		<td>${vo.id }</td>
-					 		<td >
+					 		<td>
 					 		<fmt:formatDate value="${vo.question_date }" pattern="yyyy-MM-dd"/>  
 					 		</td >
-					 		<td >${vo.status}</td>
+					 		<c:if test="${vo.status=='답변 대기'}">
+			 					<td><span style="color:red;font-weight:bolder;">답변 대기</span></td>
+			 				</c:if>
+			 				<c:if test="${vo.status=='답변 완료'}">
+			 					<td><span style="color:#3d3;font-weight:bolder;">답변 완료</span></td>
+			 				</c:if>
 					 		
 					 	</tr>
 					 	</c:forEach>
