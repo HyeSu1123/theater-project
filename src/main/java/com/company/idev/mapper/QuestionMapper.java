@@ -10,10 +10,10 @@ import com.company.idev.dto.Question;
 
 public interface QuestionMapper {
 	//1:1문의
-	void insert(Question question); //질문  db저장
-	List<Question> getQuestion(String id);//세션에 저장된 id로 질문한 모든질문 가져옴
-	Question getOne (int question_idx);//질문들중 하나 detail
-	Answer getAnswer(int question_idx);
+		void insert(Question question); //질문  db저장
+		List<Question> getQuestion(String id);//세션에 저장된 id로 질문한 모든질문 가져옴
+		Question getOne (int question_idx);//질문들중 하나 detail
+		Answer getAnswer(int question_idx);
 	
 	
 	//1:1답변
