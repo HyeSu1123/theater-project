@@ -24,7 +24,7 @@
 	
 	<script>
 	alert("로그인이 필요합니다")
-	location.href="http://localhost:8082/idev/login.do"<!-- href로그인창 띄우는걸로 바꿔야되요 -->
+	location.href="http://localhost:8084/idev/login.do"<!-- href로그인창 띄우는걸로 바꿔야되요 -->
 	
 	</script>
 	
