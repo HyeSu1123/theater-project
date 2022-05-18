@@ -25,7 +25,7 @@
 		<header>
 			<h2>FREDDO</h2>
 				<p class="location">
-				NOTICE <span class="path">/</span> 공지사항
+				NOTICE <span class="path">/</span> 공지사항 목록
 				</p>
 		</header>
 		<div class="inner">

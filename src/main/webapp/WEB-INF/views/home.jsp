@@ -9,6 +9,42 @@
 </head>
 <body>
 <%@ include file="./includes/top2.jsp" %>
+<script type="text/javascript">
+
+let slideIndex = 1;
+
+Array.from(document.getElementsByClassName("slideshow-container")).forEach(
+    function(element, index) {
+    	console.log(index);
+        showSlides(index+1,slideIndex)
+    }
+);
+
+// Next/previous controls
+function plusSlides(a,n) {
+  showSlides(a,slideIndex += n);
+}
+
+// Thumbnail image controls
+function currentSlide(a,n) {
+  showSlides(a,slideIndex = n);
+}
+function showSlides(a,n) {
+  let i;
+  let slides = document.querySelectorAll("#item" + a + " > .mySlides");
+  let dots = document.querySelectorAll("#item" + a + "  .dot");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+} 
+</script>
 <!-- Wrapper -->
 <div class="wrapper">
 	<div class="inner">
@@ -16,8 +52,8 @@
 		<!-- Section -->
 			<section class="main">
 				<header class="major">
-					<h2>Lorem ipsum dolor</h2>
-					<p>Sed egestas adipiscing</p>
+					<h2>Performance TOP 3</h2>
+					<p>Best</p>
 				</header>
 				<div class="features">
 					<section>
@@ -40,90 +76,52 @@
 
 		<!-- Section -->
 			<section class="carousel accent4">
-				<article>
-					<div class="image"><img src="images/pic04.jpg" alt="" data-position="center" /></div>
-					<div class="content">
-						<h3>Magna tempus</h3>
-						<p>Adipiscing ullamcorper semper ut amet ac risus. Lorem sapien ut odio odio nunc. Ac adipiscing nibh porttitor erat risus justo adipiscing adipiscing amet placerat.</p>
-					</div>
-				</article>
-				<article>
-					<div class="image"><img src="images/pic05.jpg" alt="" data-position="center" /></div>
-					<div class="content">
-						<h3>Consequat ipsum</h3>
-						<p>Sapien a lorem in integer ornare praesent commodo adipiscing arcu in massa commodo lorem accumsan at odio massa ac ac. Semper adipiscing varius accumsan.</p>
-					</div>
-				</article>
-				<article>
-					<div class="image"><img src="images/pic06.jpg" alt="" data-position="center" /></div>
-					<div class="content">
-						<h3>Magna tempus</h3>
-						<p>Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing blandit tempus accumsan lorem ipsum dolor sit amet nullam aliquam.</p>
-					</div>
-				</article>
-				<nav>
+				<c:forEach items="${list }" var="vo" varStatus="main">
+					<div class="slideshow-container">
+					<div id="item${main.count }">
+						<c:forEach items="${vo.filenames }" var="pic" varStatus="stat">
+						<!-- 업로드한 3개의 파일명을 리스트로 애트리뷰트에서 가져오기 -->
+							<div class="mySlides fade">
+								<div class="numbertext">${vo.title }</div>
+								<%-- <div class="numbertext">${stat.count} / </div> --%>
+								<img src="/upload/${pic}" width="400px" height="400px" style="object-fit:cover">
+								<div class="text">${pic}</div>
+							</div>
+						</c:forEach>
+				<!-- Next and previous buttons -->
+			
+						<div style="text-align:center;">
+							<c:forEach items="${vo.filenames }" var="no" varStatus="stat">
+							  <span class="dot" onclick="currentSlide(${main.count },${stat.count})"></span>
+							</c:forEach>
+					</div>	
+					<nav>
 					<a href="#" class="previous"><span class="label">Previous</span></a>
 					<a href="#" class="next"><span class="label">Next</span></a>
 				</nav>
+
+	</c:forEach>
+				
 			</section>
 
-<!-- Two -->
-	<section id="two" class="wrapper style2">
-		<div class="inner">
-			<header class="major">
-				<h2>Gravida nunc accumsan</h2>
-				<p>Ipsum quis semper consequat, sem nibh mattis arcu, quis porttitor lorem justo in tellus. Aenean lacinia<br />
-				interdum nisl felis et dui viverra, nec accumsan tempus quam ultricies.</p>
-			</header>
-			<div class="features">
-				<section>
-					<span class="icon solid major fa-tag"></span>
-					<h3>Quam adipiscing</h3>
-					<p>Feugiat lorem quis semper consequat, sem nibh mattis arcu, amet porttitor lorem justo in cumsan quam ultricies magna tempus.</p>
-				</section>
-				<section>
-					<span class="icon solid major fa-camera-retro"></span>
-					<h3>Semper accumsan</h3>
-					<p>Feugiat lorem quis semper consequat, sem nibh mattis arcu, amet porttitor lorem justo in cumsan quam ultricies magna tempus.</p>
-				</section>
-				<section>
-					<span class="icon solid major fa-cloud"></span>
-					<h3>Ipsum lorem magna</h3>
-					<p>Feugiat lorem quis semper consequat, sem nibh mattis arcu, amet porttitor lorem justo in cumsan quam ultricies magna tempus.</p>
-				</section>
-				<section>
-					<span class="icon solid major fa-cube"></span>
-					<h3>Tempus sed mattis</h3>
-					<p>Feugiat lorem quis semper consequat, sem nibh mattis arcu, amet porttitor lorem justo in cumsan quam ultricies magna tempus.</p>
-				</section>
-				<section>
-					<span class="icon solid major fa-file-alt"></span>
-					<h3>Odio fermentum</h3>
-					<p>Feugiat lorem quis semper consequat, sem nibh mattis arcu, amet porttitor lorem justo in cumsan quam ultricies magna tempus.</p>
-				</section>
-				<section>
-					<span class="icon solid major fa-plane"></span>
-					<h3>Risus et interdum</h3>
-					<p>Feugiat lorem quis semper consequat, sem nibh mattis arcu, amet porttitor lorem justo in cumsan quam ultricies magna tempus.</p>
-				</section>
-			</div>
-			<footer class="major">
-				<ul class="actions special">
-					<li><a href="#" class="button major">More Features</a></li>
-				</ul>
-			</footer>
-		</div>
-	</section>
+
 
 		<!-- Three -->
 			<section id="three" class="wrapper style1">
 				<div class="inner">
 					<div class="spotlights">
 						<section>
-							<span class="image"><img src="images/pic05.jpg" alt="" /></span>
 							<div class="content">
-								<h2>Convallis integer iaculis</h2>
-								<p>Donec elementum odio ut suscipit congue. Fusce magna mattis vel fermentum, ultricies et velit. Suspendisse viverra, ante in eleifend vulputate, lacus lorem pretium ligula, tincidunt posuere sapien neque a augue. Pellentesque habitant morbi tristique senectus et netus et malesuada.</p>
+								<h2>NOTICE</h2>
+								<div class="row">
+									<div class="col-6 col-12-medium">
+									 <c:forEach items="${listN}" var="vo">
+										<ul class="alt">
+											<li>${vo.notice_content }</li>
+										</ul>
+									</c:forEach>
+									</div>
+								</div>
 							</div>
 						</section>
 						<section>
@@ -144,19 +142,6 @@
 				</div>
 			</section>
 
-		<!-- Four -->
-			<section id="four" class="wrapper style2 special">
-				<div class="inner">
-					<header>
-						<h2>Sed vitae massa curabitur</h2>
-						<p>Ipsum quis semper consequat, sem nibh mattis arcu, quis porttitor lorem justo in tellus. Aenean lacinia<br />
-						interdum nisl felis et dui viverra, nec accumsan tempus quam ultricies.</p>
-					</header>
-					<ul class="actions special">
-						<li><a href="#" class="button primary major">Get Started</a></li>
-					</ul>
-				</div>
-			</section>
 			</div>
 			</div>
 <%@ include file="./includes/footer.jsp" %>

@@ -10,6 +10,9 @@
 <script src="https://kit.fontawesome.com/7ebf19920b.js" crossorigin="anonymous"></script>
 </head>
 <body>
+<script type="text/javascript">
+	if(${message != null}) alert('${message}');
+</script>
 <!-- 메뉴바 include -->
 <%@ include file="../includes/banner.jsp" %>
 		<!-- 컨테이너시작 -->

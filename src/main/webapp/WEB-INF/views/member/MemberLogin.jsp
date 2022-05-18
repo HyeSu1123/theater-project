@@ -8,6 +8,9 @@
 <title>Login</title>
  </head>
 <body>
+<script type="text/javascript">
+	if(${message != null}) alert('${message}');
+</script>
 <%@ include file="../includes/banner.jsp" %>
 		<!-- 컨테이너시작 -->
 	<section id="main" class="wrapper">

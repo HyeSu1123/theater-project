@@ -1,6 +1,5 @@
 package com.company.idev.controller;
 
-import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -12,13 +11,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.company.idev.dto.Answer;
 import com.company.idev.dto.Members;
 import com.company.idev.dto.Question;
-import com.company.idev.mapper.AnswerMapper;
 import com.company.idev.mapper.QuestionMapper;
 
 
@@ -59,7 +55,7 @@ public class QnAController {
 		String id=member.getId();//추후에 member.getid()로 변경
 		
 		//model.addAttribute("list",mapper.getQuestion(id));
-			return "redirect:Board1to1.do";
+			return "one2one/PersonalBoard";
 	}
 	
 	

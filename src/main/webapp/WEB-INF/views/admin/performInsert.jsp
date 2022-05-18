@@ -98,6 +98,17 @@
 					</td>
 				</tr>
 				<tr>
+					<th class="notice" width="20%">극장 선택</th>
+					<td width="80%">
+						<select name="theater_idx" id="theater_idx">
+							<option value="none" selected disabled>----선택----</option>
+							<c:forEach var="vo" items="${list}">
+								<option value="${vo.theater_idx}">${vo.theater_name}</option>
+							</c:forEach>
+						</select>
+					</td>
+				</tr>
+				<tr>
 					<th class="notice" width="20%">관람 시간</th>
 					<td width="80%">
 						<input type="text" name="showtime">

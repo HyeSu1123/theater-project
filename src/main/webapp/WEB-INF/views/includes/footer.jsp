@@ -29,7 +29,7 @@
 						<li><a href="#">Terms</a></li>
 						<li><a href="#">Contact</a></li>
 					</ul>
-					<p class="copyright">&copy; Untitled. All rights reserved. Lorem ipsum dolor.</p>
+					<p class="copyright">copyright &copy; 2015 KOREA INFORMATION TECHNOLOGY ACADEMY. ALL RIGHTS RESERVED</p>
 				</div>
 			</footer>
 </body>

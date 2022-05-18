@@ -24,7 +24,7 @@
 		<header>
 			<h2>FREDDO</h2>
 				<p class="location">
-				PERFORM INSERT <span class="path">/</span> 공연 등록
+				SERVICE CENTER <span class="path">/</span> 1:1 문의 답변
 				</p>
 		</header>
 		<div class="inner">

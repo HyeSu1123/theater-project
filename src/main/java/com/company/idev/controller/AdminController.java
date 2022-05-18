@@ -15,6 +15,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -27,12 +28,14 @@ import com.company.idev.dto.PageDto;
 import com.company.idev.dto.Performance;
 import com.company.idev.dto.Question;
 import com.company.idev.dto.Schedules;
+import com.company.idev.dto.Theater;
 import com.company.idev.mapper.AnswerMapper;
 import com.company.idev.mapper.MembersMapper;
 import com.company.idev.mapper.NoticeMapper;
 import com.company.idev.mapper.PerformanceMapper;
 import com.company.idev.mapper.QuestionMapper;
 import com.company.idev.mapper.SchedulesMapper;
+import com.company.idev.mapper.TheaterMapper;
 import com.company.idev.service.AdminService;
 
 @Controller
@@ -59,6 +62,9 @@ public class AdminController {
 	SchedulesMapper schedule_mapper;
 	
 	@Autowired
+	TheaterMapper theater_mapper;
+	
+	@Autowired
 	public BCryptPasswordEncoder pwEncoder;
 	
 	private final AdminService service;
@@ -66,6 +72,8 @@ public class AdminController {
 	public AdminController(AdminService service) {
 		this.service = service;
 	}
+	
+
 	
 	
 	//관리자 회원가입
@@ -137,6 +145,8 @@ public class AdminController {
 		
 		return "admin/memberList";
 	}
+	
+	
 //검색하여 조회
 	@RequestMapping("membersearch.do")
 	public String search(@RequestParam(required=false, defaultValue = "1")
@@ -287,10 +297,13 @@ public class AdminController {
 
 //공연 등록
 	@GetMapping("performinsert.do")
-	public String performInsert() {
-		
+	public String performInsert(Model model) {
+		List<Theater> list = theater_mapper.selectAll();
+		model.addAttribute("list", list);
 		return "admin/performInsert";
 	}
+	
+	
 	@PostMapping("performinsert.do")
 	public String performInsertSave(Performance vo,RedirectAttributes rda){
 		logger.info("[My]"+vo);

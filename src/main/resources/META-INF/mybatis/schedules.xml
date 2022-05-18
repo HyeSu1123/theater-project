@@ -4,8 +4,27 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.company.idev.mapper.SchedulesMapper">
 	<insert id="insertSchedule" parameterType="Schedules">
-		INSERT INTO schedules(schedule_idx, perform_idx, theater, perform_date, start_time)
-		VALUES(schedule_idx_seq.nextval, #{perform_idx}, #{theater}, #{perform_date}, #{start_time})
+		INSERT INTO schedules(schedule_idx, perform_idx, perform_date, start_time)
+		VALUES(schedule_idx_seq.nextval, #{perform_idx}, #{perform_date}, #{start_time})
 	</insert>
-
+	
+	<select id="selectSchedule" parameterType="int" resultType="Schedules">
+		SELECT DISTINCT(perform_date),perform_idx FROM schedules
+		WHERE perform_idx=#{perform_idx}
+		ORDER BY perform_date
+	</select>
+		<select id="selectDate" parameterType="Map" resultType="Schedules">
+		SELECT DISTINCT(start_time),schedule_idx FROM schedules
+		WHERE perform_date=#{perform_date} AND perform_idx=#{perform_idx}
+		ORDER BY start_time
+	</select>
+		<select id="getIdx" parameterType="Map" resultType="int">
+		SELECT schedule_idx FROM schedules
+		WHERE perform_idx=#{perform_idx} AND perform_date=#{perform_date} AND start_time=#{start_time}
+	</select>
+	<select id="getInfo" parameterType="int" resultType="Schedules">
+		SELECT * FROM schedules
+		WHERE schedule_idx=#{schedule_idx}
+	</select>
+	
 </mapper>

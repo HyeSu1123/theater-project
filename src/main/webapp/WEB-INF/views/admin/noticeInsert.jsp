@@ -9,6 +9,9 @@
 <script src="https://kit.fontawesome.com/7ebf19920b.js" crossorigin="anonymous"></script>
 </head>
 <body>
+<script type="text/javascript">
+	if(${message != null}) alert('${message}');
+</script>
 <!-- 메뉴바 include -->
 <%@ include file="../includes/banner.jsp" %>
 		<!-- 컨테이너시작 -->
@@ -16,7 +19,7 @@
 		<header>
 			<h2>FREDDO</h2>
 				<p class="location">
-				NOTICE <span class="path">/</span> 공지사항
+				NOTICE <span class="path">/</span> 공지사항 등록
 				</p>
 		</header>
 		<div class="inner">

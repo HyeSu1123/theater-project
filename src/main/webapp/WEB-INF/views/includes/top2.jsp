@@ -15,13 +15,14 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/assets/css/main.css" />
 	</head>
-	<body class="is-preload">
-<script type="text/javascript">
+	<script type="text/javascript">
 	if(${message != null}) alert('${message}');
 </script>
+	<body class="is-preload">
 		<!-- Header -->
 			<header id="header" class="alt">
-				<h1><a href="${pageContext.request.contextPath }/">FREDDO</a></h1>
+				<h1>
+				<a href="${pageContext.request.contextPath }/">FREDDO</a></h1>
 				<a href="#menu">Menu</a>
 			</header>
 
@@ -30,7 +31,7 @@
 				<ul class="links">
 				<c:if test="${member == null && admin == null || member != null}">
 					<li><a href="${pageContext.request.contextPath }/">Home</a></li>
-					<li><a href="">Performance</a></li>
+					<li><a href="${pageContext.request.contextPath }/perform/nowlist.do">Performance</a></li>
 					<li>
 						<a href="">Community</a>
 						<ul class="open">
@@ -39,19 +40,20 @@
 						</ul>
 					</li>
 					</c:if>
-					
+					<c:if test="${member != null}">
 					<li><a href="">Service center</a>
 						<ul class="open">
-							<li><a href="${pageContext.request.contextPath }/member/qinsert.do">1:1 문의하기</a></li>
+							<li><a href="${pageContext.request.contextPath }/member/Board1to1.do">1:1 문의 목록</a></li>
 						</ul>
 					</li>
-					
+					</c:if>
 					<c:if test="${admin != null}">
-				<li><a href="${pageContext.request.contextPath }/main.do">ADMIN PAGE</a></li>
+				<li><a href="${pageContext.request.contextPath }/admin/main.do">ADMIN PAGE</a></li>
 					<li><a href="${pageContext.request.contextPath }/admin/memberlist.do">Member List</a></li>
 					<li>
 						<a href="">Performance</a>
 						<ul class="open">
+							<li><a href="${pageContext.request.contextPath }/perform/nowlist.do">공연 목록</a></li>
 							<li><a href="${pageContext.request.contextPath }/admin/performinsert.do">공연 등록</a></li>
 							<li><a href="${pageContext.request.contextPath }/admin/scheduleinsert.do">공연 스케줄 등록</a></li>
 						</ul>
@@ -61,12 +63,11 @@
 						<ul class="open">
 							<li><a href="${pageContext.request.contextPath }/admin/noticelist.do">Notice List</a></li>
 							<li><a href="${pageContext.request.contextPath }/admin/noticeinsert.do">Notice Insert</a></li>
-							<li><a href="">관람 후기</a></li>
+							<li><a href="${pageContext.request.contextPath }/community/list.do">관람 후기</a></li>
 						</ul>
 					</li>
 					<li><a href="">Service center</a>
 						<ul class="open">
-							<li><a href="${pageContext.request.contextPath }/member/qinsert.do">1:1 문의하기</a></li>
 							<li><a href="${pageContext.request.contextPath }/admin/questionlist.do">1:1 문의 답변 등록</a></li>
 						</ul>
 					</li>
@@ -92,13 +93,15 @@
 			<section id="banner">
 				<div class="inner">
 					<div class="content">
-						<h2>Sed feugiat amet adipiscing</h2>
-						<p>Amet tincidunt arcu suspendisse consequat</p>
+						<h2>Why don't you have a good time at FREDDO?</h2>
+						<p>Various performances are waiting for you. Do you want to go see it with me now?</p>
 					</div>
-					<ul class="actions stacked">
-						<li><a href="#" class="button primary major">Get Started</a></li>
-						<li><a href="#" class="button major">More Info</a></li>
-					</ul>
+					<c:if test="${member == null && admin == null}">
+						<ul class="actions stacked">
+						<li><a href="${pageContext.request.contextPath }/login.do" class="button fit">Log In</a></li>
+						<li><a href="${pageContext.request.contextPath }/member/join.do" class="button primary fit">Sign Up</a></li>
+						</ul>
+					</c:if>
 				</div>
 			</section>
 
