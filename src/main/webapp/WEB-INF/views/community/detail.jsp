@@ -53,13 +53,13 @@ function deleteOk(){
 		
 			<h2>FREDDO</h2>
 			<p class="location">
-				COMMUNITY <span class="path">/</span> 공연 후기
+				MEMBER <span class="path">/</span> 공연 후기
 			</p>
 		</header>
 		<div class="inner">
 			<h3>공연 후기</h3>
 			<hr>
-			<table>
+			<table style="width: 750px; margin: auto;">
 				<tr>
 					<td width="20%" class="td1">제목</td>
 					<td width="40%" class="input1">${bean.subject}</td>
@@ -90,13 +90,13 @@ function deleteOk(){
 					<td colspan="4"><span id="func"> <c:choose>
 								<c:when test="${member.id == bean.id}">
 									<!-- 로그인했을 때 메뉴 -->
-									<a class="button small" href="javascript:update()">수정</a>
-									<a class="button small" href="javascript:deleteOk()">삭제</a>
-									<a class="button small" href="list?pageNo=${page }">목록</a>
+									<a class="button" href="javascript:update()">수정</a>
+									<a class="button" href="javascript:deleteOk()">삭제</a>
+									<a class="button" href="list?pageNo=${page }">목록</a>
 								</c:when>
 								<c:otherwise>
 									<!-- 로그인 안했을 때 메뉴 -->
-									<a class="button small" href="list?pageNo=${page }">목록</a></span> </c:otherwise> </c:choose> </span></td>
+									<a class="button" href="list?pageNo=${page }">목록</a></span> </c:otherwise> </c:choose> </span></td>
 				</tr>
 			</table>
 			<!-- 메인글 상세보기 끝 -->
@@ -108,20 +108,24 @@ function deleteOk(){
 				<input type="hidden" name="ip"
 					value="${pageContext.request.remoteAddr}"> <input
 					type="hidden" name="pageNo" value="${page }">
-				<table>
+				<table style="width: 60%; margin: auto;">
 					<tr>
-						<td colspan="4">댓글 갯수 : ${bean.commentCount } <input
-							type="button" onclick="window.location.reload()" value="새로고침"
-							class="button small">
+						<td colspan="4">댓글 갯수 : ${bean.commentCount }
+						
+						 <input
+							type="button" onclick="window.location.reload()" value="새로 고침" class="btn-small2">
 						</td>
 					</tr>
-				
+					<tr>
+						<td colspan="4"><hr></td>
+					</tr>
 					<!-- 댓글 입력 -->
 
 
 					<c:choose>
 						<c:when test="${member == null}">
 							<!-- 로그인 안했을 때 메뉴 -->
+							</td>
 						</c:when>
 						<c:otherwise>
 							<!-- 로그인했을 때 메뉴 -->
@@ -129,7 +133,8 @@ function deleteOk(){
 								<td width="25%">작성자</td>
 								<td width="25%"><input type="text" name="id" size="70"
 									class="input1" required="required"
-									value=${member.id} readonly="readonly"></td>
+									value=${member.id
+									} readonly="readonly"></td>
 							</tr>
 							<tr>
 								<td colspan="3">
@@ -138,10 +143,12 @@ function deleteOk(){
 										placeholder="댓글을 작성하세요." class="input1"></textarea>
 								</td>
 								<td width="15%" style="text-align: left;"><input
-									type="submit" value="저장" class="button small"> <input
-									type="reset" value="취소" class="button small"></td>
+									type="submit" value="저장" class="btn-small"> <input
+									type="reset" value="취소" class="btn-small"></td>
 							</tr>
-							
+							<tr>
+								<td colspan="4"><hr></td>
+							</tr>
 
 						</c:otherwise>
 					</c:choose>
@@ -161,7 +168,7 @@ function deleteOk(){
 										
 										 <a
 											href="javascript:delete_cmt(`${cmt.idx}`)"> <img
-												alt="삭제" src="${pageContext.request.contextPath }/resources/image/delete.png" style="width: 20px;"></a>
+												alt="삭제" src="${image }/delete.png" style="width: 20px;"></a>
 										</span>
 								</c:when>
 								<c:otherwise>
@@ -190,6 +197,5 @@ function deleteOk(){
 			</form>
 		</div>
 	</section>
-	<%@ include file="../includes/footer.jsp" %>
 </body>
 </html>

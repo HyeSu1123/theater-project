@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -145,40 +147,37 @@
 	<div class="clearp">
 	<h3>예매 내역</h3>
 </div>
-<div class="clearp">
-	<div class="poster">
-		<img src="/upload/${performinfo.poster}" width="175px" height="250px" style="object-fit:contain">
-	</div>
-	<div class="perform_info">
-		<h4>${performinfo.perform_title}</h4>
-		<hr>
-		<table style="text-align:left;">
-			<tr>
-				<th>예매 번호</th>
-				<td>${ticketno}</td>
-			</tr>
-			<tr>
-				<th style="width:30%;">극장</th>
-				<td>${performinfo.theater_name}</td>
-			</tr>
-			<tr>
-				<th>공연일</th>
-				<td><fmt:formatDate value="${scheduleinfo.perform_date}" pattern="yyyy년 MM월 dd일"/></td>
-			</tr>
-			<tr>
-				<th>공연 시간</th>
-				<td>${scheduleinfo.start_time}</td>
-			</tr>
-			<tr>
-				<th>인원</th>
-				<td>${number} 명</td>
-			</tr>
-			<tr>
-				<th>좌석</th>
-				<td>${choicedseat}</td>
-			</tr>
-
-		</table>
+		<table>
+	<tr>
+		<th width="5%">No</th>
+		<th width="15%">예매번호</th>
+		<th width="15%">공연</th>
+		<th width="15%">극장</th>
+		<th width="15%">공연일자</th>
+		<th width="10%">공연시간</th>
+		<th width="15%">좌석</th>
+		<th width="10%">인원</th>
+	</tr>
+	<c:forEach var="vo" items="${list}" varStatus="status">
+	<tr class="list">
+		<td>${status.count}</td> 	
+ 		<td>${vo.ticket_no}</td>
+ 		<td>${vo.perform}</td>
+ 		<td>${vo.theater}</td>
+ 		<td>
+ 		<fmt:formatDate value="${vo.perform_date }" pattern="yyyy-MM-dd"/>  <!-- 출력패턴 -->
+ 		</td>
+ 		<td>${vo.start_time}</td>
+ 		<td>${vo.seat}</td>
+ 		<td>${vo.num}명</td>
+ 	</tr>
+	 	</c:forEach>
+	<c:if test="${fn:length(list)==0 }">
+		<tr>
+			<td colspan="7" style="text-align:center;"><br>조회 결과가 없습니다.</td>
+		</tr>
+	</c:if>
+</table>
 	</div>
 </div>
 	

@@ -39,6 +39,8 @@
 		update members set password=#{password} where id=#{id}
 	</update>
 	
+	
+	
 	<!-- 관리자용 회원가입 -->
 	<insert id="insertAdmin" parameterType="Members">
 	INSERT INTO MEMBERS
@@ -52,6 +54,13 @@
 	SET EMAIL=#{email}, PHONE=#{phone}
 	WHERE ID=#{id}
 	</update>
+	
+	<!-- 예매내역 -->
+	<select id="getIdTicket" parameterType="int" resultType="Ticket">
+      SELECT DISTINCT(ticket_no) FROM
+      WHERE id=#{id}
+      ORDER BY ticket_date DESC
+   </select>
 	
 	<delete id="delete" parameterType="Members">
 	 delete from members where id=#{id}
@@ -111,6 +120,19 @@
  			SET authority=0
 		WHERE id=#{id}
 	</update>
+	
+	<!-- 관리자 신청한 회원 조회 -->
+	<select id="getAppList" parameterType="Map" resultType="Members">
+		SELECT * FROM (
+			SELECT rownum AS R, T.* FROM 
+				(SELECT * FROM members WHERE authority=3 ORDER BY reg_date DESC) T )
+		WHERE R BETWEEN #{startNo} AND #{endNo}
+	</select>
+
+	<!-- 관리자 신청 회원 수 -->
+	<select id="getAppCount" resultType="int">
+		SELECT count(*) FROM members WHERE authority=3
+	</select>
 	
 	<!-- 회원 삭제 -->
 	<delete id="deleteMember" parameterType="String">

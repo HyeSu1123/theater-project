@@ -51,32 +51,22 @@
 		if(${message != null}) alert('${message}');
 	},210);
 </script>
+<script src="https://kit.fontawesome.com/7ebf19920b.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <!-- 메뉴바 include -->
-<%@ include file="../includes/banner.jsp" %>
-		<!-- 컨테이너시작 -->
-	<section id="main" class="wrapper">
-		<header>
-			<h2>FREDDO</h2>
-				<p class="location">
-				MEMBER LIST <span class="path">/</span> 회원 리스트
-				</p>
-		</header>
-		<div class="inner">
-		<!-- 본문 -->
+<%@include file="menubar.jsp" %>
+<section>
+	<h3>회원 목록</h3>
+	<hr>
 	<div style="margin:auto;">
 		<div style="text-align:right;">
 			<form action="membersearch.do" method="post">
-			<div class="row gtr-uniform">
-			<div class="col-4">
 				<select name="columns" id="columns">
 					<option value="id">아이디</option>
 					<option value="name">이름</option>
 					<option value="authority">권한</option>
 				</select>
-			</div>
-			
 				<!-- 아래 find는 2개 중에 하나만 화면에 표시  -->
 				<span id="content">
 					<input name="find" placeholder="검색할 내용 입력" value="${find}">
@@ -86,13 +76,11 @@
 					<!-- 사용자 선택하는 텍스트와 db테이블에 저장된 값이 다릅니다. -->
 						<option value="1">일반 회원</option>
 						<option value="0">관리자</option>
+						<option value="3">승인 대기</option>
 					</select>
 				</span>
-				<div>
-				<button class="button large">search</button>
-				<button type="button" class="button large" onclick="location.href='memberlist.do'">all list</button>
-			</div>
-			</div>
+				<button>검색</button>
+				<button type="button" onclick="location.href='memberlist.do'">전체보기</button>
 			</form>
 		</div>
 		<table>
@@ -122,7 +110,7 @@
 		 			<span style="color:red;font-weight:bolder;">관리자</span>
 		 		</c:if>
 		 		<c:if test="${vo.authority==3}">
-		 			<span style="color:green;font-weight:bolder;">관리자 승인 요청</span>
+		 			<span style="color:blue;">승인 대기</span>
 		 		</c:if>
 		 		<%-- <c:choose>
 		 			<c:when test="${vo.authority==1}">
@@ -183,9 +171,7 @@
 		<input name="find" type="hidden">		<!-- find[1] -->
 		<input name="pageNo" type="hidden">
 	</form>
-	</div>
 </section>
-<%@ include file="../includes/footer.jsp" %>
 <script type="text/javascript">
 var href=window.location.pathname;				//memberList.do 또는 search.do 가져오기
 	function goPage(no){
@@ -241,5 +227,6 @@ var href=window.location.pathname;				//memberList.do 또는 search.do 가져오
 		//authority.style.display='none';		//안보이게 하는 방법
    </script>
 
+<%@ include file="../includes/footer.jsp" %>
 </body>
 </html>

@@ -116,6 +116,8 @@ th.notice{
 	background-color:#eee;
 	border-bottom:1px solid #eee;
 }
+
+.btn-small2{background-color: skyblue; color:white;border: none; text-align: left;}
 /* 회원목록 드롭다운 리스트 */
 .dropbtn {
   background-color:white;

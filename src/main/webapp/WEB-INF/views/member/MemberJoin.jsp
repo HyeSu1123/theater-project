@@ -107,7 +107,7 @@
 								<tfoot>
 									<tr>
 										<td colspan="3" style="text-align: center">
-										<input type="button" value="Send Message" onclick="sendit()" class="primary">
+										<input type="button" value="Send" onclick="sendit()" class="primary">
 										<input type="reset" value="Reset"></td>
 									</tr>
 								</tfoot>

@@ -31,7 +31,7 @@
 					<li>
 						<a href="">Community</a>
 						<ul class="open">
-							<li><a href="${pageContext.request.contextPath }/admin/noticelist.do">Notice</a></li>
+							<li><a href="${pageContext.request.contextPath }/notice/noticelist.do">Notice</a></li>
 							<li><a href="${pageContext.request.contextPath }/community/list.do">관람 후기</a></li>
 						</ul>
 					</li>

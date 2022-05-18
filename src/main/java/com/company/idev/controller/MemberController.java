@@ -2,6 +2,9 @@ package com.company.idev.controller;
 
 
 import java.io.IOException;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -22,7 +25,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.company.idev.dto.Members;
+import com.company.idev.dto.Performance;
+import com.company.idev.dto.Schedules;
+import com.company.idev.dto.Seat;
+import com.company.idev.dto.Temp;
+import com.company.idev.dto.Ticket;
 import com.company.idev.mapper.MembersMapper;
+import com.company.idev.mapper.PerformanceMapper;
+import com.company.idev.mapper.SchedulesMapper;
+import com.company.idev.mapper.SeatMapper;
+import com.company.idev.mapper.TicketMapper;
 
 @Controller
 @RequestMapping(value = "/member")
@@ -38,6 +50,18 @@ public class MemberController {
 	
 	@Autowired
 	private JavaMailSender mailSender;
+	
+	@Autowired
+	PerformanceMapper perform_mapper;
+	
+	@Autowired
+	SchedulesMapper schedules_mapper;
+	
+	@Autowired
+	SeatMapper seat_mapper;
+	
+	@Autowired
+	TicketMapper ticket_mapper;
 	
 	@GetMapping("/join.do")
 	public String join() {
@@ -102,6 +126,61 @@ public class MemberController {
 		session.setAttribute("member", m);
 		rda.addFlashAttribute("message", "수정되었습니다.");
 		return "redirect:mypage.do";
+	}
+	
+	@PostMapping("ticket.do")
+	public String getTicket(String id,Model model) {
+		List<Ticket> ticketnos = ticket_mapper.getIdTicket(id);
+		int number = ticketnos.size();
+		//회원 예매번호 목록
+		List<Integer> ticketnos2 = new ArrayList<>();
+		for(int i=0;i<number;i++) {
+			ticketnos2.add(ticketnos.get(i).getTicket_no());
+		}
+		//행 열 번호 좌석 리스트
+		int schedulelist[] = new int[number];
+		String seatlist[] = new String[number];
+		int numlist[] = new int[number];
+		Timestamp ticketdatelist[] = new Timestamp[number];
+		List<Schedules> scheduleinfo = new ArrayList<>();
+		List<Performance> performinfo = new ArrayList<>();
+		for(int i=0;i<number;i++) {
+			//예매 번호로 조회한 정보
+			List<Ticket> a = ticket_mapper.getTicket(ticketnos2.get(i));
+			schedulelist[i]=a.get(i).getSchedule_idx();
+			ticketdatelist[i] = a.get(i).getTicket_date();
+			int[] seats = new int[a.size()];
+			numlist[i]=a.size();
+			for(int j=0;j<a.size();j++) {
+				seats[i]= a.get(i).getSeat_idx();
+			}
+			Seat seat1;
+			String seat2="";
+			for(int j=0;i<number;i++) {
+				seat1 = seat_mapper.getOne(seats[i]);
+				seat2 += seat1.getSeat_row()+"-"+seat1.getNum()+", ";
+			}
+			String choicedseat=seat2.substring(0, seat2.length()-2);
+			seatlist[i]=choicedseat;
+		}
+		for(int i=0;i<number;i++) {
+			scheduleinfo.add(schedules_mapper.getInfo(schedulelist[i]));
+			performinfo.add(perform_mapper.getOne(scheduleinfo.get(i).getPerform_idx()));
+		}
+		List<Temp> list = new ArrayList<>();
+		for (int i=0;i<number;i++) {
+			Temp temp = new Temp();
+			temp.setTicket_no(ticketnos2.get(i));
+			temp.setPerform(performinfo.get(i).getPerform_title());
+			temp.setTheater(performinfo.get(i).getTheater_name());
+			temp.setPerform_date(scheduleinfo.get(i).getPerform_date());
+			temp.setStart_time(scheduleinfo.get(i).getStart_time());
+			temp.setSeat(seatlist[i]);
+			temp.setNum(numlist[i]);
+			list.add(temp);
+		}
+		model.addAttribute("list", list);
+		return "member/MyPage";
 	}
 	
 	//회원탈퇴
