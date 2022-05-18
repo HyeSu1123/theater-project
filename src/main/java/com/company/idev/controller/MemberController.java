@@ -110,7 +110,63 @@ public class MemberController {
 	}
 	//마이페이지
 	@GetMapping("/mypage.do")
-	public String page() {
+	public String page(Members member,HttpSession session,RedirectAttributes rda) {
+		Members id = (Members)session.getAttribute("member"); 
+		String id2 = id.getId();
+		
+		logger.info("들어오는 값"+id);
+		id.setId(member.getId());
+		logger.info("들어오는 값"+id2);
+		List<Ticket> ticketnos = ticket_mapper.getIdTicket(id2);
+		int number = ticketnos.size();
+		//회원 예매번호 목록
+		List<Integer> ticketnos2 = new ArrayList<>();
+		for(int i=0;i<number;i++) {
+			ticketnos2.add(ticketnos.get(i).getTicket_no());
+		}
+		//행 열 번호 좌석 리스트
+		int schedulelist[] = new int[number];
+		String seatlist[] = new String[number];
+		int numlist[] = new int[number];
+		Timestamp ticketdatelist[] = new Timestamp[number];
+		List<Schedules> scheduleinfo = new ArrayList<>();
+		List<Performance> performinfo = new ArrayList<>();
+		for(int i=0;i<number;i++) {
+			//예매 번호로 조회한 정보
+			List<Ticket> a = ticket_mapper.getTicket(ticketnos2.get(i));
+			schedulelist[i]=a.get(i).getSchedule_idx();
+			ticketdatelist[i] = a.get(i).getTicket_date();
+			int[] seats = new int[a.size()];
+			numlist[i]=a.size();
+			for(int j=0;j<a.size();j++) {
+				seats[i]= a.get(i).getSeat_idx();
+			}
+			Seat seat1;
+			String seat2="";
+			for(int j=0;i<number;i++) {
+				seat1 = seat_mapper.getOne(seats[i]);
+				seat2 += seat1.getSeat_row()+"-"+seat1.getNum()+", ";
+			}
+			String choicedseat=seat2.substring(0, seat2.length()-2);
+			seatlist[i]=choicedseat;
+		}
+		for(int i=0;i<number;i++) {
+			scheduleinfo.add(schedules_mapper.getInfo(schedulelist[i]));
+			performinfo.add(perform_mapper.getOne(scheduleinfo.get(i).getPerform_idx()));
+		}
+		List<Temp> list = new ArrayList<>();
+		for (int i=0;i<number;i++) {
+			Temp temp = new Temp();
+			temp.setTicket_no(ticketnos2.get(i));
+			temp.setPerform(performinfo.get(i).getPerform_title());
+			temp.setTheater(performinfo.get(i).getTheater_name());
+			temp.setPerform_date(scheduleinfo.get(i).getPerform_date());
+			temp.setStart_time(scheduleinfo.get(i).getStart_time());
+			temp.setSeat(seatlist[i]);
+			temp.setNum(numlist[i]);
+			list.add(temp);
+		}
+		rda.addAttribute("list", list);
 		return "member/MyPage";
 	}
 
@@ -128,9 +184,12 @@ public class MemberController {
 		return "redirect:mypage.do";
 	}
 	
-	@PostMapping("ticket.do")
-	public String getTicket(String id,Model model) {
-		List<Ticket> ticketnos = ticket_mapper.getIdTicket(id);
+	@PostMapping("mypage.do")
+	public String getTicket(Members member,Model model,HttpSession session) {
+		Members id = (Members)session.getAttribute("member"); 
+		logger.info("들어오는 값"+id);
+
+		List<Ticket> ticketnos = ticket_mapper.getIdTicket(id.getId());
 		int number = ticketnos.size();
 		//회원 예매번호 목록
 		List<Integer> ticketnos2 = new ArrayList<>();

@@ -91,9 +91,9 @@
 	</insert>
 
 	<!-- 공지사항 리스트 5개만 불러오기 -->
-	<select id="getNoticeList" parameterType="int" resultType="Notice">
+	<select id="getNoticeList" resultType="Notice">
 	<![CDATA[
-	SELECT NOTICE_TITLE FROM notice WHERE ROWNUM <= 5 ORDER BY NOTICE_IDX DESC
+	SELECT NOTICE_TITLE,notice_idx FROM notice WHERE ROWNUM <= 5 ORDER BY NOTICE_IDX DESC
 	]]>
 	</select>
 	

@@ -152,7 +152,7 @@ img {vertical-align: middle;}
 									<div class="col-6 col-12-medium">
 									 <c:forEach items="${listN}" var="vo">
 										<ul class="alt">
-											<li>${vo.notice_content }</li>
+											<li><a href="noticedetail.do?idx=${vo.notice_idx}">${vo.notice_title }</a></li>
 										</ul>
 									</c:forEach>
 									</div>

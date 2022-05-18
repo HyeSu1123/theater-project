@@ -2,6 +2,7 @@ package com.company.idev;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpSession;
@@ -16,11 +17,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.company.idev.dto.Members;
+import com.company.idev.dto.Notice;
 import com.company.idev.mapper.MembersMapper;
+import com.company.idev.mapper.NoticeMapper;
 
 /**
  * Handles requests for the application home page.
@@ -35,6 +37,9 @@ public class HomeController {
 	MembersMapper mapper;
 	
 	@Autowired
+	NoticeMapper notice_mapper;
+	
+	@Autowired
 	public BCryptPasswordEncoder pwEncoder;
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -47,8 +52,9 @@ public class HomeController {
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		
 		String formattedDate = dateFormat.format(date);
-		
+		List<Notice> listN = notice_mapper.getNoticeList();
 		model.addAttribute("serverTime", formattedDate );
+		model.addAttribute("listN", listN);
 		
 		return "home";
 	}
@@ -129,7 +135,14 @@ public class HomeController {
 
 		return "redirect:/";
 	}
-	
-	
+	//공지
+	@GetMapping("/noticedetail.do")
+	public String logout(int idx,Model model) { 
+		notice_mapper.readCount(idx);
+		Notice detail = notice_mapper.selectOne(idx);
+		
+		model.addAttribute("detail", detail);
+		return "notice/noticeDetail";
+	}
 
 }

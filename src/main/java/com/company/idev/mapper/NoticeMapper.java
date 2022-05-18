@@ -22,5 +22,5 @@ public interface NoticeMapper {
 	void readCount(int idx);
 	void insertNotice(Notice vo);
 
-	List<Notice> getNoticeList(Map<String,Integer> map);
+	List<Notice> getNoticeList();
 }

@@ -179,9 +179,6 @@
 	</c:if>
 </table>
 	</div>
-</div>
-	
-	</div>	
 </section>
 <%@ include file="../includes/footer.jsp" %>
 </body>

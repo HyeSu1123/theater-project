@@ -55,12 +55,6 @@
 	WHERE ID=#{id}
 	</update>
 	
-	<!-- 예매내역 -->
-	<select id="getIdTicket" parameterType="int" resultType="Ticket">
-      SELECT DISTINCT(ticket_no) FROM
-      WHERE id=#{id}
-      ORDER BY ticket_date DESC
-   </select>
 	
 	<delete id="delete" parameterType="Members">
 	 delete from members where id=#{id}
