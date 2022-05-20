@@ -13,8 +13,7 @@
 		WHERE ticket_no=#{ticket_no}
 	</select>
 	<select id="getIdTicket" parameterType="String" resultType="Ticket">
-      SELECT DISTINCT(ticket_no) FROM ticket
+      SELECT DISTINCT ticket_no FROM ticket
       WHERE id=#{id}
-      ORDER BY ticket_date DESC
    </select>
 </mapper>

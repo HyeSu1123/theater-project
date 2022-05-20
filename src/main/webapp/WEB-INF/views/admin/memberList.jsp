@@ -55,8 +55,16 @@
 </head>
 <body>
 <!-- 메뉴바 include -->
-<%@include file="menubar.jsp" %>
-<section>
+<%@ include file="../includes/banner.jsp" %>
+		<!-- 컨테이너시작 -->
+	<section id="main" class="wrapper">
+		<header>
+			<h2>FREDDO</h2>
+				<p class="location">
+				MEMBER LIST<span class="path">/</span> 회원 목록
+				</p>
+		</header>
+		<div class="inner">
 	<h3>회원 목록</h3>
 	<hr>
 	<div style="margin:auto;">
@@ -171,6 +179,7 @@
 		<input name="find" type="hidden">		<!-- find[1] -->
 		<input name="pageNo" type="hidden">
 	</form>
+	</div>
 </section>
 <script type="text/javascript">
 var href=window.location.pathname;				//memberList.do 또는 search.do 가져오기

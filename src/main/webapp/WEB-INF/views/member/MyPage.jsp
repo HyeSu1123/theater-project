@@ -113,7 +113,7 @@
 					</tr>
 					<tr>
 						<td>생년월일</td>
-						<td>${member.birth_date }
+						<td>${member.birth_date }</td>
 					</tr>
 					<tbody id="change">
 					<tr>
@@ -146,7 +146,11 @@
 	
 	<div class="clearp">
 	<h3>예매 내역</h3>
-</div>
+	<form action="mypageticket.do" method="post">
+		<input type="hidden" name="id" value="${member.id}">
+		<button>예매내역</button>
+	</form>
+<%-- </div>
 		<table>
 	<tr>
 		<th width="5%">No</th>
@@ -177,7 +181,7 @@
 			<td colspan="7" style="text-align:center;"><br>조회 결과가 없습니다.</td>
 		</tr>
 	</c:if>
-</table>
+</table> --%>
 	</div>
 </section>
 <%@ include file="../includes/footer.jsp" %>

@@ -15,7 +15,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/assets/css/main.css" />
 	</head>
-	<script type="text/javascript">
+	
+
+<script type="text/javascript">
 	if(${message != null}) alert('${message}');
 </script>
 	<body class="is-preload">
@@ -96,12 +98,6 @@
 						<h2>Why don't you have a good time at FREDDO?</h2>
 						<p>Various performances are waiting for you. Do you want to go see it with me now?</p>
 					</div>
-					<c:if test="${member == null && admin == null}">
-						<ul class="actions stacked">
-						<li><a href="${pageContext.request.contextPath }/login.do" class="button fit">Log In</a></li>
-						<li><a href="${pageContext.request.contextPath }/member/join.do" class="button primary fit">Sign Up</a></li>
-						</ul>
-					</c:if>
 				</div>
 			</section>
 

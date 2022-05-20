@@ -4,139 +4,131 @@
 <html>
 <head>
 	<title>Home</title>
+<!-- 제이쿼리 불러오기 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+ 
+<!-- Slick 불러오기 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css">
+	
 </head>
 <body>
-<style>
-* {box-sizing: border-box;}
-body {font-family: Verdana, sans-serif;}
-.mySlides {display: none;}
-img {vertical-align: middle;}
 
-/* Slideshow container */
-.slideshow-container {
-  max-width: 1000px;
-  position: relative;
-  margin: auto;
-}
-
-/* Caption text */
-.text {
-  color: #f2f2f2;
-  font-size: 15px;
-  padding: 8px 12px;
-  position: absolute;
-  bottom: 8px;
-  width: 100%;
-  text-align: center;
-}
-
-/* Number text (1/3 etc) */
-.numbertext {
-  color: #f2f2f2;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
-}
-
-/* The dots/bullets/indicators */
-.dot {
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.6s ease;
-}
-
-.active {
-  background-color: #717171;
-}
-
-/* Fading animation */
-.fade {
-  animation-name: fade;
-  animation-duration: 1.5s;
-}
-
-@keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
-}
-
-/* On smaller screens, decrease text size */
-@media only screen and (max-width: 300px) {
-  .text {font-size: 11px}
-}
-</style>
 <%@ include file="./includes/top2.jsp" %>
 
 <!-- Wrapper -->
 <div class="wrapper">
 	<div class="inner">
 
-		<!-- Section -->
-			<section class="main">
-				<header class="major">
-					<h2>Performance TOP 3</h2>
-					<p>Best</p>
-				</header>
-				<div class="features">
-					<section>
-						<div class="poster">
-						<img src="/upload/${vo.poster}" width="175px" height="250px" style="object-fit:contain">
-						</div>
-						<div><h3>${vo.perform_title}</h3></div>
-						
-						<p>Lorem ipsum dolor sit amet nullam feugiat tempus</p>
-					</section>
-					<section>
-						<span class="icon solid fa-paper-plane major accent3"></span>
-						<h3>Lorem sed nullam</h3>
-						<p>Lorem ipsum dolor sit amet nullam feugiat tempus</p>
-					</section>
-					<section>
-						<span class="icon solid fa-envelope major accent4"></span>
-						<h3>Aliquam feugiat</h3>
-						<p>Lorem ipsum dolor sit amet nullam feugiat tempus</p>
-					</section>
-				</div>
-				
-			</section>
+ <div class="page-wrapper" style="position:relative;">
+      <!--page slider -->
+      <div class="post-slider">
+        <h1 class="silder-title">Trending Posts</h1>
+        <i class="fas fa-chevron-left prev"></i>  //왼쪽 방향 버튼
+        <i class="fas fa-chevron-right next"></i>   //오른쪽 방향 버튼
+        <div class="post-wrapper">
+          <div class="post">
+            <img src="img/paris.jpg" class="slider-image">
+            <div class="post-info">
+              <h4><a href="#" class="post-subject">Lorem ipsu eiusmod tempor incididunt ut </a></h4>
+              <i class="far fa-user" style="height:10%;">Awa Melvine</i>
+            </div>
+          </div>
+          <div class="post">
+            <img src="img/architecture.jpg" class="slider-image">
+            <div class="post-info">
+              <h4><a href="#"> Commodo odio aenean sed  </a></h4>
+              <i class="far fa-user" style="height:10%;">Awa Melvine</i>
+            </div>
+          </div>
+          <div class="post">
+            <img src="img/paris.jpg" class="slider-image">
+            <div class="post-info">
+              <h4><a href="#">Quis hendrerit dolor magna eget est lorem ipsum dolor sit. </a></h4>
+              <i class="far fa-user" style="height:10%;">Awa Melvine</i>
+            </div>
+          </div>
+          <div class="post">
+            <img src="img/gyungju.jpg" class="slider-image">
+            <div class="post-info">
+              <h4><a href="#">Elit at imperdiet dui accumsan sit.</a></h4>
+              <i class="far fa-user" style="height:10%;">Awa Melvine</i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--post slider-->
+    </div>
+
+<style>
+/*post slider*/
+.post-slider{
+  width:70%;
+  margin:0px auto;
+  position:relative;
+}
+.post-slider .silder-title{
+  text-align:center;
+  margin:30px auto;
+}
+.post-slider .next{
+  position:absolute;
+  top:50%;
+  right:30px;
+  font-size:2em;
+  color:gray;
+  cursor: pointer;
+}
+.post-slider .prev{
+  position:absolute;
+  top:50%;
+  left:30px;
+  font-size:2em;
+  color:gray;
+    cursor: pointer;
+}
+.post-slider .post-wrapper{
+
+  width:84%;
+  height:350px;
+  margin:0px auto;
+  overflow: hidden;
+  padding:10px 0px 10px 0px;
+}
+.post-slider .post-wrapper .post{
+  width:300px;
+  height:300px;
+  margin:0px 10px;
+  display:inline-block;
+  background:white;
+  border-radius: 5px;
+}
+.post-slider .post-wrapper .post .post-info{
+  font-size:15px;
+  height:30%;
+  padding-left:10px;
+}
+.post-slider .post-wrapper .post .slider-image{
+  width:100%;
+  height:175px;
+  border-top-left-radius:5px;
+  border-top-right-radius:5px;
+}
+</style>
+<script type="text/javascript">
+$.noConflict();
+$('.post-wrapper').slick({
+	  slidesToShow: 3,
+	  slidesToScroll: 1,
+	  autoplay: true,
+	  autoplaySpeed: 2000,
+	  nextArrow:$('.next'),
+	  prevArrow:$('.prev'),
+	});
+</script>
 
 		<!-- Section -->
-			<h2>Automatic Slideshow</h2>
-<p>Change image every 2 seconds:</p>
-
-<div class="slideshow-container">
-
-<div class="mySlides fade">
-  <div class="numbertext">1 / 3</div>
-<img src="${pageContext.request.contextPath}/resources/image/pic05.jpg" style="width:100%">  
-<div class="text">Caption Three</div>
-  <div class="text">Caption Text</div>
-</div>
-
-<div class="mySlides fade">
-  <div class="numbertext">2 / 3</div>
-  <img src="${pageContext.request.contextPath}/resources/image/pic04.jpg" style="width:100%">
-  <div class="text">Caption Two</div>
-</div>
-
-<div class="mySlides fade">
-  <div class="numbertext">3 / 3</div>
-<img src="${pageContext.request.contextPath}/resources/image/pic05.jpg" style="width:100%">  <div class="text">Caption Three</div>
-</div>
-
-</div>
-<br>
-
-<div style="text-align:center">
-  <span class="dot"></span> 
-  <span class="dot"></span> 
-  <span class="dot"></span> 
-</div>
 
 
 
@@ -168,26 +160,6 @@ img {vertical-align: middle;}
 			</div>
 <%@ include file="./includes/footer.jsp" %>
 			
-<script>
-let slideIndex = 0;
-showSlides();
 
-function showSlides() {
-  let i;
-  let slides = document.getElementsByClassName("mySlides");
-  let dots = document.getElementsByClassName("dot");
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";  
-  }
-  slideIndex++;
-  if (slideIndex > slides.length) {slideIndex = 1}    
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";  
-  dots[slideIndex-1].className += " active";
-  setTimeout(showSlides, 4000); // Change image every 2 seconds
-}
-</script>
 </body>
 </html>
