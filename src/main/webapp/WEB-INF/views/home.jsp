@@ -62,15 +62,19 @@
     </div>
 
 <style>
+
 /*post slider*/
+.post{
+	padding: 20px;
+}
 .post-slider{
-  width:70%;
+  width:90%;
   margin:0px auto;
   position:relative;
 }
 .post-slider .silder-title{
   text-align:center;
-  margin:30px auto;
+  margin:50px auto;
 }
 .post-slider .next{
   position:absolute;
@@ -121,7 +125,7 @@ $('.post-wrapper').slick({
 	  slidesToShow: 3,
 	  slidesToScroll: 1,
 	  autoplay: true,
-	  autoplaySpeed: 2000,
+	  autoplaySpeed: 3000,
 	  nextArrow:$('.next'),
 	  prevArrow:$('.prev'),
 	});
