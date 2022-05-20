@@ -13,8 +13,102 @@
 		<title>Freddo Theater</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!-- 제이쿼리 불러오기 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+ 
+<!-- Slick 불러오기 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css">
+	
 		<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/assets/css/main.css" />
 	</head>
+	<style>
+
+/*post slider*/
+.post{
+	padding: 20px;
+}
+.post-slider{
+  width:90%;
+  margin:0px auto;
+  position:relative;
+}
+.post-slider .silder-title{
+  text-align:center;
+  margin:50px auto;
+}
+.post-slider .next{
+  position:absolute;
+  top:50%;
+  right:30px;
+  font-size:2em;
+  color:gray;
+  cursor: pointer;
+}
+.post-slider .prev{
+  position:absolute;
+  top:50%;
+  left:30px;
+  font-size:2em;
+  color:gray;
+    cursor: pointer;
+}
+.post-slider .post-wrapper{
+  width:84%;
+  height:350px;
+  margin:0px auto;
+  overflow: hidden;
+  padding:10px 0px 10px 0px;
+}
+.post-slider .post-wrapper .post{
+  width:300px;
+  height:300px;
+  margin:0px 10px;
+  display:inline-block;
+  background:white;
+  border-radius: 5px;
+}
+.post-slider .post-wrapper .post .post-info{
+  font-size:15px;
+  height:30%;
+  padding-left:10px;
+}
+.post-slider .post-wrapper .post .slider-image{
+  width:100%;
+  height:175px;
+  border-top-left-radius:5px;
+  border-top-right-radius:5px;
+}
+.banner{
+	background-color: #303639;
+		color: #ffffff;
+		padding: 10.5em 0 4em 0 ;
+		display: -moz-flex;
+		display: -webkit-flex;
+		display: -ms-flex;
+		display: flex;
+		-moz-align-items: center;
+		-webkit-align-items: center;
+		-ms-align-items: center;
+		align-items: center;
+		-moz-justify-content: center;
+		-webkit-justify-content: center;
+		-ms-justify-content: center;
+		justify-content: center;
+		background-image: -moz-linear-gradient(to top, rgba(48, 54, 57, 0.2), rgba(48, 54, 57, 0.2)), url("../../images/banner.jpg");
+		background-image: -webkit-linear-gradient(to top, rgba(48, 54, 57, 0.2), rgba(48, 54, 57, 0.2)), url("../../images/banner.jpg");
+		background-image: -ms-linear-gradient(to top, rgba(48, 54, 57, 0.2), rgba(48, 54, 57, 0.2)), url("../../images/banner.jpg");
+		background-image: linear-gradient(to top, rgba(48, 54, 57, 0.2), rgba(48, 54, 57, 0.2)), url("../../images/banner.jpg");
+		background-attachment: fixed;
+		background-position: center;
+		background-size: cover;
+		height: 75vh;
+		min-height: 30em;
+		position: relative;
+		margin-top: -3.125em;
+}
+</style>
 	
 
 <script type="text/javascript">
@@ -92,13 +186,54 @@
 			</nav>
 
 		<!-- Banner -->
-			<section id="banner">
-				<div class="inner">
-					<div class="content">
-						<h2>Why don't you have a good time at FREDDO?</h2>
-						<p>Various performances are waiting for you. Do you want to go see it with me now?</p>
-					</div>
-				</div>
+			<section class="banner">
+	<div class="wrapper">
+	<div class="inner">
+
+ <div class="page-wrapper" style="position:relative;">
+      <!--page slider -->
+      <div class="post-slider">
+        <h1 class="silder-title">Trending Posts</h1>
+        <i class="fas fa-chevron-left prev"></i>  <!-- 왼쪽 방향 버튼 -->
+        <i class="fas fa-chevron-right next"></i>   <!-- 오른쪽 방향 버튼 -->
+        <div class="post-wrapper">
+          <div class="post">
+            <img src="${pageContext.request.contextPath }/resources/image/cats.jpg" class="slider-image">
+            <div class="post-info">
+              <h4><a href="#" class="post-subject">Lorem ipsu eiusmod tempor incididunt ut </a></h4>
+              <i class="far fa-user" style="height:10%;">Awa Melvine</i>
+            </div>
+          </div>
+          <div class="post">
+            <img src="${pageContext.request.contextPath }/resources/image/matahari.jpg" class="slider-image">
+            <div class="post-info">
+              <h4><a href="#"> Commodo odio aenean sed  </a></h4>
+              <i class="far fa-user" style="height:10%;">Awa Melvine</i>
+            </div>
+          </div>
+          <div class="post">
+            <img src="${pageContext.request.contextPath }/resources/image/jekyllandhyde.jpg" class="slider-image">
+            <div class="post-info">
+              <h4><a href="#">Quis hendrerit dolor magna eget est lorem ipsum dolor sit. </a></h4>
+              <i class="far fa-user" style="height:10%;">Awa Melvine</i>
+            </div>
+          </div>
+          <div class="post">
+            <img src="${pageContext.request.contextPath }/resources/image/pic04.jpg" class="slider-image">
+            <div class="post-info">
+              <h4><a href="#">Elit at imperdiet dui accumsan sit.</a></h4>
+              <i class="far fa-user" style="height:10%;">Awa Melvine</i>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+      <!--post slider-->
+    </div>
+
+			
+
 			</section>
 
 
