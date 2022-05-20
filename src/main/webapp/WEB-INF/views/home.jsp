@@ -25,32 +25,32 @@
       <!--page slider -->
       <div class="post-slider">
         <h1 class="silder-title">Trending Posts</h1>
-        <i class="fas fa-chevron-left prev"></i>  //왼쪽 방향 버튼
-        <i class="fas fa-chevron-right next"></i>   //오른쪽 방향 버튼
+        <i class="fas fa-chevron-left prev"></i>  <!-- 왼쪽 방향 버튼 -->
+        <i class="fas fa-chevron-right next"></i>   <!-- 오른쪽 방향 버튼 -->
         <div class="post-wrapper">
           <div class="post">
-            <img src="img/paris.jpg" class="slider-image">
+            <img src="${pageContext.request.contextPath }/resources/image/pic04.jpg" class="slider-image">
             <div class="post-info">
               <h4><a href="#" class="post-subject">Lorem ipsu eiusmod tempor incididunt ut </a></h4>
               <i class="far fa-user" style="height:10%;">Awa Melvine</i>
             </div>
           </div>
           <div class="post">
-            <img src="img/architecture.jpg" class="slider-image">
+            <img src="${pageContext.request.contextPath }/resources/image/pic04.jpg" class="slider-image">
             <div class="post-info">
               <h4><a href="#"> Commodo odio aenean sed  </a></h4>
               <i class="far fa-user" style="height:10%;">Awa Melvine</i>
             </div>
           </div>
           <div class="post">
-            <img src="img/paris.jpg" class="slider-image">
+            <img src="${pageContext.request.contextPath }/resources/image/pic04.jpg" class="slider-image">
             <div class="post-info">
               <h4><a href="#">Quis hendrerit dolor magna eget est lorem ipsum dolor sit. </a></h4>
               <i class="far fa-user" style="height:10%;">Awa Melvine</i>
             </div>
           </div>
           <div class="post">
-            <img src="img/gyungju.jpg" class="slider-image">
+            <img src="${pageContext.request.contextPath }/resources/image/pic04.jpg" class="slider-image">
             <div class="post-info">
               <h4><a href="#">Elit at imperdiet dui accumsan sit.</a></h4>
               <i class="far fa-user" style="height:10%;">Awa Melvine</i>
@@ -89,7 +89,6 @@
     cursor: pointer;
 }
 .post-slider .post-wrapper{
-
   width:84%;
   height:350px;
   margin:0px auto;
