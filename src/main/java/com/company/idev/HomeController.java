@@ -21,8 +21,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.company.idev.dto.Members;
 import com.company.idev.dto.Notice;
+import com.company.idev.dto.Performance;
 import com.company.idev.mapper.MembersMapper;
 import com.company.idev.mapper.NoticeMapper;
+import com.company.idev.mapper.PerformanceMapper;
 
 /**
  * Handles requests for the application home page.
@@ -40,6 +42,9 @@ public class HomeController {
 	NoticeMapper notice_mapper;
 	
 	@Autowired
+	PerformanceMapper perform_mapper;
+	
+	@Autowired
 	public BCryptPasswordEncoder pwEncoder;
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -53,8 +58,10 @@ public class HomeController {
 		
 		String formattedDate = dateFormat.format(date);
 		List<Notice> listN = notice_mapper.getNoticeList();
+		List<Performance> nowlistN = perform_mapper.selectTicketPerform();
 		model.addAttribute("serverTime", formattedDate );
 		model.addAttribute("listN", listN);
+		model.addAttribute("nowlistN", nowlistN);
 		
 		return "home";
 	}
@@ -144,5 +151,13 @@ public class HomeController {
 		model.addAttribute("detail", detail);
 		return "notice/noticeDetail";
 	}
-
+	
+	
+	
+	@GetMapping("/detailnow.do")
+	public String performDetailNow(int idx,Model model) {
+		Performance detail = perform_mapper.selectNowDetail(idx);
+		model.addAttribute("detail", detail);
+		return "perform/performDetail";
+	}
 }
