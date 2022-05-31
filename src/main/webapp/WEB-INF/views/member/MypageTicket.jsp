@@ -12,7 +12,8 @@
 <body>
 <div class="clearp">
 	<h3>예매 내역</h3>
-</div>
+	<form action="./ticket.do" method="post">
+		<input type="hidden" name="id" value="${member.id}">
 		<table>
 	<tr>
 		<th width="5%">No</th>
@@ -44,5 +45,7 @@
 		</tr>
 	</c:if>
 </table>
+</form>
+</div>
 </body>
 </html>

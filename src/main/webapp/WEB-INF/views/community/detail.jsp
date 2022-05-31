@@ -7,8 +7,6 @@
 <head>
 <meta charset="UTF-8">
 <title>글 상세보기</title>
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/freeboard.css">
 <script type="text/javascript">
 function update(){
     document.getElementById('cont').innerHTML=`
@@ -59,7 +57,7 @@ function deleteOk(){
 		<div class="inner">
 			<h3>공연 후기</h3>
 			<hr>
-			<table style="width: 750px; margin: auto;">
+			<table>
 				<tr>
 					<td width="20%" class="td1">제목</td>
 					<td width="40%" class="input1">${bean.subject}</td>
@@ -108,7 +106,7 @@ function deleteOk(){
 				<input type="hidden" name="ip"
 					value="${pageContext.request.remoteAddr}"> <input
 					type="hidden" name="pageNo" value="${page }">
-				<table style="width: 60%; margin: auto;">
+				<table>
 					<tr>
 						<td colspan="4">댓글 갯수 : ${bean.commentCount }
 						
@@ -116,16 +114,14 @@ function deleteOk(){
 							type="button" onclick="window.location.reload()" value="새로 고침" class="btn-small2">
 						</td>
 					</tr>
-					<tr>
-						<td colspan="4"><hr></td>
-					</tr>
+					
 					<!-- 댓글 입력 -->
 
 
 					<c:choose>
 						<c:when test="${member == null}">
 							<!-- 로그인 안했을 때 메뉴 -->
-							</td>
+							
 						</c:when>
 						<c:otherwise>
 							<!-- 로그인했을 때 메뉴 -->
@@ -146,10 +142,7 @@ function deleteOk(){
 									type="submit" value="저장" class="btn-small"> <input
 									type="reset" value="취소" class="btn-small"></td>
 							</tr>
-							<tr>
-								<td colspan="4"><hr></td>
-							</tr>
-
+						
 						</c:otherwise>
 					</c:choose>
 					<!-- 댓글 목록 -->
@@ -168,7 +161,7 @@ function deleteOk(){
 										
 										 <a
 											href="javascript:delete_cmt(`${cmt.idx}`)"> <img
-												alt="삭제" src="${image }/delete.png" style="width: 20px;"></a>
+												alt="삭제" src="${pageContext.request.contextPath }/resources/image/delete.png" style="width: 20px;"></a>
 										</span>
 								</c:when>
 								<c:otherwise>
@@ -197,5 +190,6 @@ function deleteOk(){
 			</form>
 		</div>
 	</section>
+	<%@ include file="../includes/footer.jsp" %>
 </body>
 </html>

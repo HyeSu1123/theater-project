@@ -9,5 +9,7 @@ import com.company.idev.dto.Ticket;
 public interface TicketMapper {
 	void insertTicket(Ticket vo);
 	List<Ticket> getTicket(int ticket_no);
-	List<Ticket> getIdTicket(@Param("id") String id);
+	List<Ticket> getIdTicket(String id);
+	void cancelTicket(int ticket_no);
+	List<Ticket> getIdCancelledTicket(String id);
 }

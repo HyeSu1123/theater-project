@@ -70,7 +70,11 @@ ul{
 		<div class="clearp">
 			<div id="detail">${detail.detail}</div>
 		</div>
-		<div class="clearp"><button type="button" onclick="history.back();">뒤로가기</button></div>
+		<div class="clearp">
+		
+		<button type="button" onclick="location.href='${pageContext.request.contextPath}/ticket/choice.do?idx=${detail.perform_idx}&tidx=${detail.theater_idx}'">예매하기</button>
+		<button type="button" onclick="history.back();">뒤로가기</button>
+		</div>
 	</div>
 </div>
 </div>

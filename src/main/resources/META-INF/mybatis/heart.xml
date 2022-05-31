@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.idev.mapper.HeartMapper">
+	<insert id="insertHeart" parameterType="Heart">
+		INSERT INTO HEART(hno,bno,id)
+		VALUES (${hno},${bno},${id})
+	</insert>
+	
+	<delete id="deleteHeart" parameterType="Heart">
+		DELETE FROM HEART
+		WHERE hno=${hno} AND bno=${bno}
+		AND id= ${id}
+	</delete>
+	
+	<select id="checkHeart" parameterType="Map" resultType="int">
+		SELECT count(*) AS heart_check FROM HEART h WHERE 
+		hno=${hno} AND bno=${bno} AND id=${id}
+	</select>
+</mapper>  

@@ -35,9 +35,15 @@
  		<input type="text" name="id" size="70" class="input1" 
  					required="required"  value=${member.id} readonly></td>
  	</tr>
- 	 	<tr><td class="td1">공연 이름</td>
- 		<td class="left"><input type="text" name="title" size="70" class="input1" 
- 					required="required"></td>
+ 	<tr><td class="td1">공연 이름</td>
+ 	 	<td class="left">
+			<select name="title">
+				<option value="none" selected disabled>----</option>
+				<c:forEach var="vo" items="${perform}">
+					<option value="${vo.perform_title }">${vo.perform_title}</option>
+				</c:forEach>
+			</select>
+ 	 	</td>
  	</tr>
  	<tr><td class="td1">내용</td>  <!-- textarea 의 크기 : rows="20" cols="80" -->
  		<td class="left"><textarea  rows="20" cols="80" name="content" class="input1" 

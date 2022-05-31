@@ -21,7 +21,7 @@
 					<ul class="contact">
 						<li>12345 Somewhere Road</li>
 						<li>Nashville, TN 00000</li>
-						<li>(000) 000-0000</li>
+						<li>(02)-1234-5678</li>
 					</ul>
 					<ul class="links">
 						<li><a href="#">FAQ</a></li>

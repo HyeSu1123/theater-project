@@ -146,11 +146,10 @@
 	
 	<div class="clearp">
 	<h3>예매 내역</h3>
-	<form action="mypageticket.do" method="post">
+	<form action="${pageContext.request.contextPath }/ticket/ticket.do" method="post">
 		<input type="hidden" name="id" value="${member.id}">
 		<button>예매내역</button>
-	</form>
-<%-- </div>
+	
 		<table>
 	<tr>
 		<th width="5%">No</th>
@@ -181,7 +180,9 @@
 			<td colspan="7" style="text-align:center;"><br>조회 결과가 없습니다.</td>
 		</tr>
 	</c:if>
-</table> --%>
+</table>
+</form>
+ </div>
 	</div>
 </section>
 <%@ include file="../includes/footer.jsp" %>

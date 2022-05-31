@@ -32,7 +32,7 @@
 					<li>
 						<a href="">Community</a>
 						<ul class="open">
-							<li><a href="${pageContext.request.contextPath }/admin/noticelist.do">Notice</a></li>
+							<li><a href="${pageContext.request.contextPath }/notice/noticelist.do">Notice</a></li>
 							<li><a href="${pageContext.request.contextPath }/community/list.do">관람 후기</a></li>
 						</ul>
 					</li>
@@ -60,7 +60,6 @@
 						<a href="">Community</a>
 						<ul class="open">
 							<li><a href="${pageContext.request.contextPath }/admin/noticelist.do">Notice List</a></li>
-							<li><a href="${pageContext.request.contextPath }/admin/noticeinsert.do">Notice Insert</a></li>
 							<li><a href="${pageContext.request.contextPath }/community/list.do">관람후기</a></li>
 						</ul>
 					</li>
@@ -73,7 +72,7 @@
 				</ul>
 				<ul class="actions stacked">
 					<c:if test="${member == null && admin == null}">
-						<li><a href="${pageContext.request.contextPath }/login.do" class="button fit">Log In</a></li>
+						<li><a href="${pageContext.request.contextPath }/member/login.do" class="button fit">Log In</a></li>
 						<li><a href="${pageContext.request.contextPath }/member/join.do" class="button primary fit">Sign Up</a></li>
 					</c:if>
 					<c:if test="${admin != null }">

@@ -68,7 +68,7 @@ color: white;
 }
 .post-slider .post-wrapper{
   width:84%;
-  height:450px;
+  height:430px;
   margin:30px auto;
   overflow: hidden;
   padding:10px 0px 10px 0px;
@@ -146,7 +146,7 @@ font: bold;
 					<li>
 						<a href="">Community</a>
 						<ul class="open">
-							<li><a href="${pageContext.request.contextPath }/admin/noticelist.do">Notice</a></li>
+							<li><a href="${pageContext.request.contextPath }/notice/noticelist.do">Notice</a></li>
 							<li><a href="${pageContext.request.contextPath }/community/list.do">관람 후기</a></li>
 						</ul>
 					</li>
@@ -174,7 +174,6 @@ font: bold;
 						<a href="">Community</a>
 						<ul class="open">
 							<li><a href="${pageContext.request.contextPath }/admin/noticelist.do">Notice List</a></li>
-							<li><a href="${pageContext.request.contextPath }/admin/noticeinsert.do">Notice Insert</a></li>
 							<li><a href="${pageContext.request.contextPath }/community/list.do">관람후기</a></li>
 						</ul>
 					</li>
@@ -187,7 +186,7 @@ font: bold;
 				</ul>
 				<ul class="actions stacked">
 					<c:if test="${member == null && admin == null}">
-						<li><a href="${pageContext.request.contextPath }/login.do" class="button fit">Log In</a></li>
+						<li><a href="${pageContext.request.contextPath }/member/login.do" class="button fit">Log In</a></li>
 						<li><a href="${pageContext.request.contextPath }/member/join.do" class="button primary fit">Sign Up</a></li>
 					</c:if>
 					<c:if test="${admin != null }">
@@ -239,6 +238,23 @@ font: bold;
           
           
 		<!-- Scripts -->
+			<script type="text/javascript">
+				$(document).ready(function(){
+					$.noConflict();
+					$('.post-wrapper').slick({
+						slidesPerRow: 1, 
+						  rows:1,
+						  slidesToShow: 3,
+						  slidesToScroll: 1,
+						  autoplay: true,
+						  autoplaySpeed: 4000,
+						  nextArrow:$('.next'),
+						  prevArrow:$('.prev'),
+						});
+				});
+			
+			</script>
+		
 			<script type="text/javascript" src="${pageContext.request.contextPath }/resources/assets/js/jquery.min.js"></script>
 			<script type="text/javascript" src="${pageContext.request.contextPath }/resources/assets/js/jquery.scrollex.min.js"></script>
 			<script type="text/javascript" src="${pageContext.request.contextPath }/resources/assets/js/browser.min.js"></script>

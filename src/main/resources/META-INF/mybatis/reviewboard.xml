@@ -22,6 +22,45 @@
 	UPDATE REVIEWBOARD SET readCount=readCount+1 WHERE idx=#{idx}
 	</update>
 	
+	<!--공연 선택 -->
+	<select id="selectTicketPerform" resultType="Performance">
+	<![CDATA[
+		SELECT * FROM performance p, theater t
+		WHERE p.theater_idx=t.theater_idx
+		ORDER BY start_date 
+	]]>
+	</select>
+	
+	<!-- 검색 관람후기 페이징 -->
+	<select id="searchPageReview" parameterType="Map" resultType="Reviewboard">
+		SELECT * FROM (
+			SELECT rownum AS R, T.* FROM 
+				(SELECT * from REVIEWBOARD
+		<if test="columns=='title'">
+		 WHERE subject like '%'||#{find}||'%'
+		</if>
+		<if test="columns=='content'">
+ 		 WHERE content like '%'||#{find}||'%'
+		</if>
+		<if test="columns=='titleContent'">
+		 WHERE title like '%'||#{find}||'%'
+		</if>
+		ORDER BY idx DESC) T )
+		WHERE R BETWEEN #{startNo} AND #{endNo}
+	</select>
+	
+	<select id="getSearchCnt" parameterType="Map" resultType="int">
+		SELECT count(*) FROM REVIEWBOARD
+		<if test="columns=='title'">
+		 WHERE subject like '%'||#{find}||'%'
+		</if>
+		<if test="columns=='content'">
+ 		 WHERE content like '%'||#{find}||'%'
+		</if>
+		<if test="columns=='titleContent'">
+		 WHERE title like '%'||#{find}||'%'
+		</if>
+	</select>
 	
 	
 	<select id="getPageList" parameterType="Map" resultType="Reviewboard">

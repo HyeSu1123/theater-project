@@ -49,6 +49,7 @@
 				<div>
 				<button>검색</button>
 				<button type="button" onclick="location.href='noticelist.do'">전체보기</button>
+				<button type="button" onclick="location.href='noticeinsert.do'">글 쓰기</button>
 				</div>
 				</div>
 			</form>

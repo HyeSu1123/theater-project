@@ -26,8 +26,29 @@
 		<h3>공연 후기 목록</h3>
 
 <hr>
-
-<div class="table-wrapper">
+<div style="margin:auto;">
+		<div style="text-align:right;">
+			<form action="reviewsearch.do" method="post">
+			<div class="row gtr-uniform">
+			<div class="col-4">
+				<select name="columns" id="columns">
+					<option value="title">제목</option>
+					<option value="content">내용</option>
+					<option value="titleContent">영화 제목</option>
+				</select>
+			</div>
+				<!-- 아래 find는 2개 중에 하나만 화면에 표시  -->
+				<span id="content">
+					<input name="find" placeholder="검색할 내용 입력" value="${find}">
+				</span>
+				<div>
+				<button>검색</button>
+				<button type="button" onclick="location.href='list.do'">전체보기</button>
+				<button type="button" onclick="location.href='insert.do?pageNo=${page.pageNo }'">글쓰기</button>
+				</div>
+				</div>
+			</form>
+		</div>
  <table>
  	<tr>
  		<th width="10%">번호</th>
@@ -49,19 +70,9 @@
  		</td>
  	</tr>
  	</c:forEach>
- 	<tr><td colspan="4">Go!
+ 	<tr><td colspan="4">
  	<!-- a태그 url요청 get 메소드 -->
- 	<c:choose>    
-		<c:when test="${member == null}">  
-	<!-- 로그인 안했을 때 메뉴 --> 
-		<a class="button" href="${pageContext.request.contextPath }">홈</a></td>
-		</c:when>
-		<c:otherwise>  
-		<!-- 로그인했을 때 메뉴 -->
-	 	<a class="button" href="insert.do?pageNo=${page.pageNo }">글쓰기</a>
-	 			<a class="button" href="${pageContext.request.contextPath }">홈</a></td>
-		</c:otherwise>
-	</c:choose>
+	 	<a class="button" href="${pageContext.request.contextPath }">홈</a></td>
  	
  	<td>작성글 총 개수 : ${page.totalCount}</td>
  	</tr>
