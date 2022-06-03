@@ -17,6 +17,11 @@
 	select * from members where id=#{id} AND authority='0'
 	</select>
 	
+	<!-- 관리자승인 로그인 -->	
+	<select id="loginAdminApp" resultType="Members" >
+	select * from members where id=#{id} AND authority='3'
+	</select>
+	
 	<!-- 아이디 중복확인 -->
 	<select id="checkid" resultType="int" parameterType="String">
 	select count(*) from members where id=#{id}
@@ -112,6 +117,13 @@
 	<update id="updateAdmin" parameterType="String">
 		UPDATE members 
  			SET authority=0
+		WHERE id=#{id}
+	</update>
+	
+	<!-- 일반 회원으로 변경 -->
+	<update id="updateMember" parameterType="String">
+		UPDATE members 
+ 			SET authority=1
 		WHERE id=#{id}
 	</update>
 	

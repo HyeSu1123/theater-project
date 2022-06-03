@@ -127,9 +127,21 @@
 					</tbody>
 					<tr>
 						<td>가입일자</td>
-						<td>${member.reg_date }
-						
-						</td>
+						<td>${member.reg_date }</td>
+					</tr>
+					<tr>
+					<td>등급</td>
+						<td>
+					 		<c:if test="${member.authority==1}">
+					 			<span>일반 회원</span>
+					 		</c:if>
+					 		<c:if test="${member.authority==0}">
+					 			<span style="color:red;font-weight:bolder;">관리자</span>
+					 		</c:if>
+					 		<c:if test="${member.authority==3}">
+					 			<span style="color:blue;">승인 대기</span>
+					 		</c:if>
+				 		</td>
 					</tr>
 					<tr>
 					<td colspan="2" style="text-align: center;">
@@ -142,47 +154,17 @@
 				</table>
 				</form>
 				</fieldset>
-				<a class="button primary small fit" href="${pageContext.request.contextPath }/member/qinsert.do">1:1문의 글 쓰기</a>
-	
-	<div class="clearp">
-	<h3>예매 내역</h3>
-	<form action="${pageContext.request.contextPath }/ticket/ticket.do" method="post">
-		<input type="hidden" name="id" value="${member.id}">
-		<button>예매내역</button>
-	
-		<table>
-	<tr>
-		<th width="5%">No</th>
-		<th width="15%">예매번호</th>
-		<th width="15%">공연</th>
-		<th width="15%">극장</th>
-		<th width="15%">공연일자</th>
-		<th width="10%">공연시간</th>
-		<th width="15%">좌석</th>
-		<th width="10%">인원</th>
-	</tr>
-	<c:forEach var="vo" items="${list}" varStatus="status">
-	<tr class="list">
-		<td>${status.count}</td> 	
- 		<td>${vo.ticket_no}</td>
- 		<td>${vo.perform}</td>
- 		<td>${vo.theater}</td>
- 		<td>
- 		<fmt:formatDate value="${vo.perform_date }" pattern="yyyy-MM-dd"/>  <!-- 출력패턴 -->
- 		</td>
- 		<td>${vo.start_time}</td>
- 		<td>${vo.seat}</td>
- 		<td>${vo.num}명</td>
- 	</tr>
-	 	</c:forEach>
-	<c:if test="${fn:length(list)==0 }">
-		<tr>
-			<td colspan="7" style="text-align:center;"><br>조회 결과가 없습니다.</td>
-		</tr>
-	</c:if>
-</table>
-</form>
- </div>
+
+	<ul class="actions fit">
+		<li><a class="button fit" href="${pageContext.request.contextPath }/member/Board1to1.do">1:1 문의 목록</a></li>
+		<li>
+			<form action="${pageContext.request.contextPath }/member/ticket.do" method="post">
+				<input type="hidden" name="id" value="${member.id}">
+				<button class="button primary fit" >예매내역</button>
+			</form>
+		</li>
+	</ul>
+
 	</div>
 </section>
 <%@ include file="../includes/footer.jsp" %>

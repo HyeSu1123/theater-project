@@ -36,7 +36,7 @@
 		}else
 			alert('등록이 취소되었습니다.');
 	}
-	function deleteMember(id){
+	function updateMember(id){
 		var answer = prompt(id+"님의 관리자 가입을 거절하시겠습니까?\n거절하려면 '가입 거절'를 입력하세요.","")
 		if(answer=='가입 거절'){
 			var form = document.createElement('form');
@@ -51,7 +51,7 @@
 			document.body.appendChild(form);
 			form.submit();
 		}else
-			alert('삭제가 취소되었습니다.');
+			alert('거절이 취소되었습니다.');
 	
 	}
 </script>
@@ -100,7 +100,7 @@
 	  <button class="dropbtn">•••</button>
 	  <div class="dropdown-content">
 	    <a href="javascript:updateAdmin('${vo.id}')">가입 승인</a>
-	    <a href="javascript:deleteMember('${vo.id}')">가입 거절</a>
+	    <a href="javascript:updateMember('${vo.id}')">가입 거절</a>
 	  </div>
 	</div>
 				</td>

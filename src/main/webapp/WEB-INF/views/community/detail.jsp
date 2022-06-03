@@ -51,7 +51,7 @@ function deleteOk(){
 		
 			<h2>FREDDO</h2>
 			<p class="location">
-				MEMBER <span class="path">/</span> 공연 후기
+				REVIEW <span class="path">/</span> 공연 후기
 			</p>
 		</header>
 		<div class="inner">
@@ -158,10 +158,8 @@ function deleteOk(){
 								<c:when test="${member.id == bean.id}">
 									<!-- 로그인했을 때 메뉴 -->
 									<span style="float: right;">
-										
-										 <a
-											href="javascript:delete_cmt(`${cmt.idx}`)"> <img
-												alt="삭제" src="${pageContext.request.contextPath }/resources/image/delete.png" style="width: 20px;"></a>
+										 <a href="javascript:delete_cmt(`${cmt.idx}`)"> 
+											<img alt="삭제" src="${pageContext.request.contextPath }/resources/image/delete.png" style="width: 20px;"></a>
 										</span>
 								</c:when>
 								<c:otherwise>

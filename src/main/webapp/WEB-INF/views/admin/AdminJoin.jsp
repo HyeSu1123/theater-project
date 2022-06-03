@@ -5,8 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Join</title>
-<%-- 	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common.css">
- --%>
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/validation.js">
 </script>
 </head>

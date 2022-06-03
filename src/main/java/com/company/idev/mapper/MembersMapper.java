@@ -10,6 +10,8 @@ import com.company.idev.dto.Members;
 public interface MembersMapper {
 	Members login(Members id);	//암호화 한 후 회원 로그인
 	Members loginAdmin(Members id); //암호화 한 후 관리자 로그인
+	Members loginAdminApp(Members id); //암호화 한 후 관리자승인 로그인
+	
 	int checkid(String id);	//아이디 체크
 	Members findPassword(String id); //비밀번호 찾기
 	void updatePassword(Members password); //비밀번호 바꾸기
@@ -22,6 +24,7 @@ public interface MembersMapper {
 	List<Members> list();
 	Members getOne(String id);
 	void updateAdmin(String id);
+	void updateMember(String id);
 	void deleteMember(String id);
 	List<Members> getPageList(Map<String,Integer> map);
 	int getCount();

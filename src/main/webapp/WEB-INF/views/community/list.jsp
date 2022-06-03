@@ -19,7 +19,7 @@
 		<header>
 			<h2>FREDDO</h2>
 				<p class="location">
-				COMMUNITY <span class="path">/</span> 후기 목록
+				REVIEW <span class="path">/</span> 후기 목록
 				</p>
 		</header>
 		<div class="inner">
@@ -34,7 +34,7 @@
 				<select name="columns" id="columns">
 					<option value="title">제목</option>
 					<option value="content">내용</option>
-					<option value="titleContent">영화 제목</option>
+					<option value="titleContent">공연 제목</option>
 				</select>
 			</div>
 				<!-- 아래 find는 2개 중에 하나만 화면에 표시  -->

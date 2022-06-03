@@ -45,6 +45,7 @@
 					 	</c:forEach>
 					 	<tr><td colspan="4" align="right">
 					 		<a class="button" href="javascript:history.back();">이전</a>
+					 		<a class="button" href="${pageContext.request.contextPath }/member/qinsert.do">1:1문의 글 쓰기</a>
 					 		</td>
 					 	</tr>
 					</table>

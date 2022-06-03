@@ -34,7 +34,7 @@
 			<input type="password" name="password" id="password" placeholder="password를 입력해주세요"><br>
 			<input type="submit" value="Login" class="primary" /><br>
 			<div>
-				<br><span>아직 ID가 없으신가요?</span><a href="member/join.do">회원가입</a>
+				<br><span>아직 ID가 없으신가요?</span><a href="./join.do">회원가입</a>
 			</div>
 			</form>
 			</div>

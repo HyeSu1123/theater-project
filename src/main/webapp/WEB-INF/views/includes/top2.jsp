@@ -23,8 +23,8 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css">
 		
+	<link rel="icon"type="image/ico"href="${pageContext.request.contextPath }/resources/image/favicon.ico"/>
 	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/assets/css/main.css" />
-
 </head>
 
 <style>
@@ -147,7 +147,7 @@ font: bold;
 						<a href="">Community</a>
 						<ul class="open">
 							<li><a href="${pageContext.request.contextPath }/notice/noticelist.do">Notice</a></li>
-							<li><a href="${pageContext.request.contextPath }/community/list.do">관람 후기</a></li>
+							<li><a href="${pageContext.request.contextPath }/community/list.do">review</a></li>
 						</ul>
 					</li>
 					</c:if>
@@ -174,7 +174,7 @@ font: bold;
 						<a href="">Community</a>
 						<ul class="open">
 							<li><a href="${pageContext.request.contextPath }/admin/noticelist.do">Notice List</a></li>
-							<li><a href="${pageContext.request.contextPath }/community/list.do">관람후기</a></li>
+							<li><a href="${pageContext.request.contextPath }/community/list.do">review</a></li>
 						</ul>
 					</li>
 					<li><a href="">Service center</a>
@@ -191,7 +191,6 @@ font: bold;
 					</c:if>
 					<c:if test="${admin != null }">
 						<li>${admin.id }님 안녕하세요. <a href="${pageContext.request.contextPath }/logout.do" class="button fit">Log Out</a></li>
-						<li><a href="${pageContext.request.contextPath }/admin/main.do" class="button primary fit">Admin Page</a></li>
 					</c:if>
 					<c:if test="${member != null}">
 						<li>${member.id }님 환영합니다.<a href="${pageContext.request.contextPath }/logout.do" class="button fit">Log Out</a></li>
@@ -240,14 +239,13 @@ font: bold;
 		<!-- Scripts -->
 			<script type="text/javascript">
 				$(document).ready(function(){
-					$.noConflict();
+					$.noConflict();	//다른 스크립트랑 겹치지 않게 도와줌
 					$('.post-wrapper').slick({
-						slidesPerRow: 1, 
-						  rows:1,
-						  slidesToShow: 3,
-						  slidesToScroll: 1,
-						  autoplay: true,
-						  autoplaySpeed: 4000,
+						  rows:1,	//몇줄로 나타내는지
+						  slidesToShow: 3, //한 화면에 보여질 컨텐츠 개수
+						  slidesToScroll: 1, //스크롤 한번에 움직일 컨텐츠 개수
+						  autoplay: true, //자동 스크롤
+						  autoplaySpeed: 4000, //다음으로 넘어가는데 4초
 						  nextArrow:$('.next'),
 						  prevArrow:$('.prev'),
 						});

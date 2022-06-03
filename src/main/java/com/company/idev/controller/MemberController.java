@@ -89,7 +89,7 @@ public class MemberController {
 				
 				if(login != null && passMatch == true) {
 					session.setAttribute("member", login);
-					rda.addFlashAttribute("message", "로그인 되었습니다");
+					rda.addFlashAttribute("message","반갑습니다.");
 					return "redirect:/";
 				}else {
 					session.setAttribute("member", null);
@@ -111,7 +111,7 @@ public class MemberController {
 		
 		rda.addFlashAttribute("message","가입이 완료되었습니다");
 		mapper.insert(member);
-		return "redirect:/login.do";
+		return "redirect:login.do";
 	}
 
 
@@ -167,6 +167,69 @@ public class MemberController {
 		mapper.delete(id);
 		rda.addFlashAttribute("message", "탈퇴되었습니다.");
 		return "redirect:/logout.do";
+	}
+	
+	@PostMapping("/ticket.do")
+	public String getTicket(String id,Model model,HttpSession session) {
+		session.setAttribute("id", id);
+		logger.info("불러오는 id값 :"+ id);
+		List<Ticket> ticketnos = ticket_mapper.getIdTicket(id);
+		//예매한 수
+		int number = ticketnos.size();
+		//회원 예매번호 목록
+		List<Integer> ticketnos2 = new ArrayList<>();
+		for(int i=0;i<number;i++) {
+			ticketnos2.add(ticketnos.get(i).getTicket_no());
+		}
+		int schedulelist[] = new int[number];
+		//행 열 번호 좌석 리스트
+		String seatlist[] = new String[number];
+		//선택 좌석 수
+		int numlist[] = new int[number];
+		//예매 일시 리스트
+		Timestamp ticketdatelist[] = new Timestamp[number];
+		List<Schedules> scheduleinfo = new ArrayList<>();
+		List<Performance> performinfo = new ArrayList<>();
+		for(int i=0;i<number;i++) {
+			//예매 번호로 조회한 정보
+			List<Ticket> a = ticket_mapper.getTicket(ticketnos2.get(i));
+			if(a.get(0)!=null) {	//예매번호 정보가 있을 때
+				schedulelist[i]=a.get(0).getSchedule_idx();		//스케줄 번호
+				ticketdatelist[i] = a.get(0).getTicket_date();	//예매 일시
+				int[] seats = new int[a.size()];				//좌석 번호 (배열 선언)
+				numlist[i]=a.size();							//예매 인원 수
+				for(int j=0;j<a.size();j++) {
+					seats[j]= a.get(j).getSeat_idx();			//좌석 번호 (배열 저장)
+				}
+				Seat seat1;
+				String seat2="";
+				for(int j=0;j<numlist[i];j++) {
+					seat1 = seat_mapper.getOne(seats[j]);
+					seat2 += seat1.getSeat_row()+"-"+seat1.getNum()+", ";	//좌석 행번호+열번호 String으로 합산
+				}
+				String choicedseat=seat2.substring(0, seat2.length()-2);	//마지막 ", " 제거
+				logger.info(choicedseat);
+				seatlist[i]=choicedseat;									//좌석들 저장
+			}
+		}
+		for(int i=0;i<number;i++) {
+			scheduleinfo.add(schedules_mapper.getInfo(schedulelist[i]));		//스케줄 번호로 스케줄 정보 조회
+			performinfo.add(perform_mapper.getOne(scheduleinfo.get(i).getPerform_idx()));	//공연 변호로 공연 정보 조회
+		}
+		List<Temp> list = new ArrayList<>();
+		for (int i=0;i<number;i++) {
+			Temp temp = new Temp();
+			temp.setTicket_no(ticketnos2.get(i));
+			temp.setPerform(performinfo.get(i).getPerform_title());
+			temp.setTheater(performinfo.get(i).getTheater_name());
+			temp.setPerform_date(scheduleinfo.get(i).getPerform_date());
+			temp.setStart_time(scheduleinfo.get(i).getStart_time());
+			temp.setSeat(seatlist[i]);
+			temp.setNum(numlist[i]);
+			list.add(temp);
+		}
+		model.addAttribute("list", list);
+		return "member/MypageTicket";
 	}
 	
 

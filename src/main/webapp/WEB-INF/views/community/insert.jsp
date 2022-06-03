@@ -15,7 +15,7 @@
 		<header>
 			<h2>FREDDO</h2>
 				<p class="location">
-				COMMUNITY <span class="path">/</span> 후기 작성
+				REVIEW <span class="path">/</span> 후기 작성
 				</p>
 		</header>
 		<div class="inner">

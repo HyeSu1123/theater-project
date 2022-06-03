@@ -22,8 +22,8 @@
 	</header>
 	<div class="inner">
 		<ul class="actions">
-			<li><a href="${pageContext.request.contextPath }/member/login.do" class="button primary">MEMBER LOGIN</a></li>
-			<li><a href="${pageContext.request.contextPath }/admin/admin.do" class="button">ADMIN LOGIN</a></li>
+			<li><a href="${pageContext.request.contextPath }/member/login.do" class="button">MEMBER LOGIN</a></li>
+			<li><a href="${pageContext.request.contextPath }/admin/admin.do" class="button primary">ADMIN LOGIN</a></li>
 		</ul>
 	
 		<!-- 본문 -->
@@ -35,7 +35,7 @@
 	<input type="hidden" name="authority" id="authority" value="3"> 
 	<input type="submit" value="Login" class="primary" />
 	<div>
-		<br><span>관리자가 아니신가요?</span><a href="admin/adminjoin.do">회원가입</a>
+		<br><span>관리자가 아니신가요?</span><a href="./adminjoin.do">회원가입</a>
 	</div>
 	</form>
 	</div>

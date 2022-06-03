@@ -46,7 +46,7 @@
  	<c:choose>
  	<c:when test="${answer.answer_content==null  }">
  		<tr>
- 		<td style="text-align: center">아직 답변이 작성되지 않았습니다</td></tr>
+ 		<td colspan="2" style="text-align: center">아직 답변이 작성되지 않았습니다</td></tr>
  	</c:when>
  	<c:otherwise>
  	<tr><td >답변 작성자</td>

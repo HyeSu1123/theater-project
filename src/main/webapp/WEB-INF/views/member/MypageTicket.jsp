@@ -10,6 +10,16 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%@ include file="../includes/banner.jsp" %>
+		<!-- 컨테이너시작 -->
+<section id="main" class="wrapper">
+	<header>
+		<h2>FREDDO</h2>
+			<p class="location">
+			Reservation List <span class="path">/</span> 예매 내역
+			</p>
+	</header>
+	<div class="inner">
 <div class="clearp">
 	<h3>예매 내역</h3>
 	<form action="./ticket.do" method="post">
@@ -47,5 +57,8 @@
 </table>
 </form>
 </div>
+</div>
+</section>
+<%@ include file="../includes/footer.jsp" %>
 </body>
 </html>

@@ -33,7 +33,7 @@
 						<a href="">Community</a>
 						<ul class="open">
 							<li><a href="${pageContext.request.contextPath }/notice/noticelist.do">Notice</a></li>
-							<li><a href="${pageContext.request.contextPath }/community/list.do">관람 후기</a></li>
+							<li><a href="${pageContext.request.contextPath }/community/list.do">review</a></li>
 						</ul>
 					</li>
 					</c:if>
@@ -60,7 +60,7 @@
 						<a href="">Community</a>
 						<ul class="open">
 							<li><a href="${pageContext.request.contextPath }/admin/noticelist.do">Notice List</a></li>
-							<li><a href="${pageContext.request.contextPath }/community/list.do">관람후기</a></li>
+							<li><a href="${pageContext.request.contextPath }/community/list.do">review</a></li>
 						</ul>
 					</li>
 					<li><a href="">Service center</a>
@@ -77,7 +77,6 @@
 					</c:if>
 					<c:if test="${admin != null }">
 						<li>${admin.id }님 안녕하세요. <a href="${pageContext.request.contextPath }/logout.do" class="button fit">Log Out</a></li>
-						<li><a href="${pageContext.request.contextPath }/admin/main.do" class="button primary fit">Admin Page</a></li>
 					</c:if>
 					<c:if test="${member != null}">
 						<li>${member.id }님 환영합니다.<a href="${pageContext.request.contextPath }/logout.do" class="button fit">Log Out</a></li>

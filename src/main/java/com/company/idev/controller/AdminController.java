@@ -84,35 +84,36 @@ public class AdminController {
 		
 		session.getAttribute("admin");
 		Members login = mapper.loginAdmin(vo);
+		Members login2 = mapper.loginAdminApp(vo);
 		
 		boolean passMatch;
 		
 		if(login != null) {
 			passMatch = pwEncoder.matches(vo.getPassword(), login.getPassword());
-		}else {
+		}else if(login2 != null) {
+			passMatch = pwEncoder.matches(vo.getPassword(), login2.getPassword());			
+		}
+		else {
 			passMatch = false;
 		}
-		
 		
 		logger.info("관리자 번호 확인" + vo.getAuthority());
 		if(login != null && passMatch == true) {
 			session.setAttribute("admin", login);
 			rda.addFlashAttribute("message", "안녕하세요 관리자님.");
 			return "redirect:/";
-			}
-//		else if(vo.getAuthority()!=0 ) {
-//			session.setAttribute("admin",login);
-//			rda.addFlashAttribute("message", "승인 요청중입니다. 현재 이용하실 수 없습니다.");
-//			return "redirect:admin.do";
-//		}
+		}
+		if(login2 != null && passMatch == true) {
+			session.setAttribute("member", login2);
+			rda.addFlashAttribute("message", "승인 요청중입니다. 현재 이용하실 수 없습니다.");
+			return "redirect:/";
+		}
 		else {
-				session.setAttribute("admin", null);
-				rda.addFlashAttribute("message", "승인 요청중입니다. 현재 이용하실 수 없습니다.");
-			}
+			session.setAttribute("admin", null);
+			rda.addFlashAttribute("message", "아이디나 비밀번호를 다시 입력해주세요.");
+		}
 			return "redirect:admin.do";
 	}
-
-	
 	
 	//관리자 회원가입
 	@GetMapping("/adminjoin.do")
@@ -129,9 +130,9 @@ public class AdminController {
 		encodePw = pwEncoder.encode(rawPw);
 		admin.setPassword(encodePw);
 		
-		rda.addFlashAttribute("message","승인 요청되었습니다. 승인 완료 후 이용 가능합니다");
+		rda.addFlashAttribute("message","관리자 승인 완료 후 이용 가능합니다");
 		mapper.insertAdmin(admin);
-		return "redirect:/admin.do";
+		return "redirect:admin.do";
 	}
 
 	//아이디 체크
@@ -237,7 +238,7 @@ public class AdminController {
 		}
 		@PostMapping("memberno.do")
 		public String memberNo(String id,RedirectAttributes rda) {
-			mapper.deleteMember(id);
+			mapper.updateMember(id);
 			rda.addFlashAttribute("message",id+"님의 관리자 가입을 거절하였습니다.");
 			
 			return "redirect:memberapprove.do";
